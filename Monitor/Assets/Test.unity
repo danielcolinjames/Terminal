@@ -486,6 +486,7 @@ MonoBehaviour:
   player: {fileID: 0}
   monitor: {fileID: 0}
   distanceToMonitor: 0
+  box: {fileID: 0}
 --- !u!1001 &991943274
 Prefab:
   m_ObjectHideFlags: 0
@@ -686,7 +687,7 @@ GameObject:
   - 65: {fileID: 1180470085}
   - 23: {fileID: 1180470084}
   m_Layer: 0
-  m_Name: Puzzle 1 cube
+  m_Name: PuzzleOneCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
