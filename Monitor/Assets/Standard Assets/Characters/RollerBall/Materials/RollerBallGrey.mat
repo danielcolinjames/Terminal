@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: RollerBallGrey
-  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 14000, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _LIGHTMAPPING_BAKED _LIGHTMAPPING_STATIC_LIGHTMAPS _UVPRIM_UV1
     _UVSEC_UV1
   m_LightmapFlags: 0
@@ -36,6 +36,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     - first:
         name: _DetailNormalMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _DetailTex
       second:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -89,6 +95,9 @@ Material:
     - first:
         name: _BumpScale
       second: 1
+    - first:
+        name: _Cull
+      second: 2
     - first:
         name: _Cutoff
       second: 0.5
@@ -150,6 +159,9 @@ Material:
         name: _UVSec
       second: 0
     - first:
+        name: _WindQuality
+      second: 0
+    - first:
         name: _ZWrite
       second: 1
     m_Colors:
@@ -165,6 +177,9 @@ Material:
     - first:
         name: _EmissionColorWithMapUI
       second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _HueVariation
+      second: {r: 1, g: 0.5, b: 0, a: 0.1}
     - first:
         name: _SpecColor
       second: {r: 0.5514706, g: 0.5514706, b: 0.5514706, a: 1}
