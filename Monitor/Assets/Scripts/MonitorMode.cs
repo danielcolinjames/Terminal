@@ -28,7 +28,6 @@ public class MonitorMode : MonoBehaviour {
         box = GameObject.Find("PuzzleOneCube").transform;
         rb = box.GetComponent<Rigidbody>();
 
-
         distanceToMonitor = 0;
     }
     
@@ -83,7 +82,7 @@ public class MonitorMode : MonoBehaviour {
 
         if (monitorMode == true)
         {
-            player.position = new Vector3((float)-1.5,(float)1.05,(float)0);
+            player.position = new Vector3((float)1.32,(float)3.78,(float)38.2);
 
             box.Translate(Vector3.back * state.ThumbSticks.Left.Y);
             box.Translate(Vector3.forward * -state.ThumbSticks.Left.Y);
