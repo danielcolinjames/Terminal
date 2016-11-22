@@ -1,18 +1,16 @@
 fileFormatVersion: 2
-guid: 95289351e587bec44bff5056ade9ee69
-timeCreated: 1479771743
+guid: 2134f30623fd3cb46982c64f66660728
+timeCreated: 1479780579
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Mesh1_Model
     400000: //RootNode
-    400002: Mesh1_Model
-    2300000: Mesh1_Model
-    3300000: Mesh1_Model
-    4300000: Mesh1_Model
-    6400000: Mesh1_Model
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCube1
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,10 +37,10 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -71,7 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
