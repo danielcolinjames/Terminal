@@ -81,7 +81,7 @@ public class MonitorMode : MonoBehaviour {
 
     void FixedUpdate() {
         if (monitorMode == true) {
-            player.position = new Vector3(monitor.position.x - 1f, monitor.position.y, monitor.position.z);
+            player.position = new Vector3(monitor.position.x, monitor.position.y - 0.3f, monitor.position.z + 1f);
 
             // how quickly the box will translate
             float movementSpeed = 0.05f;
