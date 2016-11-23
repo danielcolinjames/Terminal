@@ -20,17 +20,17 @@ public class MonitorMode : MonoBehaviour {
     bool monitorMode = false;
     
     void Awake() {
-        player = GameObject.Find("FPSController").transform;
-        monitor = GameObject.Find("Monitor").transform;
-
-        box = GameObject.Find("PuzzleOneCube").transform;
-
-        distanceToMonitor = 0;
+        
     }
     
     void Start () {
-        
-	}
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        monitor = GameObject.FindGameObjectWithTag("Monitor").transform;
+
+        box = GameObject.FindGameObjectWithTag("PuzzleOneCube").transform;
+
+        distanceToMonitor = 0;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -69,7 +69,7 @@ public class MonitorMode : MonoBehaviour {
         //if (prevState.Buttons.A == ButtonState.Pressed && state.Buttons.A == ButtonState.Released) {
         //    // print("a released");
         //}
-        
+
         // Set vibration according to triggers
         //GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
 
@@ -77,11 +77,16 @@ public class MonitorMode : MonoBehaviour {
         //transform.localRotation *= Quaternion.Euler(0.0f, state.ThumbSticks.Left.X * 25.0f * Time.deltaTime, 0.0f);
 
         // box.Translate(Vector3.back * Time.deltaTime);
+
+        if (monitorMode == true) {
+            // if this is in FixedUpdate, the player can jerk around and it doesn't lock the position properly
+            player.position = new Vector3(monitor.position.x, monitor.position.y - 0.5f, monitor.position.z + 1.5f);
+        }
     }
 
     void FixedUpdate() {
         if (monitorMode == true) {
-            player.position = new Vector3(monitor.position.x, monitor.position.y - 0.3f, monitor.position.z + 1f);
+            // have to do all the physics changes inside FixedUpdate or else the box jerks around
 
             // how quickly the box will translate
             float movementSpeed = 0.05f;
@@ -94,10 +99,8 @@ public class MonitorMode : MonoBehaviour {
             box.Translate(Vector3.forward * -state.ThumbSticks.Left.Y * movementSpeed);
 
             // left and right
-            box.Translate(Vector3.right * state.ThumbSticks.Left.X * movementSpeed);
-            box.Translate(Vector3.left * -state.ThumbSticks.Left.X * movementSpeed);
-
-            
+            box.Translate(Vector3.right * -state.ThumbSticks.Left.X * movementSpeed);
+            box.Translate(Vector3.left * state.ThumbSticks.Left.X * movementSpeed);
         }
     }
 }
