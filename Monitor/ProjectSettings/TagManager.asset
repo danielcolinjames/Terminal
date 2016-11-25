@@ -7,6 +7,16 @@ TagManager:
   - RedLight
   - Monitor
   - PuzzleOneCube
+  - MonitorCamera
+  - PuzzleOneComplete
+  - ControlCentreLight
+  - ScreenLight
+  - MonitorPlane
+  - BlueLight
+  - YellowLight
+  - GreenLight
+  - MainLight
+  - FallingBox
   layers:
   - Default
   - TransparentFX
