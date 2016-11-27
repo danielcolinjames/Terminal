@@ -1,0 +1,114 @@
+fileFormatVersion: 2
+guid: 1b24d24f0a4c8b947b309528a0e73936
+timeCreated: 1480045949
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Kapa_corp_002
+    100004: Kapa_Tros_003
+    100006: Kapa_Tros_004
+    100008: Kapa_Tros_005
+    100010: Kapa_Wire_002
+    100012: kapa_zanga_011
+    100014: kapa_zanga_012
+    100016: kapa_zanga_013
+    400000: //RootNode
+    400002: Kapa_corp_002
+    400004: Kapa_Tros_003
+    400006: Kapa_Tros_004
+    400008: Kapa_Tros_005
+    400010: Kapa_Wire_002
+    400012: kapa_zanga_011
+    400014: kapa_zanga_012
+    400016: kapa_zanga_013
+    2300000: Kapa_corp_002
+    2300002: Kapa_Tros_003
+    2300004: Kapa_Tros_004
+    2300006: Kapa_Tros_005
+    2300008: Kapa_Wire_002
+    2300010: kapa_zanga_011
+    2300012: kapa_zanga_012
+    2300014: kapa_zanga_013
+    3300000: Kapa_corp_002
+    3300002: Kapa_Tros_003
+    3300004: Kapa_Tros_004
+    3300006: Kapa_Tros_005
+    3300008: Kapa_Wire_002
+    3300010: kapa_zanga_011
+    3300012: kapa_zanga_012
+    3300014: kapa_zanga_013
+    4300000: Kapa_Tros_005
+    4300002: Kapa_Tros_004
+    4300004: kapa_zanga_013
+    4300006: Kapa_Tros_003
+    4300008: kapa_zanga_012
+    4300010: Kapa_Wire_002
+    4300012: kapa_zanga_011
+    4300014: Kapa_corp_002
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
