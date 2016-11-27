@@ -33,6 +33,11 @@ TagManager:
   - BlueGoal
   - GreenGoal
   - YellowGoal
+  - PuzzleTwoSelector
+  - PuzzleTwoRedBox
+  - PuzzleTwoBlueBox
+  - PuzzleTwoGreenBox
+  - PuzzleTwoYellowBox
   layers:
   - Default
   - TransparentFX

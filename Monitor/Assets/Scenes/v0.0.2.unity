@@ -575,7 +575,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 99136168}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 7
   m_Type: 2
   m_Color: {r: 0, g: 0, b: 1, a: 1}
@@ -2253,7 +2253,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 487842083}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 7
   m_Type: 2
   m_Color: {r: 0, g: 1, b: 0, a: 1}
@@ -2778,7 +2778,7 @@ GameObject:
   - 54: {fileID: 807382139}
   m_Layer: 0
   m_Name: PuzzleTwoYellowCube
-  m_TagString: Untagged
+  m_TagString: PuzzleTwoYellowBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2790,8 +2790,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 807382137}
   m_LocalRotation: {x: -0, y: -0.7071072, z: -0, w: 0.7071065}
-  m_LocalPosition: {x: -2.91, y: 0, z: 2.38}
-  m_LocalScale: {x: 4.791994, y: 0.78000003, z: 4.1315327}
+  m_LocalPosition: {x: -2.91, y: 0, z: 2.07}
+  m_LocalScale: {x: 4.255023, y: 0.78000003, z: 4.1315327}
   m_LocalEulerAnglesHint: {x: 0, y: -89.355, z: 0}
   m_Children: []
   m_Father: {fileID: 74071454}
@@ -3425,7 +3425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1004412978
 Transform:
   m_ObjectHideFlags: 0
@@ -4041,8 +4041,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1151353118}
   m_LocalRotation: {x: 0.49999988, y: 0.5000002, z: -0.5000002, w: 0.49999988}
-  m_LocalPosition: {x: -5.15, y: -0.72, z: 0.13}
-  m_LocalScale: {x: 26.780054, y: 25.469887, z: 1}
+  m_LocalPosition: {x: -5.2, y: -0.72, z: -80.3}
+  m_LocalScale: {x: 194.70934, y: 25.469887, z: 1}
   m_LocalEulerAnglesHint: {x: 90.01898, y: 180, z: 89.354}
   m_Children: []
   m_Father: {fileID: 1607704939}
@@ -4208,7 +4208,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1196647273}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.1699996, y: 0, z: 7.160002}
+  m_LocalPosition: {x: -4.88, y: 0, z: 7.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -4297,7 +4297,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1251856424}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 7
   m_Type: 2
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -4619,7 +4619,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1342884796}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 7
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 0, a: 1}
@@ -4948,7 +4948,7 @@ GameObject:
   - 54: {fileID: 1406182437}
   m_Layer: 0
   m_Name: PuzzleTwoGreenCube
-  m_TagString: Untagged
+  m_TagString: PuzzleTwoGreenBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4960,8 +4960,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1406182435}
   m_LocalRotation: {x: -0, y: -0.7071072, z: -0, w: 0.7071065}
-  m_LocalPosition: {x: -2.89, y: 0, z: -2.75}
-  m_LocalScale: {x: 4.7919927, y: 0.78000003, z: 4.1315317}
+  m_LocalPosition: {x: -2.89, y: 0, z: -2.5}
+  m_LocalScale: {x: 4.255022, y: 0.78000003, z: 4.1315317}
   m_LocalEulerAnglesHint: {x: 0, y: -89.355, z: 0}
   m_Children: []
   m_Father: {fileID: 74071454}
@@ -5753,7 +5753,7 @@ GameObject:
   - 54: {fileID: 1552076544}
   m_Layer: 0
   m_Name: PuzzleTwoRedCube
-  m_TagString: Untagged
+  m_TagString: PuzzleTwoRedBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5765,8 +5765,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552076542}
   m_LocalRotation: {x: -0, y: -0.7071072, z: -0, w: 0.7071065}
-  m_LocalPosition: {x: -7.44, y: 0, z: -2.82}
-  m_LocalScale: {x: 4.791991, y: 0.78000003, z: 4.1315312}
+  m_LocalPosition: {x: -7.44, y: 0, z: -2.53}
+  m_LocalScale: {x: 4.2550206, y: 0.78000003, z: 4.1315312}
   m_LocalEulerAnglesHint: {x: 0, y: -89.355, z: 0}
   m_Children: []
   m_Father: {fileID: 74071454}
@@ -6824,7 +6824,7 @@ GameObject:
   - 54: {fileID: 1860056701}
   m_Layer: 0
   m_Name: PuzzleTwoBlueCube
-  m_TagString: Untagged
+  m_TagString: PuzzleTwoBlueBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6836,8 +6836,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1860056699}
   m_LocalRotation: {x: -0, y: -0.7071072, z: -0, w: 0.7071065}
-  m_LocalPosition: {x: -7.44, y: 0, z: 2.39}
-  m_LocalScale: {x: 4.79199, y: 0.78000003, z: 4.1315303}
+  m_LocalPosition: {x: -7.44, y: 0, z: 2.06}
+  m_LocalScale: {x: 4.255019, y: 0.78000003, z: 4.1315303}
   m_LocalEulerAnglesHint: {x: 0, y: -89.355, z: 0}
   m_Children: []
   m_Father: {fileID: 74071454}
@@ -7355,26 +7355,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb613cc02a027114b9f1e1ccb3d49bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleTwoRedBox: {fileID: 0}
-  puzzleTwoBlueBox: {fileID: 0}
-  puzzleTwoGreenBox: {fileID: 0}
-  puzzleTwoYellowBox: {fileID: 0}
+  yellowLight: {fileID: 0}
   yellowFlag: 0
   yellowBoxOne: {fileID: 0}
   yellowBoxTwo: {fileID: 0}
   yellowBoxThree: {fileID: 0}
+  redLight: {fileID: 0}
   redFlag: 0
   redBoxOne: {fileID: 0}
   redBoxTwo: {fileID: 0}
   redBoxThree: {fileID: 0}
+  greenLight: {fileID: 0}
   greenFlag: 0
   greenBoxOne: {fileID: 0}
   greenBoxTwo: {fileID: 0}
   greenBoxThree: {fileID: 0}
+  blueLight: {fileID: 0}
   blueFlag: 0
   blueBoxOne: {fileID: 0}
   blueBoxTwo: {fileID: 0}
   blueBoxThree: {fileID: 0}
+  puzzleTwoRedBox: {fileID: 0}
+  puzzleTwoBlueBox: {fileID: 0}
+  puzzleTwoGreenBox: {fileID: 0}
+  puzzleTwoYellowBox: {fileID: 0}
+  distanceFromYellowX: 0
+  distanceFromYellowZ: 0
+  distanceFromRedX: 0
+  distanceFromRedZ: 0
+  distanceFromGreenX: 0
+  distanceFromGreenZ: 0
+  distanceFromBlueX: 0
+  distanceFromBlueZ: 0
+  puzzleTwoSelector: {fileID: 0}
 --- !u!1 &2097265714
 GameObject:
   m_ObjectHideFlags: 0
@@ -7385,8 +7398,8 @@ GameObject:
   - 4: {fileID: 2097265715}
   - 108: {fileID: 2097265716}
   m_Layer: 0
-  m_Name: Point light
-  m_TagString: Untagged
+  m_Name: PuzzleTwoSelector
+  m_TagString: PuzzleTwoSelector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7397,10 +7410,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2097265714}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.13, y: 6.61, z: 0.83}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -5.19, y: 6.61, z: -0.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 74071454}
   m_RootOrder: 5
@@ -7412,11 +7425,11 @@ Light:
   m_GameObject: {fileID: 2097265714}
   m_Enabled: 1
   serializedVersion: 7
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3.13
+  m_Intensity: 3.38
   m_Range: 20
-  m_SpotAngle: 30
+  m_SpotAngle: 45.2
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -7435,7 +7448,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 3.24
+  m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &2099143973
