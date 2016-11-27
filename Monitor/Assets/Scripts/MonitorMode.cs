@@ -21,6 +21,27 @@ public class MonitorMode : MonoBehaviour {
     public Transform puzzleTwoGreenBox;
     public Transform puzzleTwoYellowBox;
 
+    public bool yellowFlag;
+    public Transform yellowBoxOne;
+    public Transform yellowBoxTwo;
+    public Transform yellowBoxThree;
+
+    public bool redFlag;
+    public Transform redBoxOne;
+    public Transform redBoxTwo;
+    public Transform redBoxThree;
+
+    public bool greenFlag;
+    public Transform greenBoxOne;
+    public Transform greenBoxTwo;
+    public Transform greenBoxThree;
+
+    public bool blueFlag;
+    public Transform blueBoxOne;
+    public Transform blueBoxTwo;
+    public Transform blueBoxThree;
+
+
     // global variables
     public float distanceToMonitor;
 
@@ -156,11 +177,21 @@ public class MonitorMode : MonoBehaviour {
                 // test for completion
                 if (puzzleOneDistanceToCompletion < 1) {
                     currentPuzzle = 2;
-                    
+                    puzzleTwoFallingBox.position = new Vector3(puzzleTwoFallingBox.position.x, 
+                        puzzleTwoFallingBox.position.y - 1f, puzzleTwoFallingBox.position.z);
                 }
             }
             else if (currentPuzzle == 2) {
-                
+
+                // 
+                yellowFlag = false;
+
+
+
+
+            }
+            else if (currentPuzzle == 3) {
+
             }
         }
     }

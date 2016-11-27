@@ -17,6 +17,22 @@ TagManager:
   - GreenLight
   - MainLight
   - FallingBox
+  - YellowBoxOne
+  - YellowBoxTwo
+  - YellowBoxThree
+  - RedBoxOne
+  - RedBoxTwo
+  - RedBoxThree
+  - BlueBoxOne
+  - BlueBoxTwo
+  - BlueBoxThree
+  - GreenBoxOne
+  - GreenBoxTwo
+  - GreenBoxThree
+  - RedGoal
+  - BlueGoal
+  - GreenGoal
+  - YellowGoal
   layers:
   - Default
   - TransparentFX
