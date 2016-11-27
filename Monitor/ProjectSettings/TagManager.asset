@@ -3,7 +3,36 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RedLight
+  - Monitor
+  - PuzzleOneCube
+  - MonitorCamera
+  - PuzzleOneComplete
+  - ControlCentreLight
+  - ScreenLight
+  - MonitorPlane
+  - BlueLight
+  - YellowLight
+  - GreenLight
+  - MainLight
+  - FallingBox
+  - YellowBoxOne
+  - YellowBoxTwo
+  - YellowBoxThree
+  - RedBoxOne
+  - RedBoxTwo
+  - RedBoxThree
+  - BlueBoxOne
+  - BlueBoxTwo
+  - BlueBoxThree
+  - GreenBoxOne
+  - GreenBoxTwo
+  - GreenBoxThree
+  - RedGoal
+  - BlueGoal
+  - GreenGoal
+  - YellowGoal
   layers:
   - Default
   - TransparentFX
