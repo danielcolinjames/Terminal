@@ -1,33 +1,61 @@
 fileFormatVersion: 2
-guid: 145667d033872024c84bd0f6c7b776a0
-timeCreated: 1480046040
+guid: e9ae4441a12bc6947991ba7573368b96
+timeCreated: 1480224576
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: pCone1
-    100002: pCone2
-    100004: pCylinder1
-    100006: pCylinder2
-    100008: pSphere1
-    100010: transform1
-    100012: transform2
-    100014: transform3
-    100016: transform4
-    100018: //RootNode
-    400000: pCone1
-    400002: pCone2
-    400004: pCylinder1
-    400006: pCylinder2
-    400008: pSphere1
-    400010: transform1
-    400012: transform2
-    400014: transform3
-    400016: transform4
-    400018: //RootNode
-    2300000: pCone2
-    3300000: pCone2
+    100000: group
+    100002: //RootNode
+    100004: pasted__pCone1
+    100006: pasted__pCone2
+    100008: pasted__pCylinder1
+    100010: pasted__pCylinder2
+    100012: pasted__pSphere1
+    100014: pasted__transform1
+    100016: pasted__transform2
+    100018: pasted__transform3
+    100020: pasted__transform4
+    100022: pCone1
+    100024: pCone2
+    100026: pCone3
+    100028: pCylinder1
+    100030: pCylinder2
+    100032: pSphere1
+    100034: transform1
+    100036: transform2
+    100038: transform3
+    100040: transform4
+    400000: group
+    400002: //RootNode
+    400004: pasted__pCone1
+    400006: pasted__pCone2
+    400008: pasted__pCylinder1
+    400010: pasted__pCylinder2
+    400012: pasted__pSphere1
+    400014: pasted__transform1
+    400016: pasted__transform2
+    400018: pasted__transform3
+    400020: pasted__transform4
+    400022: pCone1
+    400024: pCone2
+    400026: pCone3
+    400028: pCylinder1
+    400030: pCylinder2
+    400032: pSphere1
+    400034: transform1
+    400036: transform2
+    400038: transform3
+    400040: transform4
+    2300000: pasted__pCone2
+    2300002: pCone2
+    2300004: pCone3
+    3300000: pasted__pCone2
+    3300002: pCone2
+    3300004: pCone3
     4300000: pCone2
+    4300002: pasted__pCone2
+    4300004: pCone3
     9500000: //RootNode
   materials:
     importMaterials: 1
