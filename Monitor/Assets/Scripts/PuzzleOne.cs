@@ -43,17 +43,17 @@ public class PuzzleOne : MonoBehaviour {
 
                 // up and down
                 puzzleOneBox.Translate(Vector3.back * Global.state.ThumbSticks.Left.Y * movementSpeed);
-                if (Input.GetKey(KeyCode.W)) puzzleOneBox.Translate(Vector3.back * 1 * movementSpeed);
+                if (Input.GetKey(KeyCode.W)) puzzleOneBox.Translate(Vector3.back * 2 * movementSpeed);
 
                 puzzleOneBox.Translate(Vector3.forward * -Global.state.ThumbSticks.Left.Y * movementSpeed);
-                if (Input.GetKey(KeyCode.S)) puzzleOneBox.Translate(Vector3.forward * 1 * movementSpeed);
+                if (Input.GetKey(KeyCode.S)) puzzleOneBox.Translate(Vector3.forward * 2 * movementSpeed);
 
                 // left and right
                 puzzleOneBox.Translate(Vector3.right * -Global.state.ThumbSticks.Left.X * movementSpeed);
-                if (Input.GetKey(KeyCode.D)) puzzleOneBox.Translate(Vector3.left * 1 * movementSpeed);
+                if (Input.GetKey(KeyCode.D)) puzzleOneBox.Translate(Vector3.left * 2 * movementSpeed);
 
                 puzzleOneBox.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
-                if (Input.GetKey(KeyCode.A)) puzzleOneBox.Translate(Vector3.right * 1 * movementSpeed);
+                if (Input.GetKey(KeyCode.A)) puzzleOneBox.Translate(Vector3.right * 2 * movementSpeed);
 
                 // puzzleOneDistanceToCompletion = Vector3.Distance(player.position, monitor.position);
 
