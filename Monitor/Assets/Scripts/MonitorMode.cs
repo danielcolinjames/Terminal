@@ -39,15 +39,15 @@ public class MonitorMode : MonoBehaviour {
         }
 
         // detect if A was pressed this frame
-        if ((Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed) || Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.E) || (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) {
             // if a has been pressed, activate monitor mode
             if (distanceToMonitor < 1.5) {
                 monitorMode = true;
             }
         }
-
+        
         // detect if B was pressed this frame
-        if ((monitorMode == true && Global.prevState.Buttons.B == ButtonState.Released && Global.state.Buttons.B == ButtonState.Pressed) || Input.GetKeyDown(KeyCode.E)) {
+        if (((monitorMode == true) && ((Input.GetKeyDown(KeyCode.Q)) || (Global.prevState.Buttons.B == ButtonState.Released && Global.state.Buttons.B == ButtonState.Pressed)))) {
             // if B wasn't pressed last frame, and IS pressed now, de-activate monitor mode
             monitorMode = false;
         }

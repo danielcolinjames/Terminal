@@ -170,11 +170,17 @@ public class PuzzleTwo : MonoBehaviour
                 // TODO: limits, eg: if (pos.x >) { ... }
                 // up and down
                 puzzleTwoSelector.Translate(Vector3.down * Global.state.ThumbSticks.Left.Y * movementSpeed);
+                if (Input.GetKey(KeyCode.S)) puzzleTwoSelector.Translate(Vector3.up * 1 * movementSpeed);
+
                 puzzleTwoSelector.Translate(Vector3.up * -Global.state.ThumbSticks.Left.Y * movementSpeed);
+                if (Input.GetKey(KeyCode.W)) puzzleTwoSelector.Translate(Vector3.down * 1 * movementSpeed);
 
                 // left and right
                 puzzleTwoSelector.Translate(Vector3.right * -Global.state.ThumbSticks.Left.X * movementSpeed);
+                if (Input.GetKey(KeyCode.D)) puzzleTwoSelector.Translate(Vector3.left * 1 * movementSpeed);
+
                 puzzleTwoSelector.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
+                if (Input.GetKey(KeyCode.A)) puzzleTwoSelector.Translate(Vector3.right * 1 * movementSpeed);
 
 
 
