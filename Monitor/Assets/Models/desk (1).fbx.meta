@@ -32,6 +32,11 @@ ModelImporter:
     4300004: Desk
     4300006: Door2
     4300008: Door1
+    6400000: Desk
+    6400002: Door1
+    6400004: Door2
+    6400006: Handle
+    6400008: Handle2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -59,10 +64,10 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
