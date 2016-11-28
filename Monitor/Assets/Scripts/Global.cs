@@ -4,6 +4,8 @@ using XInputDotNetPure;
 
 public class Global : MonoBehaviour {
 
+    public static float lockPos = 0;
+
     public static int currentPuzzle = 1;
     public static GamePadState state;
     public static GamePadState prevState;
@@ -21,7 +23,9 @@ public class Global : MonoBehaviour {
         // global objects
         player = GameObject.FindGameObjectWithTag("Player").transform;
         monitor = GameObject.FindGameObjectWithTag("Monitor").transform;
+
         monitorCamera = GameObject.FindGameObjectWithTag("MonitorCamera").transform;
+        monitorCamera.position = new Vector3(monitorCamera.position.x, monitorCamera.position.y, monitorCamera.position.z);
     }
 	
 	// Update is called once per frame

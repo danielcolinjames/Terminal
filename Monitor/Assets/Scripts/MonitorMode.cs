@@ -24,7 +24,7 @@ public class MonitorMode : MonoBehaviour {
 	void Update () {
         distanceToMonitor = Vector3.Distance(Global.player.position, Global.monitor.position);
 
-        print(distanceToMonitor);
+        //print(distanceToMonitor);
 
         if (!Global.playerIndexSet || !Global.prevState.IsConnected) {
             for (int i = 0; i < 4; i++) {
@@ -38,10 +38,8 @@ public class MonitorMode : MonoBehaviour {
             }
         }
 
-        
-        
         // detect if A was pressed this frame
-        if (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed) {
+        if ((Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed) || Input.GetKeyDown(KeyCode.E)) {
             // if a has been pressed, activate monitor mode
             if (distanceToMonitor < 1.5) {
                 monitorMode = true;
@@ -49,7 +47,7 @@ public class MonitorMode : MonoBehaviour {
         }
 
         // detect if B was pressed this frame
-        if (monitorMode == true && Global.prevState.Buttons.B == ButtonState.Released && Global.state.Buttons.B == ButtonState.Pressed) {
+        if ((monitorMode == true && Global.prevState.Buttons.B == ButtonState.Released && Global.state.Buttons.B == ButtonState.Pressed) || Input.GetKeyDown(KeyCode.E)) {
             // if B wasn't pressed last frame, and IS pressed now, de-activate monitor mode
             monitorMode = false;
         }
