@@ -38,6 +38,7 @@ TagManager:
   - PuzzleTwoBlueBox
   - PuzzleTwoGreenBox
   - PuzzleTwoYellowBox
+  - Flashlight
   layers:
   - Default
   - TransparentFX

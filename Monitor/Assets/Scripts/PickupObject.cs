@@ -75,7 +75,7 @@ public class PickupObject : MonoBehaviour {
 	}
 
 	void throwObject() {
-		if (Input.GetKeyDown (KeyCode.F)) {
+		if (Input.GetMouseButtonDown(0)) {
 			carriedObject.transform.position = transform.position + Camera.main.transform.forward * 2;
 			Rigidbody rb = carriedObject.GetComponent<Rigidbody> ();
 			rb.velocity = Camera.main.transform.forward * throwStrength;
