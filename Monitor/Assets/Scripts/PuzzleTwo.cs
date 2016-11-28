@@ -7,6 +7,11 @@ public class PuzzleTwo : MonoBehaviour
     // Global objects (accessed by other scripts)
     public static Transform puzzleTwoFallingBox;
 
+    Rigidbody rb;
+
+    public bool puzzleTwoStarted = false;
+
+    public float goalRange = 2f;
 
     // Warehouse items
     public Light yellowLight;
@@ -18,6 +23,7 @@ public class PuzzleTwo : MonoBehaviour
     float yellowBoxTwoDistance;
     public Transform yellowBoxThree;
     float yellowBoxThreeDistance;
+
 
     public Light redLight;
     public int redCount;
@@ -73,6 +79,9 @@ public class PuzzleTwo : MonoBehaviour
 
     void Awake()
     {
+
+        rb = GameObject.FindGameObjectWithTag("YellowBoxTwo").GetComponent<Rigidbody>();
+
         // need to be in Awake() instead of Start() or else Unity has tons of errors
         // puzzle two objects
         puzzleTwoFallingBox = GameObject.FindGameObjectWithTag("FallingBox").transform;
@@ -127,12 +136,40 @@ public class PuzzleTwo : MonoBehaviour
         if (Global.currentPuzzle == 2)
         {
 
+            // move camera across from puzzle one
             float speed = 25f;
             float step = speed * Time.deltaTime;
 
             Vector3 puzzleTwoCameraPosition = new Vector3(-29f, 10f, 63f);
 
+            float distance = Vector3.Distance(Global.monitorCamera.position, puzzleTwoCameraPosition);
+
+            // pan camera across
             Global.monitorCamera.position = Vector3.MoveTowards(Global.monitorCamera.position, puzzleTwoCameraPosition, step);
+
+            if (distance == 0)
+            {
+                // setting a flag when the camera has finished panning over
+                // otherwise the player can move the puzzleTwoSelector around before puzzle one is finished
+                puzzleTwoStarted = true;
+            }
+
+            // update box distances here (was doing it inside "if (monitorMode)" before...woops)
+            redBoxOneDistance = Vector3.Distance(redBoxOne.position, redGoal.position);
+            redBoxTwoDistance = Vector3.Distance(redBoxTwo.position, redGoal.position);
+            redBoxThreeDistance = Vector3.Distance(redBoxThree.position, redGoal.position);
+
+            blueBoxOneDistance = Vector3.Distance(blueBoxOne.position, blueGoal.position);
+            blueBoxTwoDistance = Vector3.Distance(blueBoxTwo.position, blueGoal.position);
+            blueBoxThreeDistance = Vector3.Distance(blueBoxThree.position, blueGoal.position);
+
+            greenBoxOneDistance = Vector3.Distance(greenBoxOne.position, greenGoal.position);
+            greenBoxTwoDistance = Vector3.Distance(greenBoxTwo.position, greenGoal.position);
+            greenBoxThreeDistance = Vector3.Distance(greenBoxThree.position, greenGoal.position);
+
+            yellowBoxOneDistance = Vector3.Distance(yellowBoxOne.position, yellowGoal.position);
+            yellowBoxTwoDistance = Vector3.Distance(yellowBoxTwo.position, yellowGoal.position);
+            yellowBoxThreeDistance = Vector3.Distance(yellowBoxThree.position, yellowGoal.position);
 
         }
         if (MonitorMode.monitorMode == true)
@@ -158,30 +195,33 @@ public class PuzzleTwo : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (MonitorMode.monitorMode == true)
+        if (Global.currentPuzzle == 2)
         {
-            if (Global.currentPuzzle == 2)
+            if (MonitorMode.monitorMode == true)
             {
+
                 float movementSpeed = 0.05f;
 
                 // locks rotation of light
                 puzzleTwoSelector.transform.rotation = Quaternion.Euler(puzzleTwoSelector.transform.rotation.eulerAngles.x, Global.lockPos, Global.lockPos);
 
-                // TODO: limits, eg: if (pos.x >) { ... }
-                // up and down
-                puzzleTwoSelector.Translate(Vector3.down * Global.state.ThumbSticks.Left.Y * movementSpeed);
-                if (Input.GetKey(KeyCode.S)) puzzleTwoSelector.Translate(Vector3.up * 1 * movementSpeed);
+                if (puzzleTwoStarted)
+                {
+                    // TODO: limits, eg: if (pos.x >) { ... }
+                    // up and down
+                    puzzleTwoSelector.Translate(Vector3.down * Global.state.ThumbSticks.Left.Y * movementSpeed);
+                    if (Input.GetKey(KeyCode.S)) puzzleTwoSelector.Translate(Vector3.up * 1 * movementSpeed);
 
-                puzzleTwoSelector.Translate(Vector3.up * -Global.state.ThumbSticks.Left.Y * movementSpeed);
-                if (Input.GetKey(KeyCode.W)) puzzleTwoSelector.Translate(Vector3.down * 1 * movementSpeed);
+                    puzzleTwoSelector.Translate(Vector3.up * -Global.state.ThumbSticks.Left.Y * movementSpeed);
+                    if (Input.GetKey(KeyCode.W)) puzzleTwoSelector.Translate(Vector3.down * 1 * movementSpeed);
 
-                // left and right
-                puzzleTwoSelector.Translate(Vector3.right * -Global.state.ThumbSticks.Left.X * movementSpeed);
-                if (Input.GetKey(KeyCode.D)) puzzleTwoSelector.Translate(Vector3.left * 1 * movementSpeed);
+                    // left and right
+                    puzzleTwoSelector.Translate(Vector3.right * -Global.state.ThumbSticks.Left.X * movementSpeed);
+                    if (Input.GetKey(KeyCode.D)) puzzleTwoSelector.Translate(Vector3.left * 1 * movementSpeed);
 
-                puzzleTwoSelector.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
-                if (Input.GetKey(KeyCode.A)) puzzleTwoSelector.Translate(Vector3.right * 1 * movementSpeed);
-
+                    puzzleTwoSelector.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
+                    if (Input.GetKey(KeyCode.A)) puzzleTwoSelector.Translate(Vector3.right * 1 * movementSpeed);
+                }
 
 
                 blueLight.enabled = (distanceFromBlueX < acceptableDistance && distanceFromBlueZ < acceptableDistance);
@@ -210,52 +250,6 @@ public class PuzzleTwo : MonoBehaviour
                 //}
 
 
-                redBoxOneDistance = Vector3.Distance(redBoxOne.position, redGoal.position);
-                redBoxTwoDistance = Vector3.Distance(redBoxTwo.position, redGoal.position);
-                redBoxThreeDistance = Vector3.Distance(redBoxThree.position, redGoal.position);
-
-                blueBoxOneDistance = Vector3.Distance(blueBoxOne.position, blueGoal.position);
-                blueBoxTwoDistance = Vector3.Distance(blueBoxTwo.position, blueGoal.position);
-                blueBoxThreeDistance = Vector3.Distance(blueBoxThree.position, blueGoal.position);
-
-                greenBoxOneDistance = Vector3.Distance(greenBoxOne.position, greenGoal.position);
-                greenBoxTwoDistance = Vector3.Distance(greenBoxTwo.position, greenGoal.position);
-                greenBoxThreeDistance = Vector3.Distance(greenBoxThree.position, greenGoal.position);
-
-                yellowBoxOneDistance = Vector3.Distance(yellowBoxOne.position, yellowGoal.position);
-                yellowBoxTwoDistance = Vector3.Distance(yellowBoxTwo.position, yellowGoal.position);
-                yellowBoxThreeDistance = Vector3.Distance(yellowBoxThree.position, yellowGoal.position);
-
-                print(yellowBoxTwo.position);
-
-                if (blueLight.enabled)
-                {
-                    blueCount = 0;
-                    if (blueBoxOneDistance < 0.5) blueCount++;
-                    if (blueBoxTwoDistance < 0.5) blueCount++;
-                    if (blueBoxThreeDistance < 0.5) blueCount++;
-                }
-                if (redLight.enabled)
-                {
-                    redCount = 0;
-                    if (redBoxOneDistance < 0.5) redCount++;
-                    if (redBoxTwoDistance < 0.5) redCount++;
-                    if (redBoxThreeDistance < 0.5) redCount++;
-                }
-                if (greenLight.enabled)
-                {
-                    greenCount = 0;
-                    if (greenBoxOneDistance < 0.5) greenCount++;
-                    if (greenBoxTwoDistance < 0.5) greenCount++;
-                    if (greenBoxThreeDistance < 0.5) greenCount++;
-                }
-                if (yellowLight.enabled)
-                {
-                    yellowCount = 0;
-                    if (yellowBoxOneDistance < 0.5) yellowCount++;
-                    if (yellowBoxTwoDistance < 0.5) yellowCount++;
-                    if (yellowBoxThreeDistance < 0.5) yellowCount++;
-                }
 
                 //puzzleTwoYellowBox.localScale -= new Vector3(0.5f * yellowCount, 0.5f * yellowCount, 0.5f * yellowCount);
                 //print("Yellow = " + yellowCount);
@@ -270,6 +264,43 @@ public class PuzzleTwo : MonoBehaviour
                 // TODO MonitorRedBox.scale *= 0.8 * numberOfRedBoxesInSpotlight; //or something like that
 
             }
+        
+
+
+        if (blueLight.enabled)
+        {
+            blueCount = 0;
+            if (blueBoxOneDistance < goalRange) blueCount++;
+            if (blueBoxTwoDistance < goalRange) blueCount++;
+            if (blueBoxThreeDistance < goalRange) blueCount++;
+        }
+        if (redLight.enabled)
+        {
+            redCount = 0;
+            if (redBoxOneDistance < goalRange) redCount++;
+            if (redBoxTwoDistance < goalRange) redCount++;
+            if (redBoxThreeDistance < goalRange) redCount++;
+        }
+        if (greenLight.enabled)
+        {
+            greenCount = 0;
+            if (greenBoxOneDistance < goalRange) greenCount++;
+            if (greenBoxTwoDistance < goalRange) greenCount++;
+            if (greenBoxThreeDistance < goalRange) greenCount++;
+        }
+        if (yellowLight.enabled)
+        {
+            yellowCount = 0;
+            if (yellowBoxOneDistance < goalRange) yellowCount++;
+            if (yellowBoxTwoDistance < goalRange) yellowCount++;
+            if (yellowBoxThreeDistance < goalRange) yellowCount++;
+        }
+
+        print("YC: " + yellowCount);
+        print("BC: " + blueCount);
+        print("GC: " + greenCount);
+        print("RC: " + redCount);
+
         }
     }
 }

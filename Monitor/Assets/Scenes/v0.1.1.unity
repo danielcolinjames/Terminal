@@ -17996,6 +17996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb613cc02a027114b9f1e1ccb3d49bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleTwoStarted: 0
   yellowLight: {fileID: 0}
   yellowCount: 0
   yellowGoal: {fileID: 0}
