@@ -39,6 +39,10 @@ TagManager:
   - PuzzleTwoGreenBox
   - PuzzleTwoYellowBox
   - Flashlight
+  - PlayButton
+  - ExitButton
+  - ExitYes
+  - ExitNo
   layers:
   - Default
   - TransparentFX
