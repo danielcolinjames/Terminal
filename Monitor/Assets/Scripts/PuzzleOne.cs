@@ -18,8 +18,15 @@ public class PuzzleOne : MonoBehaviour {
     public static Light backupLightTwo;
     public static Light backupLightThree;
 
+    public static GameObject[] mainLights;
+    public static GameObject[] backupLights;
+
     // Use this for initialization
     void Start () {
+        
+
+        mainLights = GameObject.FindGameObjectsWithTag("MainLight");
+        backupLights = GameObject.FindGameObjectsWithTag("BackupLight");
 
         // puzzle one objects
         puzzleOneBox = GameObject.FindGameObjectWithTag("PuzzleOneCube").transform;
@@ -28,15 +35,15 @@ public class PuzzleOne : MonoBehaviour {
         puzzleOneComplete = GameObject.FindGameObjectWithTag("PuzzleOneComplete").transform;
         puzzleOneDistanceToCompletion = 0;
 
-        mainLightOne = GameObject.FindGameObjectWithTag("MainLightOne").GetComponent<Light>();
-        mainLightTwo = GameObject.FindGameObjectWithTag("MainLightTwo").GetComponent<Light>();
-        mainLightThree = GameObject.FindGameObjectWithTag("MainLightThree").GetComponent<Light>();
+        //mainLightOne = GameObject.FindGameObjectWithTag("MainLightOne").GetComponent<Light>();
+        //mainLightTwo = GameObject.FindGameObjectWithTag("MainLightTwo").GetComponent<Light>();
+        //mainLightThree = GameObject.FindGameObjectWithTag("MainLightThree").GetComponent<Light>();
 
         screenLight = GameObject.FindGameObjectWithTag("ScreenLight").GetComponent<Light>();
 
-        backupLightOne = GameObject.FindGameObjectWithTag("BackupLightOne").GetComponent<Light>();
-        backupLightTwo = GameObject.FindGameObjectWithTag("BackupLightTwo").GetComponent<Light>();
-        backupLightThree = GameObject.FindGameObjectWithTag("BackupLightThree").GetComponent<Light>();
+        //backupLightOne = GameObject.FindGameObjectWithTag("BackupLightOne").GetComponent<Light>();
+        //backupLightTwo = GameObject.FindGameObjectWithTag("BackupLightTwo").GetComponent<Light>();
+        //backupLightThree = GameObject.FindGameObjectWithTag("BackupLightThree").GetComponent<Light>();
 
     }
 
@@ -91,15 +98,28 @@ public class PuzzleOne : MonoBehaviour {
 
                     Global.monitorCamera.position = new Vector3(-14.99f, Global.monitorCamera.position.y, Global.monitorCamera.position.z);
 
-                    mainLightOne.enabled = false;
-                    mainLightTwo.enabled = false;
-                    mainLightThree.enabled = false;
+                    foreach (GameObject mainLight in mainLights) {
+                        mainLight.GetComponent<Light>().enabled = false;
+                    }
+
+                    foreach (GameObject backupLight in backupLights) {
+                        backupLight.GetComponent<Light>().enabled = true;
+                    }
+
+                    PuzzleThree.redPlane.enabled = false;
+                    PuzzleThree.bluePlane.enabled = false;
+                    PuzzleThree.greenPlane.enabled = false;
+                    PuzzleThree.yellowPlane.enabled = false;
+
+                    //mainLightOne.enabled = false;
+                    //mainLightTwo.enabled = false;
+                    //mainLightThree.enabled = false;
 
                     screenLight.enabled = false;
 
-                    backupLightOne.enabled = true;
-                    backupLightTwo.enabled = true;
-                    backupLightThree.enabled = true;
+                    //backupLightOne.enabled = true;
+                    //backupLightTwo.enabled = true;
+                    //backupLightThree.enabled = true;
 
                     PuzzleThree.puzzleTwoFallingBox.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y - 1f, PuzzleThree.puzzleTwoFallingBox.position.z);
                     PuzzleThree.key.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y + 0.01f, PuzzleThree.puzzleTwoFallingBox.position.z);

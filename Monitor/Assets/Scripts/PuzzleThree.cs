@@ -13,8 +13,6 @@ public class PuzzleThree : MonoBehaviour
 
     public float goalRange = 2f;
 
-    Vector3 zeroVector = new Vector3(0, 0, 0);
-
     public bool redDone = false;
     public bool blueDone = false;
     public bool greenDone = false;
@@ -23,13 +21,16 @@ public class PuzzleThree : MonoBehaviour
 
     // Warehouse items
     public Light yellowLight;
-    public int yellowCount;
+    public int yellowCount = 0;
     public Transform yellowGoal;
     public Transform yellowBoxOne;
+    GameObject yellowBoxOneGO;
     float yellowBoxOneDistance = 100;
     public Transform yellowBoxTwo;
+    GameObject yellowBoxTwoGO;
     float yellowBoxTwoDistance = 100;
     public Transform yellowBoxThree;
+    GameObject yellowBoxThreeGO;
     float yellowBoxThreeDistance = 100;
 
 
@@ -37,31 +38,46 @@ public class PuzzleThree : MonoBehaviour
     public int redCount;
     public Transform redGoal;
     public Transform redBoxOne;
+    GameObject redBoxOneGO;
     float redBoxOneDistance = 100;
     public Transform redBoxTwo;
+    GameObject redBoxTwoGO;
     float redBoxTwoDistance = 100;
     public Transform redBoxThree;
+    GameObject redBoxThreeGO;
     float redBoxThreeDistance = 100;
 
     public Light greenLight;
     public int greenCount;
     public Transform greenGoal;
     public Transform greenBoxOne;
+    GameObject greenBoxOneGO;
     float greenBoxOneDistance = 100;
     public Transform greenBoxTwo;
+    GameObject greenBoxTwoGO;
     float greenBoxTwoDistance = 100;
     public Transform greenBoxThree;
+    GameObject greenBoxThreeGO;
     float greenBoxThreeDistance = 100;
 
     public Light blueLight;
     public int blueCount;
     public Transform blueGoal;
     public Transform blueBoxOne;
+    GameObject blueBoxOneGO;
     float blueBoxOneDistance = 100;
     public Transform blueBoxTwo;
+    GameObject blueBoxTwoGO;
     float blueBoxTwoDistance = 100;
     public Transform blueBoxThree;
+    GameObject blueBoxThreeGO;
     float blueBoxThreeDistance = 100;
+
+
+    public static Renderer redPlane;
+    public static Renderer bluePlane;
+    public static Renderer greenPlane;
+    public static Renderer yellowPlane;
 
     // Monitor items
     public Transform puzzleTwoRedBox;
@@ -86,6 +102,34 @@ public class PuzzleThree : MonoBehaviour
     public Transform puzzleTwoSelector;
 
     void Awake() {
+
+        redBoxOneGO = GameObject.FindGameObjectWithTag("RedBoxOne");
+        redBoxTwoGO = GameObject.FindGameObjectWithTag("RedBoxTwo");
+        redBoxThreeGO = GameObject.FindGameObjectWithTag("RedBoxThree");
+        
+        blueBoxOneGO = GameObject.FindGameObjectWithTag("BlueBoxOne");
+        blueBoxTwoGO = GameObject.FindGameObjectWithTag("BlueBoxTwo");
+        blueBoxThreeGO = GameObject.FindGameObjectWithTag("BlueBoxThree");
+
+        greenBoxOneGO = GameObject.FindGameObjectWithTag("GreenBoxOne");
+        greenBoxTwoGO = GameObject.FindGameObjectWithTag("GreenBoxTwo");
+        greenBoxThreeGO = GameObject.FindGameObjectWithTag("GreenBoxThree");
+
+        yellowBoxOneGO = GameObject.FindGameObjectWithTag("YellowBoxOne");
+        yellowBoxTwoGO = GameObject.FindGameObjectWithTag("YellowBoxTwo");
+        yellowBoxThreeGO = GameObject.FindGameObjectWithTag("YellowBoxThree");
+
+
+        redPlane = GameObject.FindGameObjectWithTag("RedPlane").GetComponent<Renderer>();
+        bluePlane = GameObject.FindGameObjectWithTag("BluePlane").GetComponent<Renderer>();
+        greenPlane = GameObject.FindGameObjectWithTag("GreenPlane").GetComponent<Renderer>();
+        yellowPlane = GameObject.FindGameObjectWithTag("YellowPlane").GetComponent<Renderer>();
+
+        redPlane.enabled = false;
+        bluePlane.enabled = false;
+        greenPlane.enabled = false;
+        yellowPlane.enabled = false;
+
         // need to be in Awake() instead of Start() or else Unity has tons of errors
         // puzzle two objects
         puzzleTwoFallingBox = GameObject.FindGameObjectWithTag("FallingBox").transform;
@@ -225,28 +269,64 @@ public class PuzzleThree : MonoBehaviour
 
 
             if (blueLight.enabled) {
+                bluePlane.enabled = true;
                 blueCount = 0;
-                if (blueBoxOneDistance < goalRange) blueCount++;
-                if (blueBoxTwoDistance < goalRange) blueCount++;
-                if (blueBoxThreeDistance < goalRange) blueCount++;
+                if (blueBoxOneDistance < goalRange) {
+                    blueCount++;
+                }
+                if (blueBoxTwoDistance < goalRange) {
+                    blueCount++;
+                }
+                if (blueBoxThreeDistance < goalRange) {
+                    blueCount++;
+                }
+            } else {
+                bluePlane.enabled = false;
             }
+
             if (redLight.enabled) {
+                redPlane.enabled = true;
                 redCount = 0;
-                if (redBoxOneDistance < goalRange) redCount++;
-                if (redBoxTwoDistance < goalRange) redCount++;
-                if (redBoxThreeDistance < goalRange) redCount++;
+                if (redBoxOneDistance < goalRange) {
+                    redCount++;
+                } if (redBoxTwoDistance < goalRange) {
+                    redCount++;
+                } if (redBoxThreeDistance < goalRange) {
+                    redCount++;
+                }
+            } else {
+                redPlane.enabled = false;
             }
+
             if (greenLight.enabled) {
+                greenPlane.enabled = true;
                 greenCount = 0;
-                if (greenBoxOneDistance < goalRange) greenCount++;
-                if (greenBoxTwoDistance < goalRange) greenCount++;
-                if (greenBoxThreeDistance < goalRange) greenCount++;
+                if (greenBoxOneDistance < goalRange) {
+                    greenCount++;
+                } if (greenBoxTwoDistance < goalRange) {
+                    greenCount++;
+                } if (greenBoxThreeDistance < goalRange) {
+                    greenCount++;
+                }
+            } else {
+                greenPlane.enabled = false;
             }
+            
             if (yellowLight.enabled) {
+                yellowPlane.enabled = true;
                 yellowCount = 0;
-                if (yellowBoxOneDistance < goalRange) yellowCount++;
-                if (yellowBoxTwoDistance < goalRange) yellowCount++;
-                if (yellowBoxThreeDistance < goalRange) yellowCount++;
+                if (yellowBoxOneDistance < goalRange) {
+                    yellowCount++;
+                }
+                if (yellowBoxTwoDistance < goalRange) {
+                    yellowCount++;
+                }
+                if (yellowBoxThreeDistance < goalRange) {
+                    yellowCount++;
+                }
+                //print("YC: " + yellowCount);
+            } else {
+                yellowPlane.enabled = false;
             }
 
             //print("YC: " + yellowCount);
@@ -264,6 +344,9 @@ public class PuzzleThree : MonoBehaviour
                 redDone = false;
             } else if (redCount == 3) {
                 puzzleTwoRedBox.localScale = new Vector3(0, 0, 0);
+                redBoxOneGO.SetActive(false);
+                redBoxTwoGO.SetActive(false);
+                redBoxThreeGO.SetActive(false);
                 redDone = true;
             }
 
@@ -277,6 +360,9 @@ public class PuzzleThree : MonoBehaviour
                 blueDone = false;
             } else if (blueCount == 3) {
                 puzzleTwoBlueBox.localScale = new Vector3(0, 0, 0);
+                blueBoxOneGO.SetActive(false);
+                blueBoxTwoGO.SetActive(false);
+                blueBoxThreeGO.SetActive(false);
                 blueDone = true;
             }
 
@@ -290,6 +376,9 @@ public class PuzzleThree : MonoBehaviour
                 greenDone = false;
             } else if (greenCount == 3) {
                 puzzleTwoGreenBox.localScale = new Vector3(0, 0, 0);
+                greenBoxOneGO.SetActive(false);
+                greenBoxTwoGO.SetActive(false);
+                greenBoxThreeGO.SetActive(false);
                 greenDone = true;
             }
 
@@ -303,6 +392,9 @@ public class PuzzleThree : MonoBehaviour
                 yellowDone = false;
             } else if (yellowCount == 3) {
                 puzzleTwoYellowBox.localScale = new Vector3(0, 0, 0);
+                yellowBoxOneGO.SetActive(false);
+                yellowBoxTwoGO.SetActive(false);
+                yellowBoxThreeGO.SetActive(false);
                 yellowDone = true;
             }
 

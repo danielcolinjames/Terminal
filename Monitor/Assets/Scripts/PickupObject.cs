@@ -86,7 +86,7 @@ public class PickupObject : MonoBehaviour {
         }
     }
 
-    void dropObject() {
+    public void dropObject() {
         carrying = false;
         carriedObject.GetComponent<Rigidbody>().isKinematic = false;
         carriedObject = null;

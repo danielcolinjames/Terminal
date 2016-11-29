@@ -837,7 +837,7 @@ GameObject:
   - 23: {fileID: 13948225}
   m_Layer: 0
   m_Name: Plane Blue
-  m_TagString: Untagged
+  m_TagString: BluePlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8282,7 +8282,7 @@ GameObject:
   - 108: {fileID: 121818821}
   m_Layer: 0
   m_Name: Point light (1)
-  m_TagString: MainLightTwo
+  m_TagString: MainLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13296,7 +13296,7 @@ GameObject:
   - 108: {fileID: 202634966}
   m_Layer: 0
   m_Name: Point light
-  m_TagString: BackupLightOne
+  m_TagString: BackupLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15429,7 +15429,7 @@ GameObject:
   - 108: {fileID: 242827720}
   m_Layer: 0
   m_Name: Point light (4)
-  m_TagString: Untagged
+  m_TagString: MainLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22939,6 +22939,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 381056543}
   m_Mesh: {fileID: 4300012, guid: 17810c48fa9b9664581d903a1333e6b4, type: 3}
+--- !u!1 &381692422 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 478e788c0d99f90418294c7c6694413b, type: 3}
+  m_PrefabInternal: {fileID: 1585582440}
+--- !u!65 &381692423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381692422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5841594, y: 0.88697696, z: 0.53779435}
+  m_Center: {x: 0.000556767, y: 0.45912933, z: -0.046833158}
 --- !u!1 &383105691
 GameObject:
   m_ObjectHideFlags: 0
@@ -30099,7 +30115,7 @@ GameObject:
   - 108: {fileID: 504817955}
   m_Layer: 0
   m_Name: Point light
-  m_TagString: BackupLightThree
+  m_TagString: BackupLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39098,7 +39114,7 @@ GameObject:
   - 108: {fileID: 679002507}
   m_Layer: 0
   m_Name: Point light
-  m_TagString: MainLightOne
+  m_TagString: MainLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49282,7 +49298,7 @@ GameObject:
   - 108: {fileID: 865437005}
   m_Layer: 0
   m_Name: Point light (3)
-  m_TagString: Untagged
+  m_TagString: MainLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66599,7 +66615,7 @@ GameObject:
   - 23: {fileID: 1183284398}
   m_Layer: 0
   m_Name: Plane Red
-  m_TagString: Untagged
+  m_TagString: RedPlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -70944,7 +70960,7 @@ GameObject:
   - 108: {fileID: 1282924002}
   m_Layer: 0
   m_Name: Point light (5)
-  m_TagString: Untagged
+  m_TagString: MainLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85542,7 +85558,7 @@ GameObject:
   - 23: {fileID: 1525641085}
   m_Layer: 0
   m_Name: Plane Yellow
-  m_TagString: Untagged
+  m_TagString: YellowPlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -95747,7 +95763,7 @@ GameObject:
   - 108: {fileID: 1684735671}
   m_Layer: 0
   m_Name: Point light
-  m_TagString: BackupLightTwo
+  m_TagString: BackupLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110173,7 +110189,7 @@ GameObject:
   - 108: {fileID: 1973978445}
   m_Layer: 0
   m_Name: Point light (2)
-  m_TagString: MainLightThree
+  m_TagString: MainLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111724,7 +111740,7 @@ GameObject:
   - 23: {fileID: 2004063570}
   m_Layer: 0
   m_Name: Plane Green
-  m_TagString: Untagged
+  m_TagString: GreenPlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

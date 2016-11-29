@@ -15,7 +15,6 @@ TagManager:
   - BlueLight
   - YellowLight
   - GreenLight
-  - MainLight
   - FallingBox
   - YellowBoxOne
   - YellowBoxTwo
@@ -45,12 +44,12 @@ TagManager:
   - ExitNo
   - isKey
   - Breaker
-  - MainLightOne
-  - MainLightTwo
-  - MainLightThree
-  - BackupLightOne
-  - BackupLightTwo
-  - BackupLightThree
+  - MainLight
+  - BackupLight
+  - GreenPlane
+  - RedPlane
+  - BluePlane
+  - YellowPlane
   layers:
   - Default
   - TransparentFX

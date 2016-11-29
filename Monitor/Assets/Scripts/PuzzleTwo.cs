@@ -28,10 +28,11 @@ public class PuzzleTwo : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        //print(distanceToBreaker);
 
         if (Global.currentPuzzle == 2) {
 
-            if (distanceToBreaker < 2) {
+            if (distanceToBreaker < 3) {
 
                 if ((Input.GetKeyDown(KeyCode.E) || Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) {
                     breakerFlipped = true;
@@ -44,15 +45,25 @@ public class PuzzleTwo : MonoBehaviour {
             }
 
             if (breakerFlipped == true) {
-                PuzzleOne.mainLightOne.enabled = true;
-                PuzzleOne.mainLightTwo.enabled = true;
-                PuzzleOne.mainLightThree.enabled = true;
+
+                foreach (GameObject mainLight in PuzzleOne.mainLights) {
+                    mainLight.GetComponent<Light>().enabled = true;
+                }
+
+                foreach (GameObject backupLight in PuzzleOne.backupLights) {
+                    backupLight.GetComponent<Light>().enabled = false;
+                }
+
+                
+                //PuzzleOne.mainLightOne.enabled = true;
+                //PuzzleOne.mainLightTwo.enabled = true;
+                //PuzzleOne.mainLightThree.enabled = true;
 
                 PuzzleOne.screenLight.enabled = true;
 
-                PuzzleOne.backupLightOne.enabled = false;
-                PuzzleOne.backupLightTwo.enabled = false;
-                PuzzleOne.backupLightThree.enabled = false;
+                //PuzzleOne.backupLightOne.enabled = false;
+                //PuzzleOne.backupLightTwo.enabled = false;
+                //PuzzleOne.backupLightThree.enabled = false;
 
                 Global.currentPuzzle = 3;
             }

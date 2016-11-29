@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XInputDotNetPure;
 
 public class OpenDoor : MonoBehaviour {
 	float smooth = 2.0f;
@@ -32,7 +33,7 @@ public class OpenDoor : MonoBehaviour {
 		}
 
 
-		if (Input.GetKeyDown ("e") && enter && hasKey) {
+		if (((Input.GetKeyDown(KeyCode.E)) || (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) && enter && hasKey) {
 			open = !open;
 		}
 	}
@@ -45,7 +46,7 @@ public class OpenDoor : MonoBehaviour {
 	}
 
 	//Deactivate the Main function when player is go away from door
-	void  OnTriggerExit ( Collider other  ){
+	void  OnTriggerExit ( Collider other  ) {
 		if (other.gameObject.tag == "Player") {
 			enter = false;
 		}
