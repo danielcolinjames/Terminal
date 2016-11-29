@@ -8,6 +8,16 @@ public class PuzzleOne : MonoBehaviour {
     public Transform puzzleOneComplete;
     float puzzleOneDistanceToCompletion;
 
+    public static Light mainLightOne;
+    public static Light mainLightTwo;
+    public static Light mainLightThree;
+
+    public static Light screenLight;
+
+    public static Light backupLightOne;
+    public static Light backupLightTwo;
+    public static Light backupLightThree;
+
     // Use this for initialization
     void Start () {
 
@@ -17,10 +27,21 @@ public class PuzzleOne : MonoBehaviour {
 
         puzzleOneComplete = GameObject.FindGameObjectWithTag("PuzzleOneComplete").transform;
         puzzleOneDistanceToCompletion = 0;
+
+        mainLightOne = GameObject.FindGameObjectWithTag("MainLightOne").GetComponent<Light>();
+        mainLightTwo = GameObject.FindGameObjectWithTag("MainLightTwo").GetComponent<Light>();
+        mainLightThree = GameObject.FindGameObjectWithTag("MainLightThree").GetComponent<Light>();
+
+        screenLight = GameObject.FindGameObjectWithTag("ScreenLight").GetComponent<Light>();
+
+        backupLightOne = GameObject.FindGameObjectWithTag("BackupLightOne").GetComponent<Light>();
+        backupLightTwo = GameObject.FindGameObjectWithTag("BackupLightTwo").GetComponent<Light>();
+        backupLightThree = GameObject.FindGameObjectWithTag("BackupLightThree").GetComponent<Light>();
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         puzzleOneDistanceToCompletion = Vector3.Distance(puzzleOneBox.position, puzzleOneComplete.position);
 
         if (Global.currentPuzzle == 1) {
@@ -65,7 +86,23 @@ public class PuzzleOne : MonoBehaviour {
                 // test for completion
                 if (puzzleOneDistanceToCompletion < 1) {
                     Global.currentPuzzle = 2;
-                    PuzzleTwo.puzzleTwoFallingBox.position = new Vector3(PuzzleTwo.puzzleTwoFallingBox.position.x, PuzzleTwo.puzzleTwoFallingBox.position.y - 1f, PuzzleTwo.puzzleTwoFallingBox.position.z);
+
+                    //MonitorMode.monitorMode = false;
+
+                    Global.monitorCamera.position = new Vector3(-14.99f, Global.monitorCamera.position.y, Global.monitorCamera.position.z);
+
+                    mainLightOne.enabled = false;
+                    mainLightTwo.enabled = false;
+                    mainLightThree.enabled = false;
+
+                    screenLight.enabled = false;
+
+                    backupLightOne.enabled = true;
+                    backupLightTwo.enabled = true;
+                    backupLightThree.enabled = true;
+
+                    PuzzleThree.puzzleTwoFallingBox.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y - 1f, PuzzleThree.puzzleTwoFallingBox.position.z);
+                    PuzzleThree.key.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y + 0.01f, PuzzleThree.puzzleTwoFallingBox.position.z);
                 }
             }
         }

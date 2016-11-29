@@ -43,6 +43,14 @@ TagManager:
   - ExitButton
   - ExitYes
   - ExitNo
+  - isKey
+  - Breaker
+  - MainLightOne
+  - MainLightTwo
+  - MainLightThree
+  - BackupLightOne
+  - BackupLightTwo
+  - BackupLightThree
   layers:
   - Default
   - TransparentFX
