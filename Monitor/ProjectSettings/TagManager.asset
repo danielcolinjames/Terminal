@@ -50,6 +50,7 @@ TagManager:
   - RedPlane
   - BluePlane
   - YellowPlane
+  - ToastLight
   layers:
   - Default
   - TransparentFX
