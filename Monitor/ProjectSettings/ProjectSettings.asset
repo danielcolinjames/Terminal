@@ -10,10 +10,10 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: N/A
   productName: Monitor
   defaultCursor: {fileID: 0}
-  cursorHotspot: {x: 0, y: 0}
+  cursorHotspot: {x: 1, y: 1}
   m_SplashScreenStyle: 0
   m_ShowUnitySplashScreen: 1
   m_VirtualRealitySplashScreen: {fileID: 0}
@@ -123,6 +123,7 @@ PlayerSettings:
   iPhoneTargetOSVersion: 24
   tvOSSdkVersion: 0
   tvOSTargetOSVersion: 900
+  tvOSRequireExtendedGameController: 0
   uIPrerenderedIcon: 0
   uIRequiresPersistentWiFi: 0
   uIRequiresFullScreen: 1
@@ -162,6 +163,7 @@ PlayerSettings:
   iOSLaunchScreeniPadCustomXibPath: 
   iOSDeviceRequirements: []
   iOSURLSchemes: []
+  appleDeveloperTeamID: 
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
@@ -175,14 +177,45 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  resolutionDialogBanner: {fileID: 0}
+  resolutionDialogBanner: {fileID: 2800000, guid: c8532bffb84083d429f4894f08f98035,
+    type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 0}
+      m_Icon: {fileID: 2800000, guid: 1398924dc64d62e419634fb10edbaab5, type: 3}
       m_Width: 128
       m_Height: 128
+  - m_BuildTarget: Standalone
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 1024
+      m_Height: 1024
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 512
+      m_Height: 512
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 256
+      m_Height: 256
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 1398924dc64d62e419634fb10edbaab5, type: 3}
+      m_Width: 128
+      m_Height: 128
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 48
+      m_Height: 48
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 32
+      m_Height: 32
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 16
+      m_Height: 16
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   webPlayerTemplate: APPLICATION:Default
@@ -203,12 +236,15 @@ PlayerSettings:
   wiiUSystemHeapSize: 128
   wiiUTVStartupScreen: {fileID: 0}
   wiiUGamePadStartupScreen: {fileID: 0}
+  wiiUDrcBufferDisabled: 0
   wiiUProfilerLibPath: 
   actionOnDotNetUnhandledException: 1
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
+  cameraUsageDescription: 
   locationUsageDescription: 
+  microphoneUsageDescription: 
   XboxTitleId: 
   XboxImageXexPath: 
   XboxSpaPath: 
@@ -248,7 +284,8 @@ PlayerSettings:
   ps4AppType: 0
   ps4ParamSfxPath: 
   ps4VideoOutPixelFormat: 0
-  ps4VideoOutResolution: 4
+  ps4VideoOutInitialWidth: 1920
+  ps4VideoOutReprojectionRate: 120
   ps4PronunciationXMLPath: 
   ps4PronunciationSIGPath: 
   ps4BackgroundImagePath: 
@@ -277,9 +314,12 @@ PlayerSettings:
   ps4pnFriends: 1
   ps4pnGameCustomData: 1
   playerPrefsSupport: 0
+  ps4UseResolutionFallback: 0
+  restrictedAudioUsageRights: 0
   ps4ReprojectionSupport: 0
   ps4UseAudio3dBackend: 0
   ps4SocialScreenEnabled: 0
+  ps4ScriptOptimizationLevel: 3
   ps4Audio3dVirtualSpeakerCount: 14
   ps4attribCpuUsage: 0
   ps4PatchPkgPath: 

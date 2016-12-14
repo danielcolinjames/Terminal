@@ -5,6 +5,7 @@ using XInputDotNetPure;
 public class FlashlightScript : MonoBehaviour {
     public Light flashlight;
     // Use this for initialization
+    public KeyCode input = KeyCode.F;
 
     void Awake()
     {
@@ -17,7 +18,7 @@ public class FlashlightScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if ((Input.GetKeyDown(KeyCode.F)) || (Global.prevState.DPad.Left == ButtonState.Released && Global.state.DPad.Left == ButtonState.Pressed))
+        if ((Input.GetKeyDown(input)) || (Global.prevState.DPad.Left == ButtonState.Released && Global.state.DPad.Left == ButtonState.Pressed))
         {
             flashlight.enabled = !flashlight.enabled;
         }
