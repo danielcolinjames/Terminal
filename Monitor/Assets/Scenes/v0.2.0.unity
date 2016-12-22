@@ -2959,7 +2959,7 @@ GameObject:
   - 114: {fileID: 43320859}
   m_Layer: 0
   m_Name: BlueBoxOne
-  m_TagString: BlueBoxOne
+  m_TagString: BlueBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9607,7 +9607,7 @@ GameObject:
   - 114: {fileID: 144504295}
   m_Layer: 0
   m_Name: BlueBoxTwo
-  m_TagString: BlueBoxTwo
+  m_TagString: BlueBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17800,7 +17800,7 @@ GameObject:
   - 114: {fileID: 277913151}
   m_Layer: 0
   m_Name: YellowBoxOne
-  m_TagString: YellowBoxOne
+  m_TagString: YellowBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23778,7 +23778,7 @@ GameObject:
   - 114: {fileID: 390211954}
   m_Layer: 0
   m_Name: YellowBoxTwo
-  m_TagString: YellowBoxTwo
+  m_TagString: YellowBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29558,7 +29558,7 @@ GameObject:
   - 114: {fileID: 496191687}
   m_Layer: 0
   m_Name: RedBoxTwo
-  m_TagString: RedBoxTwo
+  m_TagString: RedBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48270,7 +48270,7 @@ GameObject:
   - 114: {fileID: 844643947}
   m_Layer: 0
   m_Name: GreenBoxThree
-  m_TagString: GreenBoxThree
+  m_TagString: GreenBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67063,7 +67063,7 @@ GameObject:
   - 114: {fileID: 1194401672}
   m_Layer: 0
   m_Name: RedBoxThree
-  m_TagString: RedBoxThree
+  m_TagString: RedBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67361,7 +67361,7 @@ GameObject:
   - 114: {fileID: 1197494327}
   m_Layer: 0
   m_Name: GreenBoxOne
-  m_TagString: GreenBoxOne
+  m_TagString: GreenBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77047,7 +77047,7 @@ GameObject:
   - 114: {fileID: 1376452896}
   m_Layer: 0
   m_Name: GreenBoxTwo
-  m_TagString: GreenBoxTwo
+  m_TagString: GreenBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82366,7 +82366,7 @@ GameObject:
   - 114: {fileID: 1480642771}
   m_Layer: 0
   m_Name: YellowBoxThree
-  m_TagString: YellowBoxThree
+  m_TagString: YellowBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106953,7 +106953,7 @@ GameObject:
   - 114: {fileID: 1917826385}
   m_Layer: 0
   m_Name: RedBoxOne
-  m_TagString: RedBoxOne
+  m_TagString: RedBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115865,36 +115865,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb613cc02a027114b9f1e1ccb3d49bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleTwoStarted: 0
+  redBoxes: []
+  blueBoxes: []
+  greenBoxes: []
+  yellowBoxes: []
+  puzzleThreeStarted: 0
   goalRange: 2
   redDone: 0
   blueDone: 0
   greenDone: 0
   yellowDone: 0
-  yellowLight: {fileID: 0}
-  yellowCount: 0
-  yellowGoal: {fileID: 0}
-  yellowBoxOne: {fileID: 0}
-  yellowBoxTwo: {fileID: 0}
-  yellowBoxThree: {fileID: 0}
+  distanceFromRedGoal: 999
   redLight: {fileID: 0}
   redCount: 0
   redGoal: {fileID: 0}
-  redBoxOne: {fileID: 0}
-  redBoxTwo: {fileID: 0}
-  redBoxThree: {fileID: 0}
-  greenLight: {fileID: 0}
-  greenCount: 0
-  greenGoal: {fileID: 0}
-  greenBoxOne: {fileID: 0}
-  greenBoxTwo: {fileID: 0}
-  greenBoxThree: {fileID: 0}
+  distanceFromBlueGoal: 999
   blueLight: {fileID: 0}
   blueCount: 0
   blueGoal: {fileID: 0}
-  blueBoxOne: {fileID: 0}
-  blueBoxTwo: {fileID: 0}
-  blueBoxThree: {fileID: 0}
+  distanceFromGreenGoal: 999
+  greenLight: {fileID: 0}
+  greenCount: 0
+  greenGoal: {fileID: 0}
+  distanceFromYellowGoal: 999
+  yellowLight: {fileID: 0}
+  yellowCount: 0
+  yellowGoal: {fileID: 0}
   puzzleTwoRedBox: {fileID: 0}
   puzzleTwoBlueBox: {fileID: 0}
   puzzleTwoGreenBox: {fileID: 0}
@@ -115966,7 +115962,7 @@ GameObject:
   - 114: {fileID: 2076456836}
   m_Layer: 0
   m_Name: BlueBoxThree
-  m_TagString: BlueBoxThree
+  m_TagString: BlueBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

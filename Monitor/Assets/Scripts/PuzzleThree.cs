@@ -4,12 +4,17 @@ using System.Collections;
 public class PuzzleThree : MonoBehaviour
 {
 
+    public GameObject[] redBoxes;
+    public GameObject[] blueBoxes;
+    public GameObject[] greenBoxes;
+    public GameObject[] yellowBoxes;
+
     // Global objects (accessed by other scripts)
     public static Transform puzzleTwoFallingBox;
     public static Transform key;
 
     // other stuff
-    public bool puzzleTwoStarted = false;
+    public bool puzzleThreeStarted = false;
 
     public float goalRange = 2f;
 
@@ -17,67 +22,33 @@ public class PuzzleThree : MonoBehaviour
     public bool blueDone = false;
     public bool greenDone = false;
     public bool yellowDone = false;
-
-
+    
     // Warehouse items
+
+    public static Renderer redPlane;
+    public float distanceFromRedGoal = 999;
+    public Light redLight;
+    public int redCount = 0;
+    public Transform redGoal;
+
+    public static Renderer bluePlane;
+    public float distanceFromBlueGoal = 999;
+    public Light blueLight;
+    public int blueCount = 0;
+    public Transform blueGoal;
+
+    public static Renderer greenPlane;
+    public float distanceFromGreenGoal = 999;
+    public Light greenLight;
+    public int greenCount = 0;
+    public Transform greenGoal;
+
+    public static Renderer yellowPlane;
+    public float distanceFromYellowGoal = 999;
     public Light yellowLight;
     public int yellowCount = 0;
     public Transform yellowGoal;
-    public Transform yellowBoxOne;
-    GameObject yellowBoxOneGO;
-    float yellowBoxOneDistance = 100;
-    public Transform yellowBoxTwo;
-    GameObject yellowBoxTwoGO;
-    float yellowBoxTwoDistance = 100;
-    public Transform yellowBoxThree;
-    GameObject yellowBoxThreeGO;
-    float yellowBoxThreeDistance = 100;
 
-
-    public Light redLight;
-    public int redCount;
-    public Transform redGoal;
-    public Transform redBoxOne;
-    GameObject redBoxOneGO;
-    float redBoxOneDistance = 100;
-    public Transform redBoxTwo;
-    GameObject redBoxTwoGO;
-    float redBoxTwoDistance = 100;
-    public Transform redBoxThree;
-    GameObject redBoxThreeGO;
-    float redBoxThreeDistance = 100;
-
-    public Light greenLight;
-    public int greenCount;
-    public Transform greenGoal;
-    public Transform greenBoxOne;
-    GameObject greenBoxOneGO;
-    float greenBoxOneDistance = 100;
-    public Transform greenBoxTwo;
-    GameObject greenBoxTwoGO;
-    float greenBoxTwoDistance = 100;
-    public Transform greenBoxThree;
-    GameObject greenBoxThreeGO;
-    float greenBoxThreeDistance = 100;
-
-    public Light blueLight;
-    public int blueCount;
-    public Transform blueGoal;
-    public Transform blueBoxOne;
-    GameObject blueBoxOneGO;
-    float blueBoxOneDistance = 100;
-    public Transform blueBoxTwo;
-    GameObject blueBoxTwoGO;
-    float blueBoxTwoDistance = 100;
-    public Transform blueBoxThree;
-    GameObject blueBoxThreeGO;
-    float blueBoxThreeDistance = 100;
-
-
-    public static Renderer redPlane;
-    public static Renderer bluePlane;
-    public static Renderer greenPlane;
-    public static Renderer yellowPlane;
 
     // Monitor items
     public Transform puzzleTwoRedBox;
@@ -103,22 +74,10 @@ public class PuzzleThree : MonoBehaviour
 
     void Awake() {
 
-        redBoxOneGO = GameObject.FindGameObjectWithTag("RedBoxOne");
-        redBoxTwoGO = GameObject.FindGameObjectWithTag("RedBoxTwo");
-        redBoxThreeGO = GameObject.FindGameObjectWithTag("RedBoxThree");
-        
-        blueBoxOneGO = GameObject.FindGameObjectWithTag("BlueBoxOne");
-        blueBoxTwoGO = GameObject.FindGameObjectWithTag("BlueBoxTwo");
-        blueBoxThreeGO = GameObject.FindGameObjectWithTag("BlueBoxThree");
-
-        greenBoxOneGO = GameObject.FindGameObjectWithTag("GreenBoxOne");
-        greenBoxTwoGO = GameObject.FindGameObjectWithTag("GreenBoxTwo");
-        greenBoxThreeGO = GameObject.FindGameObjectWithTag("GreenBoxThree");
-
-        yellowBoxOneGO = GameObject.FindGameObjectWithTag("YellowBoxOne");
-        yellowBoxTwoGO = GameObject.FindGameObjectWithTag("YellowBoxTwo");
-        yellowBoxThreeGO = GameObject.FindGameObjectWithTag("YellowBoxThree");
-
+        redBoxes = GameObject.FindGameObjectsWithTag("RedBox");
+        blueBoxes = GameObject.FindGameObjectsWithTag("BlueBox");
+        greenBoxes = GameObject.FindGameObjectsWithTag("GreenBox");
+        yellowBoxes = GameObject.FindGameObjectsWithTag("YellowBox");
 
         redPlane = GameObject.FindGameObjectWithTag("RedPlane").GetComponent<Renderer>();
         bluePlane = GameObject.FindGameObjectWithTag("BluePlane").GetComponent<Renderer>();
@@ -144,29 +103,13 @@ public class PuzzleThree : MonoBehaviour
         blueGoal = GameObject.FindGameObjectWithTag("BlueGoal").transform;
         greenGoal = GameObject.FindGameObjectWithTag("GreenGoal").transform;
         yellowGoal = GameObject.FindGameObjectWithTag("YellowGoal").transform;
-
-        redBoxOne = GameObject.FindGameObjectWithTag("RedBoxOne").transform;
-        redBoxTwo = GameObject.FindGameObjectWithTag("RedBoxTwo").transform;
-        redBoxThree = GameObject.FindGameObjectWithTag("RedBoxThree").transform;
-
-        blueBoxOne = GameObject.FindGameObjectWithTag("BlueBoxOne").transform;
-        blueBoxTwo = GameObject.FindGameObjectWithTag("BlueBoxTwo").transform;
-        blueBoxThree = GameObject.FindGameObjectWithTag("BlueBoxThree").transform;
-
-        greenBoxOne = GameObject.FindGameObjectWithTag("GreenBoxOne").transform;
-        greenBoxTwo = GameObject.FindGameObjectWithTag("GreenBoxTwo").transform;
-        greenBoxThree = GameObject.FindGameObjectWithTag("GreenBoxThree").transform;
-
-        yellowBoxOne = GameObject.FindGameObjectWithTag("YellowBoxOne").transform;
-        yellowBoxTwo = GameObject.FindGameObjectWithTag("YellowBoxTwo").transform;
-        yellowBoxThree = GameObject.FindGameObjectWithTag("YellowBoxThree").transform;
-
-        // public Transform flashlight = GameObject.FindGameObjectWithTag("Flashlight").GetComponent<Light>();
-        yellowLight = GameObject.FindGameObjectWithTag("YellowLight").GetComponent<Light>();
         
+        // public Transform flashlight = GameObject.FindGameObjectWithTag("Flashlight").GetComponent<Light>();
+
         redLight = GameObject.FindGameObjectWithTag("RedLight").GetComponent<Light>();
-        greenLight = GameObject.FindGameObjectWithTag("GreenLight").GetComponent<Light>();
         blueLight = GameObject.FindGameObjectWithTag("BlueLight").GetComponent<Light>();
+        greenLight = GameObject.FindGameObjectWithTag("GreenLight").GetComponent<Light>();
+        yellowLight = GameObject.FindGameObjectWithTag("YellowLight").GetComponent<Light>();
 
         puzzleTwoSelector = GameObject.FindGameObjectWithTag("PuzzleTwoSelector").transform;
     }
@@ -194,27 +137,46 @@ public class PuzzleThree : MonoBehaviour
             if (distance == 0) {
                 // setting a flag when the camera has finished panning over
                 // otherwise the player can move the puzzleTwoSelector around before puzzle one is finished
-                puzzleTwoStarted = true;
+                puzzleThreeStarted = true;
             }
 
-            // update box distances here (was doing it inside "if (monitorMode)" before...woops)
-            redBoxOneDistance = Vector3.Distance(redBoxOne.position, redGoal.position);
-            redBoxTwoDistance = Vector3.Distance(redBoxTwo.position, redGoal.position);
-            redBoxThreeDistance = Vector3.Distance(redBoxThree.position, redGoal.position);
+            foreach (GameObject redBox in redBoxes) {
+                Transform redBoxT = redBox.transform;
+                distanceFromRedGoal = Vector3.Distance(redBoxT.position, redGoal.position);
+                if (distanceFromRedGoal < goalRange && redLight.enabled == true && redBox.activeSelf == true) {
+                    redCount++;
+                    redBox.SetActive(false);
+                }
+            }
 
-            blueBoxOneDistance = Vector3.Distance(blueBoxOne.position, blueGoal.position);
-            blueBoxTwoDistance = Vector3.Distance(blueBoxTwo.position, blueGoal.position);
-            blueBoxThreeDistance = Vector3.Distance(blueBoxThree.position, blueGoal.position);
+            foreach (GameObject blueBox in blueBoxes) {
+                Transform blueBoxT = blueBox.transform;
+                distanceFromBlueGoal = Vector3.Distance(blueBoxT.position, blueGoal.position);
+                if (distanceFromBlueGoal < goalRange && blueLight.enabled == true && blueBox.activeSelf == true) {
+                    blueCount++;
+                    blueBox.SetActive(false);
+                }
+            }
 
-            greenBoxOneDistance = Vector3.Distance(greenBoxOne.position, greenGoal.position);
-            greenBoxTwoDistance = Vector3.Distance(greenBoxTwo.position, greenGoal.position);
-            greenBoxThreeDistance = Vector3.Distance(greenBoxThree.position, greenGoal.position);
+            foreach (GameObject greenBox in greenBoxes) {
+                Transform greenBoxT = greenBox.transform;
+                distanceFromGreenGoal = Vector3.Distance(greenBoxT.position, greenGoal.position);
+                if (distanceFromGreenGoal < goalRange && greenLight.enabled == true && greenBox.activeSelf == true) {
+                    greenCount++;
+                    greenBox.SetActive(false);
+                }
+            }
 
-            yellowBoxOneDistance = Vector3.Distance(yellowBoxOne.position, yellowGoal.position);
-            yellowBoxTwoDistance = Vector3.Distance(yellowBoxTwo.position, yellowGoal.position);
-            yellowBoxThreeDistance = Vector3.Distance(yellowBoxThree.position, yellowGoal.position);
-
+            foreach (GameObject yellowBox in yellowBoxes) {
+                Transform yellowBoxT = yellowBox.transform;
+                distanceFromYellowGoal = Vector3.Distance(yellowBoxT.position, yellowGoal.position);
+                if (distanceFromYellowGoal < goalRange && yellowLight.enabled == true && yellowBox.activeSelf == true) {
+                    yellowCount++;
+                    yellowBox.SetActive(false);
+                }
+            }
         }
+
         if (MonitorMode.monitorMode == true) {
             if (Global.currentPuzzle == 3) {
                 distanceFromBlueX = Mathf.Abs(puzzleTwoSelector.position.x - puzzleTwoBlueBox.position.x);
@@ -241,7 +203,7 @@ public class PuzzleThree : MonoBehaviour
                 // locks rotation of light
                 puzzleTwoSelector.transform.rotation = Quaternion.Euler(puzzleTwoSelector.transform.rotation.eulerAngles.x, Global.lockPos, Global.lockPos);
 
-                if (puzzleTwoStarted) {
+                if (puzzleThreeStarted) {
                     // TODO: limits, eg: if (pos.x >) { ... }
                     // up and down
                     puzzleTwoSelector.Translate(Vector3.down * Global.state.ThumbSticks.Left.Y * movementSpeed);
@@ -258,145 +220,73 @@ public class PuzzleThree : MonoBehaviour
                     if (Input.GetKey(KeyCode.A)) puzzleTwoSelector.Translate(Vector3.right * 2 * movementSpeed);
 
 
-                    blueLight.enabled = (distanceFromBlueX < acceptableDistance && distanceFromBlueZ < acceptableDistance);
-                    redLight.enabled = (distanceFromRedX < acceptableDistance && distanceFromRedZ < acceptableDistance);
-                    greenLight.enabled = (distanceFromGreenX < acceptableDistance && distanceFromGreenZ < acceptableDistance);
-                    yellowLight.enabled = (distanceFromYellowX < acceptableDistance && distanceFromYellowZ < acceptableDistance);
+                    if (distanceFromBlueX < acceptableDistance && distanceFromBlueZ < acceptableDistance) {
+                        bluePlane.enabled = true;
+                        blueLight.enabled = true;
+                    } else {
+                        bluePlane.enabled = false;
+                        blueLight.enabled = false;
+                    }
+                    
+                    if (distanceFromRedX < acceptableDistance && distanceFromRedZ < acceptableDistance) {
+                        redPlane.enabled = true;
+                        redLight.enabled = true;
+                    } else {
+                        redPlane.enabled = false;
+                        redLight.enabled = false;
+                    }
+
+                    if (distanceFromGreenX < acceptableDistance && distanceFromGreenZ < acceptableDistance) {
+                        greenPlane.enabled = true;
+                        greenLight.enabled = true;
+                    } else {
+                        greenPlane.enabled = false;
+                        greenLight.enabled = false;
+                    }
+
+                    if (distanceFromYellowX < acceptableDistance && distanceFromYellowZ < acceptableDistance) {
+                        yellowLight.enabled = true;
+                        yellowPlane.enabled = true;
+                    } else {
+                        yellowLight.enabled = false;
+                        yellowPlane.enabled = false;
+                    }
                 }
 
             }
-        
 
-
-            if (blueLight.enabled) {
-                bluePlane.enabled = true;
-                blueCount = 0;
-                if (blueBoxOneDistance < goalRange) {
-                    blueCount++;
-                }
-                if (blueBoxTwoDistance < goalRange) {
-                    blueCount++;
-                }
-                if (blueBoxThreeDistance < goalRange) {
-                    blueCount++;
-                }
-            } else {
-                bluePlane.enabled = false;
-            }
-
-            if (redLight.enabled) {
-                redPlane.enabled = true;
-                redCount = 0;
-                if (redBoxOneDistance < goalRange) {
-                    redCount++;
-                } if (redBoxTwoDistance < goalRange) {
-                    redCount++;
-                } if (redBoxThreeDistance < goalRange) {
-                    redCount++;
-                }
-            } else {
-                redPlane.enabled = false;
-            }
-
-            if (greenLight.enabled) {
-                greenPlane.enabled = true;
-                greenCount = 0;
-                if (greenBoxOneDistance < goalRange) {
-                    greenCount++;
-                } if (greenBoxTwoDistance < goalRange) {
-                    greenCount++;
-                } if (greenBoxThreeDistance < goalRange) {
-                    greenCount++;
-                }
-            } else {
-                greenPlane.enabled = false;
-            }
-            
-            if (yellowLight.enabled) {
-                yellowPlane.enabled = true;
-                yellowCount = 0;
-                if (yellowBoxOneDistance < goalRange) {
-                    yellowCount++;
-                }
-                if (yellowBoxTwoDistance < goalRange) {
-                    yellowCount++;
-                }
-                if (yellowBoxThreeDistance < goalRange) {
-                    yellowCount++;
-                }
-                //print("YC: " + yellowCount);
-            } else {
-                yellowPlane.enabled = false;
-            }
-
-            //print("YC: " + yellowCount);
-            //print("BC: " + blueCount);
-            //print("GC: " + greenCount);
-            //print("RC: " + redCount);
-
-            // red
-            if (redCount == 0){
+            if (redCount < 1) {
+                // default size of the box on the screen
                 puzzleTwoRedBox.localScale = new Vector3(3.95f, 0.78f, 4.13f);
-            } else if (redCount == 1) {
-                puzzleTwoRedBox.localScale = new Vector3(3.16f, 0.78f, 3.2f);
-            } else if (redCount == 2) {
-                puzzleTwoRedBox.localScale = new Vector3(2.16f, 0.78f, 2.2f);
-                redDone = false;
-            } else if (redCount == 3) {
-                puzzleTwoRedBox.localScale = new Vector3(0, 0, 0);
-                redBoxOneGO.SetActive(false);
-                redBoxTwoGO.SetActive(false);
-                redBoxThreeGO.SetActive(false);
-                redDone = true;
+            } else {
+                // multiple the X and Z scale by 1 minus (redCount over redBoxes.length) to make the box on the monitor scale relative to how many red boxes there are in the scene
+                puzzleTwoRedBox.localScale = new Vector3(3.95f * (1 - ((float)redCount / (float)redBoxes.Length)), 0.78f, 4.13f * (1 - ((float)redCount / (float)redBoxes.Length)));
             }
 
-            // blue
-            if (blueCount == 0) {
+            if (blueCount < 1) {
                 puzzleTwoBlueBox.localScale = new Vector3(3.95f, 0.78f, 4.13f);
-            } else if (blueCount == 1) {
-                puzzleTwoBlueBox.localScale = new Vector3(3.16f, 0.78f, 3.2f);
-            } else if (blueCount == 2) {
-                puzzleTwoBlueBox.localScale = new Vector3(2.16f, 0.78f, 2.2f);
-                blueDone = false;
-            } else if (blueCount == 3) {
-                puzzleTwoBlueBox.localScale = new Vector3(0, 0, 0);
-                blueBoxOneGO.SetActive(false);
-                blueBoxTwoGO.SetActive(false);
-                blueBoxThreeGO.SetActive(false);
-                blueDone = true;
+            } else {
+                puzzleTwoBlueBox.localScale = new Vector3(3.95f * (1 - ((float)blueCount / (float)blueBoxes.Length)), 0.78f, 4.13f * (1 - ((float)blueCount / (float)blueBoxes.Length)));
             }
 
-            // green
-            if (greenCount == 0) {
+            if (greenCount < 1) {
                 puzzleTwoGreenBox.localScale = new Vector3(3.95f, 0.78f, 4.13f);
-            } else if (greenCount == 1) {
-                puzzleTwoGreenBox.localScale = new Vector3(3.16f, 0.78f, 3.2f);
-            } else if (greenCount == 2) {
-                puzzleTwoGreenBox.localScale = new Vector3(2.16f, 0.78f, 2.2f);
-                greenDone = false;
-            } else if (greenCount == 3) {
-                puzzleTwoGreenBox.localScale = new Vector3(0, 0, 0);
-                greenBoxOneGO.SetActive(false);
-                greenBoxTwoGO.SetActive(false);
-                greenBoxThreeGO.SetActive(false);
-                greenDone = true;
+            } else {
+                puzzleTwoGreenBox.localScale = new Vector3(3.95f * (1 - ((float)greenCount / (float)greenBoxes.Length)), 0.78f, 4.13f * (1 - ((float)greenCount / (float)greenBoxes.Length)));
             }
 
-            // yellow
-            if (yellowCount == 0) {
+            if (yellowCount < 1) {
                 puzzleTwoYellowBox.localScale = new Vector3(3.95f, 0.78f, 4.13f);
-            } else if (yellowCount == 1) {
-                puzzleTwoYellowBox.localScale = new Vector3(3.16f, 0.78f, 3.2f);
-            } else if (yellowCount == 2) {
-                puzzleTwoYellowBox.localScale = new Vector3(2.16f, 0.78f, 2.2f);
-                yellowDone = false;
-            } else if (yellowCount == 3) {
-                puzzleTwoYellowBox.localScale = new Vector3(0, 0, 0);
-                yellowBoxOneGO.SetActive(false);
-                yellowBoxTwoGO.SetActive(false);
-                yellowBoxThreeGO.SetActive(false);
-                yellowDone = true;
+            } else {
+                puzzleTwoYellowBox.localScale = new Vector3(3.95f * (1 - ((float)yellowCount / (float)yellowBoxes.Length)), 0.78f, 4.13f * (1 - ((float)yellowCount / (float)yellowBoxes.Length)));
             }
+
+
+            if (redCount == redBoxes.Length) redDone = true;
+            if (blueCount == blueBoxes.Length) blueDone = true;
+            if (greenCount == greenBoxes.Length) greenDone = true;
+            if (yellowCount == yellowBoxes.Length) yellowDone = true;
+            
 
             if (redDone && blueDone && greenDone && yellowDone) {
                 Global.currentPuzzle = 4;
