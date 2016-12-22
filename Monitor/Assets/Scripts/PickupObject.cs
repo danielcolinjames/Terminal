@@ -56,7 +56,6 @@ public class PickupObject : MonoBehaviour {
 						hasKey = false;
 					}
                 }
-
             }
         }
     }

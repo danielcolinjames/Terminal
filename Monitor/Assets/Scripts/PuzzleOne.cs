@@ -24,7 +24,6 @@ public class PuzzleOne : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
-
         mainLights = GameObject.FindGameObjectsWithTag("MainLight");
         backupLights = GameObject.FindGameObjectsWithTag("BackupLight");
 
