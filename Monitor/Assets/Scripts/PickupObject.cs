@@ -52,9 +52,10 @@ public class PickupObject : MonoBehaviour {
                     if (carriedObject.name == "DoorKey" || carriedObject.tag == "isKey") {
 						hasKey = true;
                         GameObject.FindGameObjectWithTag("isKey").SetActive(false);
-					} else {
-						hasKey = false;
-					}
+                        dropObject();
+                    } //else {
+					//	hasKey = false;
+					//}
                 }
             }
         }
