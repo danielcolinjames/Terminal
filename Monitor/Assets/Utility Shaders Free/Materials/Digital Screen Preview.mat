@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Digital Screen Preview
+  m_Shader: {fileID: 4800000, guid: 0d0c284b0c39b1a43b5375c5750b8624, type: 3}
+  m_ShaderKeywords: _PIXELATENOISE_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: c67456ece1a4d7a4a8284de6042389f6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Texture
+      second:
+        m_Texture: {fileID: 2800000, guid: 9b5c35293e835e84eab33a6887bc527b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _NoiseIntensity
+      second: 0.07081805
+    - first:
+        name: _NoiseScale
+      second: 1
+    - first:
+        name: _PixelateNoise
+      second: 1
+    - first:
+        name: _PixelatedNoiseResolution
+      second: 128
+    - first:
+        name: _ScanlineCount
+      second: 32
+    - first:
+        name: _ScanlineIntensity
+      second: 0.2857143
+    - first:
+        name: _ScanlingIntensity
+      second: 0.26532575
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}

@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Radar Preview
+  m_Shader: {fileID: 4800000, guid: 473c5cdddbf24ef4badf6c1325249ab0, type: 3}
+  m_ShaderKeywords: _SEGMENTED_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: c67456ece1a4d7a4a8284de6042389f6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Alpha
+      second: 0
+    - first:
+        name: _BeamPhase
+      second: 1
+    - first:
+        name: _Bias
+      second: 0
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _LineCount
+      second: 4
+    - first:
+        name: _LineWidth
+      second: 0.4530357
+    - first:
+        name: _ProgressSlider
+      second: 0.6964286
+    - first:
+        name: _Range
+      second: 10
+    - first:
+        name: _Steps
+      second: 10
+    m_Colors:
+    - first:
+        name: _BackgroundColor
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Color1
+      second: {r: 0, g: 1, b: 0, a: 1}
+    - first:
+        name: _Color2
+      second: {r: 0.8014706, g: 0.8014706, b: 0, a: 1}
+    - first:
+        name: _LineColor
+      second: {r: 0, g: 0.7490196, b: 0.9960784, a: 1}
+    - first:
+        name: _Target1
+      second: {r: 5, g: 4, b: 0.04, a: 0}
+    - first:
+        name: _Target10
+      second: {r: -3, g: -8, b: 0.04, a: 0}
+    - first:
+        name: _Target2
+      second: {r: -6, g: 2, b: 0.04, a: 0}
+    - first:
+        name: _Target3
+      second: {r: -3, g: -7, b: 0.04, a: 0}
+    - first:
+        name: _Target4
+      second: {r: 2, g: 8, b: 0.04, a: 0}
+    - first:
+        name: _Target5
+      second: {r: 5, g: -3, b: 0.04, a: 0}
+    - first:
+        name: _Target6
+      second: {r: 1, g: -1, b: 0.04, a: 0}
+    - first:
+        name: _Target7
+      second: {r: -8, g: -2, b: 0.04, a: 0}
+    - first:
+        name: _Target8
+      second: {r: -8, g: -0.5, b: 0.04, a: 0}
+    - first:
+        name: _Target9
+      second: {r: -5, g: 1, b: 0.04, a: 0}
