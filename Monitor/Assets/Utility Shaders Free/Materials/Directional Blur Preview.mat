@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Directional Blur Preview
+  m_Shader: {fileID: 4800000, guid: 58349b25d3d5ab344ad5b1b0c18d6cea, type: 3}
+  m_ShaderKeywords: _FADETOCOLOR_ON _USEMIPS_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Texture
+      second:
+        m_Texture: {fileID: 2800000, guid: 9b5c35293e835e84eab33a6887bc527b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Angle
+      second: 51.428574
+    - first:
+        name: _Bias
+      second: 0
+    - first:
+        name: _Blur
+      second: 0.4285714
+    - first:
+        name: _FadeToColor
+      second: 1
+    - first:
+        name: _Mip
+      second: 2.8928573
+    - first:
+        name: _TextureSize
+      second: 200
+    - first:
+        name: _UseMips
+      second: 1
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.23921569, g: 0.23921569, b: 0.23921569, a: 1}
