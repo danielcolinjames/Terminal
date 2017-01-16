@@ -63,7 +63,7 @@ public class PuzzleOne : MonoBehaviour {
                 // have to do all the physics changes inside FixedUpdate or else the box jerks around
 
                 // how quickly the box will translate
-                float movementSpeed = 0.05f;
+                float movementSpeed = 0.005f;
 
                 // locks rotation of box
                 puzzleOneBox.transform.rotation = Quaternion.Euler(puzzleOneBox.transform.rotation.eulerAngles.x, Global.lockPos, Global.lockPos);
@@ -90,7 +90,8 @@ public class PuzzleOne : MonoBehaviour {
                 //print("COMPLETE: " + puzzleOneComplete.position);
 
                 // test for completion
-                if (puzzleOneDistanceToCompletion < 1) {
+                print(puzzleOneDistanceToCompletion);
+                if (puzzleOneDistanceToCompletion < 0.13) {
                     Global.currentPuzzle = 2;
 
                     //MonitorMode.monitorMode = false;
