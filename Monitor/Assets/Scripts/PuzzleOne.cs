@@ -90,13 +90,12 @@ public class PuzzleOne : MonoBehaviour {
                 //print("COMPLETE: " + puzzleOneComplete.position);
 
                 // test for completion
-                print(puzzleOneDistanceToCompletion);
                 if (puzzleOneDistanceToCompletion < 0.13) {
                     Global.currentPuzzle = 2;
 
                     //MonitorMode.monitorMode = false;
 
-                    Global.monitorCamera.position = new Vector3(-14.99f, Global.monitorCamera.position.y, Global.monitorCamera.position.z);
+                    Global.monitorCamera.position = new Vector3(0.3f, Global.monitorCamera.position.y, Global.monitorCamera.position.z);
 
                     foreach (GameObject mainLight in mainLights) {
                         mainLight.GetComponent<Light>().enabled = false;
