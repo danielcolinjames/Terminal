@@ -49,6 +49,12 @@ public class PuzzleThree : MonoBehaviour
     public int yellowCount = 0;
     public Transform yellowGoal;
 
+    // planes (on consoles)
+    public Transform redPlaneProgress;
+    public Transform bluePlaneProgress;
+    public Transform greenPlaneProgress;
+    public Transform yellowPlaneProgress;
+
 
     // Monitor items
     public Transform puzzleTwoRedBox;
@@ -83,6 +89,11 @@ public class PuzzleThree : MonoBehaviour
         bluePlane = GameObject.FindGameObjectWithTag("BluePlane").GetComponent<Renderer>();
         greenPlane = GameObject.FindGameObjectWithTag("GreenPlane").GetComponent<Renderer>();
         yellowPlane = GameObject.FindGameObjectWithTag("YellowPlane").GetComponent<Renderer>();
+
+        redPlaneProgress = GameObject.FindGameObjectWithTag("RedPlane").transform;
+        bluePlaneProgress = GameObject.FindGameObjectWithTag("BluePlane").transform;
+        greenPlaneProgress = GameObject.FindGameObjectWithTag("GreenPlane").transform;
+        yellowPlaneProgress = GameObject.FindGameObjectWithTag("YellowPlane").transform;
 
         redPlane.enabled = false;
         bluePlane.enabled = false;
@@ -127,7 +138,7 @@ public class PuzzleThree : MonoBehaviour
             float speed = 25f;
             float step = speed * Time.deltaTime;
 
-            Vector3 puzzleTwoCameraPosition = new Vector3(-29f, 10f, 63f);
+            Vector3 puzzleTwoCameraPosition = new Vector3(-2.02f, 7.88f, 59.44f);
 
             float distance = Vector3.Distance(Global.monitorCamera.position, puzzleTwoCameraPosition);
 
@@ -252,33 +263,33 @@ public class PuzzleThree : MonoBehaviour
                         yellowPlane.enabled = false;
                     }
                 }
-
             }
+
 
             if (redCount < 1) {
                 // default size of the box on the screen
-                puzzleTwoRedBox.localScale = new Vector3(3.95f, 0.78f, 4.13f);
+                redPlaneProgress.localScale = new Vector3(0.077f, 0.1f, 0.059f);
             } else {
-                // multiple the X and Z scale by 1 minus (redCount over redBoxes.length) to make the box on the monitor scale relative to how many red boxes there are in the scene
-                puzzleTwoRedBox.localScale = new Vector3(3.95f * (1 - ((float)redCount / (float)redBoxes.Length)), 0.78f, 4.13f * (1 - ((float)redCount / (float)redBoxes.Length)));
+                // multiply the X and Z scale by 1 minus (redCount over redBoxes.length) to make the box on the monitor scale relative to how many red boxes there are in the scene
+                redPlaneProgress.localScale = new Vector3(0.077f * (1 - ((float)redCount / (float)redBoxes.Length)), 0.1f, 0.059f * (1 - ((float)redCount / (float)redBoxes.Length)));
             }
 
             if (blueCount < 1) {
-                puzzleTwoBlueBox.localScale = new Vector3(3.95f, 0.78f, 4.13f);
+                bluePlaneProgress.localScale = new Vector3(0.077f, 0.1f, 0.059f);
             } else {
-                puzzleTwoBlueBox.localScale = new Vector3(3.95f * (1 - ((float)blueCount / (float)blueBoxes.Length)), 0.78f, 4.13f * (1 - ((float)blueCount / (float)blueBoxes.Length)));
+                bluePlaneProgress.localScale = new Vector3(0.077f * (1 - ((float)blueCount / (float)blueBoxes.Length)), 0.1f, 0.059f * (1 - ((float)blueCount / (float)blueBoxes.Length)));
             }
 
             if (greenCount < 1) {
-                puzzleTwoGreenBox.localScale = new Vector3(3.95f, 0.78f, 4.13f);
+                greenPlaneProgress.localScale = new Vector3(0.077f, 0.1f, 0.059f);
             } else {
-                puzzleTwoGreenBox.localScale = new Vector3(3.95f * (1 - ((float)greenCount / (float)greenBoxes.Length)), 0.78f, 4.13f * (1 - ((float)greenCount / (float)greenBoxes.Length)));
+                greenPlaneProgress.localScale = new Vector3(0.077f * (1 - ((float)greenCount / (float)greenBoxes.Length)), 0.1f, 0.059f * (1 - ((float)greenCount / (float)greenBoxes.Length)));
             }
 
             if (yellowCount < 1) {
-                puzzleTwoYellowBox.localScale = new Vector3(3.95f, 0.78f, 4.13f);
+                yellowPlaneProgress.localScale = new Vector3(0.077f, 0.1f, 0.059f);
             } else {
-                puzzleTwoYellowBox.localScale = new Vector3(3.95f * (1 - ((float)yellowCount / (float)yellowBoxes.Length)), 0.78f, 4.13f * (1 - ((float)yellowCount / (float)yellowBoxes.Length)));
+                yellowPlaneProgress.localScale = new Vector3(0.077f * (1 - ((float)yellowCount / (float)yellowBoxes.Length)), 0.1f, 0.059f * (1 - ((float)yellowCount / (float)yellowBoxes.Length)));
             }
 
 

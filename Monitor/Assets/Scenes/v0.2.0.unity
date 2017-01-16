@@ -4491,8 +4491,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 74071453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.27, y: 0, z: 26.89}
+  m_LocalScale: {x: 0.14100242, y: 0.14100239, z: 0.14100239}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1004412978}
@@ -6742,7 +6742,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 112793508}
   m_LocalRotation: {x: 0.5, y: -0.50000006, z: 0.50000006, w: 0.5}
-  m_LocalPosition: {x: 3.39, y: 7.88, z: 59.44}
+  m_LocalPosition: {x: -2.02, y: 7.88, z: 59.44}
   m_LocalScale: {x: 1.3528329, y: 2.8241305, z: 1.3528317}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90.00001}
   m_Children: []
@@ -24633,8 +24633,8 @@ Light:
   serializedVersion: 7
   m_Type: 0
   m_Color: {r: 0, g: 0, b: 1, a: 1}
-  m_Intensity: 2.5
-  m_Range: 25
+  m_Intensity: 3
+  m_Range: 7
   m_SpotAngle: 139
   m_CookieSize: 10
   m_Shadows:
@@ -29142,8 +29142,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 622149615}
   m_LocalRotation: {x: 0.49999985, y: 0.5000001, z: -0.5000001, w: 0.49999985}
-  m_LocalPosition: {x: -4.1217046, y: -0.8601804, z: -0.7914376}
-  m_LocalScale: {x: 30.0187, y: 23.512133, z: 1.194695}
+  m_LocalPosition: {x: 0.32, y: -0.86, z: 24.66}
+  m_LocalScale: {x: 23.683311, y: 5.1402464, z: 1.194695}
   m_LocalEulerAnglesHint: {x: 90.01898, y: 180, z: 89.354}
   m_Children: []
   m_Father: {fileID: 843821373}
@@ -29785,8 +29785,8 @@ Light:
   serializedVersion: 7
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 2.5
-  m_Range: 10
+  m_Intensity: 3
+  m_Range: 7
   m_SpotAngle: 139
   m_CookieSize: 10
   m_Shadows:
@@ -41587,8 +41587,8 @@ Light:
   serializedVersion: 7
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0, a: 1}
-  m_Intensity: 2.5
-  m_Range: 25
+  m_Intensity: 3
+  m_Range: 7
   m_SpotAngle: 139
   m_CookieSize: 10
   m_Shadows:
@@ -72725,7 +72725,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552076542}
   m_LocalRotation: {x: -0, y: -0.7071072, z: -0, w: 0.7071065}
-  m_LocalPosition: {x: -7.44, y: 0, z: -2.39}
+  m_LocalPosition: {x: -7.44, y: 0, z: -2.3}
   m_LocalScale: {x: 3.9533505, y: 0.78000003, z: 4.1315312}
   m_LocalEulerAnglesHint: {x: 0, y: -89.355, z: 0}
   m_Children: []
@@ -86093,7 +86093,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1860056699}
   m_LocalRotation: {x: -0, y: -0.7071072, z: -0, w: 0.7071065}
-  m_LocalPosition: {x: -7.44, y: 0, z: 2.01}
+  m_LocalPosition: {x: -7.44, y: 0, z: 1.99}
   m_LocalScale: {x: 3.9533494, y: 0.78000003, z: 4.1315303}
   m_LocalEulerAnglesHint: {x: 0, y: -89.355, z: 0}
   m_Children: []
@@ -95275,8 +95275,8 @@ Light:
   serializedVersion: 7
   m_Type: 0
   m_Color: {r: 0, g: 1, b: 0, a: 1}
-  m_Intensity: 2.5
-  m_Range: 25
+  m_Intensity: 3
+  m_Range: 7
   m_SpotAngle: 139
   m_CookieSize: 10
   m_Shadows:
@@ -96056,6 +96056,10 @@ MonoBehaviour:
   yellowLight: {fileID: 0}
   yellowCount: 0
   yellowGoal: {fileID: 0}
+  redPlaneProgress: {fileID: 0}
+  bluePlaneProgress: {fileID: 0}
+  greenPlaneProgress: {fileID: 0}
+  yellowPlaneProgress: {fileID: 0}
   puzzleTwoRedBox: {fileID: 0}
   puzzleTwoBlueBox: {fileID: 0}
   puzzleTwoGreenBox: {fileID: 0}
@@ -97176,9 +97180,9 @@ Light:
   serializedVersion: 7
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5.55
-  m_Range: 20
-  m_SpotAngle: 40
+  m_Intensity: 1.05
+  m_Range: 10
+  m_SpotAngle: 23
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
