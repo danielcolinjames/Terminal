@@ -50,6 +50,9 @@ public class PuzzleOne : MonoBehaviour {
     void Update () {
         puzzleOneDistanceToCompletion = Vector3.Distance(puzzleOneBox.position, puzzleOneComplete.position);
 
+        //print("p1bp: " + puzzleOneBox.position + ", p1cp: " + puzzleOneComplete.position + ", distance: " + puzzleOneDistanceToCompletion);
+
+
         if (Global.currentPuzzle == 1) {
             Global.monitorCamera.position = new Vector3(puzzleOneBox.position.x, puzzleOneBox.position.y + 10f, puzzleOneBox.position.z);
         }
@@ -90,7 +93,8 @@ public class PuzzleOne : MonoBehaviour {
                 //print("COMPLETE: " + puzzleOneComplete.position);
 
                 // test for completion
-                if (puzzleOneDistanceToCompletion < 0.13) {
+
+                if (puzzleOneDistanceToCompletion < 0.09) {
                     Global.currentPuzzle = 2;
 
                     //MonitorMode.monitorMode = false;
@@ -120,7 +124,7 @@ public class PuzzleOne : MonoBehaviour {
                     //backupLightTwo.enabled = true;
                     //backupLightThree.enabled = true;
 
-                    PuzzleThree.puzzleTwoFallingBox.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y - 1f, PuzzleThree.puzzleTwoFallingBox.position.z);
+                    PuzzleThree.puzzleTwoFallingBox.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y - 2f, PuzzleThree.puzzleTwoFallingBox.position.z);
                     PuzzleThree.key.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y + 0.01f, PuzzleThree.puzzleTwoFallingBox.position.z);
                 }
             }

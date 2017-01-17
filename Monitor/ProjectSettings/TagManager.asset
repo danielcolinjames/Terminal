@@ -43,6 +43,11 @@ TagManager:
   - RedBox
   - BlueBox
   - GreenBox
+  - SuperMazeNavigator
+  - SuperMazeRedGoal
+  - SuperMazeBlueGoal
+  - SuperMazeGreenGoal
+  - SuperMazeYellowGoal
   layers:
   - Default
   - TransparentFX
