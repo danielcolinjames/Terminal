@@ -55,13 +55,6 @@ public class PuzzleThree : MonoBehaviour
     public Transform greenPlaneProgress;
     public Transform yellowPlaneProgress;
 
-
-    // Monitor items
-    public Transform puzzleTwoRedBox;
-    public Transform puzzleTwoBlueBox;
-    public Transform puzzleTwoGreenBox;
-    public Transform puzzleTwoYellowBox;
-
     public float distanceFromYellowX;
     public float distanceFromYellowZ;
 
@@ -76,7 +69,21 @@ public class PuzzleThree : MonoBehaviour
 
     public float acceptableDistance = 0.5f;
 
-    public Transform puzzleTwoSelector;
+    // super maze stuff
+    public Transform superMazeRedGoal;
+    public Transform superMazeBlueGoal;
+    public Transform superMazeGreenGoal;
+    public Transform superMazeYellowGoal;
+
+    public Transform superMazeNavigator;
+    
+    public float distanceFromSuperMazeRedGoal;
+    public float distanceFromSuperMazeBlueGoal;
+    public float distanceFromSuperMazeGreenGoal;
+    public float distanceFromSuperMazeYellowGoal;
+
+
+    // public Transform puzzleTwoSelector;
 
     void Awake() {
 
@@ -105,11 +112,6 @@ public class PuzzleThree : MonoBehaviour
         puzzleTwoFallingBox = GameObject.FindGameObjectWithTag("FallingBox").transform;
         key = GameObject.FindGameObjectWithTag("isKey").transform;
 
-        puzzleTwoRedBox = GameObject.FindGameObjectWithTag("PuzzleTwoRedBox").transform;
-        puzzleTwoBlueBox = GameObject.FindGameObjectWithTag("PuzzleTwoBlueBox").transform;
-        puzzleTwoGreenBox = GameObject.FindGameObjectWithTag("PuzzleTwoGreenBox").transform;
-        puzzleTwoYellowBox = GameObject.FindGameObjectWithTag("PuzzleTwoYellowBox").transform;
-
         redGoal = GameObject.FindGameObjectWithTag("RedGoal").transform;
         blueGoal = GameObject.FindGameObjectWithTag("BlueGoal").transform;
         greenGoal = GameObject.FindGameObjectWithTag("GreenGoal").transform;
@@ -122,7 +124,15 @@ public class PuzzleThree : MonoBehaviour
         greenLight = GameObject.FindGameObjectWithTag("GreenLight").GetComponent<Light>();
         yellowLight = GameObject.FindGameObjectWithTag("YellowLight").GetComponent<Light>();
 
-        puzzleTwoSelector = GameObject.FindGameObjectWithTag("PuzzleTwoSelector").transform;
+        // super maze stuff
+        superMazeRedGoal = GameObject.FindGameObjectWithTag("SuperMazeRedGoal").transform;
+        superMazeBlueGoal = GameObject.FindGameObjectWithTag("SuperMazeBlueGoal").transform;
+        superMazeGreenGoal = GameObject.FindGameObjectWithTag("SuperMazeGreenGoal").transform;
+        superMazeYellowGoal = GameObject.FindGameObjectWithTag("SuperMazeYellowGoal").transform;
+
+        superMazeNavigator = GameObject.FindGameObjectWithTag("SuperMazeNavigator").transform;
+
+        //puzzleTwoSelector = GameObject.FindGameObjectWithTag("PuzzleTwoSelector").transform;
     }
 
     // Use this for initialization
@@ -138,12 +148,12 @@ public class PuzzleThree : MonoBehaviour
             float speed = 25f;
             float step = speed * Time.deltaTime;
 
-            Vector3 puzzleTwoCameraPosition = new Vector3(-2.02f, 7.88f, 59.44f);
+            Vector3 superMazeCameraPosition = new Vector3(superMazeNavigator.position.x, superMazeNavigator.position.y + 10f, superMazeNavigator.position.z);
 
-            float distance = Vector3.Distance(Global.monitorCamera.position, puzzleTwoCameraPosition);
+            float distance = Vector3.Distance(Global.monitorCamera.position, superMazeCameraPosition);
 
             // pan camera across
-            Global.monitorCamera.position = Vector3.MoveTowards(Global.monitorCamera.position, puzzleTwoCameraPosition, step);
+            Global.monitorCamera.position = Vector3.MoveTowards(Global.monitorCamera.position, superMazeCameraPosition, step);
 
             if (distance == 0) {
                 // setting a flag when the camera has finished panning over
@@ -190,17 +200,7 @@ public class PuzzleThree : MonoBehaviour
 
         if (MonitorMode.monitorMode == true) {
             if (Global.currentPuzzle == 3) {
-                distanceFromBlueX = Mathf.Abs(puzzleTwoSelector.position.x - puzzleTwoBlueBox.position.x);
-                distanceFromBlueZ = Mathf.Abs(puzzleTwoSelector.position.z - puzzleTwoBlueBox.position.z);
 
-                distanceFromRedX = Mathf.Abs(puzzleTwoSelector.position.x - puzzleTwoRedBox.position.x);
-                distanceFromRedZ = Mathf.Abs(puzzleTwoSelector.position.z - puzzleTwoRedBox.position.z);
-
-                distanceFromGreenX = Mathf.Abs(puzzleTwoSelector.position.x - puzzleTwoGreenBox.position.x);
-                distanceFromGreenZ = Mathf.Abs(puzzleTwoSelector.position.z - puzzleTwoGreenBox.position.z);
-
-                distanceFromYellowX = Mathf.Abs(puzzleTwoSelector.position.x - puzzleTwoYellowBox.position.x);
-                distanceFromYellowZ = Mathf.Abs(puzzleTwoSelector.position.z - puzzleTwoYellowBox.position.z);
             }
         }
     }
@@ -209,62 +209,64 @@ public class PuzzleThree : MonoBehaviour
         if (Global.currentPuzzle == 3) {
             if (MonitorMode.monitorMode == true) {
 
-                float movementSpeed = 0.05f;
+                float movementSpeed = 0.005f;
 
                 // locks rotation of light
-                puzzleTwoSelector.transform.rotation = Quaternion.Euler(puzzleTwoSelector.transform.rotation.eulerAngles.x, Global.lockPos, Global.lockPos);
+
+                //puzzleTwoSelector.transform.rotation = Quaternion.Euler(puzzleTwoSelector.transform.rotation.eulerAngles.x, Global.lockPos, Global.lockPos);
 
                 if (puzzleThreeStarted) {
                     // TODO: limits, eg: if (pos.x >) { ... }
-                    // up and down
-                    puzzleTwoSelector.Translate(Vector3.down * Global.state.ThumbSticks.Left.Y * movementSpeed);
-                    if (Input.GetKey(KeyCode.S)) puzzleTwoSelector.Translate(Vector3.up * 2 * movementSpeed);
 
-                    puzzleTwoSelector.Translate(Vector3.up * -Global.state.ThumbSticks.Left.Y * movementSpeed);
-                    if (Input.GetKey(KeyCode.W)) puzzleTwoSelector.Translate(Vector3.down * 2 * movementSpeed);
+
+                    // up and down
+                    superMazeNavigator.Translate(Vector3.back * Global.state.ThumbSticks.Left.Y * movementSpeed);
+                    if (Input.GetKey(KeyCode.S)) superMazeNavigator.Translate(Vector3.forward * 2 * movementSpeed);
+
+                    superMazeNavigator.Translate(Vector3.forward * -Global.state.ThumbSticks.Left.Y * movementSpeed);
+                    if (Input.GetKey(KeyCode.W)) superMazeNavigator.Translate(Vector3.back * 2 * movementSpeed);
 
                     // left and right
-                    puzzleTwoSelector.Translate(Vector3.right * -Global.state.ThumbSticks.Left.X * movementSpeed);
-                    if (Input.GetKey(KeyCode.D)) puzzleTwoSelector.Translate(Vector3.left * 2 * movementSpeed);
+                    superMazeNavigator.Translate(Vector3.right * -Global.state.ThumbSticks.Left.X * movementSpeed);
+                    if (Input.GetKey(KeyCode.D)) superMazeNavigator.Translate(Vector3.left * 2 * movementSpeed);
 
-                    puzzleTwoSelector.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
-                    if (Input.GetKey(KeyCode.A)) puzzleTwoSelector.Translate(Vector3.right * 2 * movementSpeed);
+                    superMazeNavigator.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
+                    if (Input.GetKey(KeyCode.A)) superMazeNavigator.Translate(Vector3.right * 2 * movementSpeed);
 
 
-                    if (distanceFromBlueX < acceptableDistance && distanceFromBlueZ < acceptableDistance) {
-                        bluePlane.enabled = true;
-                        blueLight.enabled = true;
-                    } else {
-                        bluePlane.enabled = false;
-                        blueLight.enabled = false;
-                    }
-                    
-                    if (distanceFromRedX < acceptableDistance && distanceFromRedZ < acceptableDistance) {
-                        redPlane.enabled = true;
-                        redLight.enabled = true;
-                    } else {
-                        redPlane.enabled = false;
-                        redLight.enabled = false;
-                    }
+                    //if (distanceFromBlueX < acceptableDistance && distanceFromBlueZ < acceptableDistance) {
+                    //    bluePlane.enabled = true;
+                    //    blueLight.enabled = true;
+                    //} else {
+                    //    bluePlane.enabled = false;
+                    //    blueLight.enabled = false;
+                    //}
 
-                    if (distanceFromGreenX < acceptableDistance && distanceFromGreenZ < acceptableDistance) {
-                        greenPlane.enabled = true;
-                        greenLight.enabled = true;
-                    } else {
-                        greenPlane.enabled = false;
-                        greenLight.enabled = false;
-                    }
+                    //if (distanceFromRedX < acceptableDistance && distanceFromRedZ < acceptableDistance) {
+                    //    redPlane.enabled = true;
+                    //    redLight.enabled = true;
+                    //} else {
+                    //    redPlane.enabled = false;
+                    //    redLight.enabled = false;
+                    //}
 
-                    if (distanceFromYellowX < acceptableDistance && distanceFromYellowZ < acceptableDistance) {
-                        yellowLight.enabled = true;
-                        yellowPlane.enabled = true;
-                    } else {
-                        yellowLight.enabled = false;
-                        yellowPlane.enabled = false;
-                    }
+                    //if (distanceFromGreenX < acceptableDistance && distanceFromGreenZ < acceptableDistance) {
+                    //    greenPlane.enabled = true;
+                    //    greenLight.enabled = true;
+                    //} else {
+                    //    greenPlane.enabled = false;
+                    //    greenLight.enabled = false;
+                    //}
+
+                    //if (distanceFromYellowX < acceptableDistance && distanceFromYellowZ < acceptableDistance) {
+                    //    yellowLight.enabled = true;
+                    //    yellowPlane.enabled = true;
+                    //} else {
+                    //    yellowLight.enabled = false;
+                    //    yellowPlane.enabled = false;
+                    //}
                 }
             }
-
 
             if (redCount < 1) {
                 // default size of the box on the screen
