@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Numbers Preview
+  m_Shader: {fileID: 4800000, guid: f8d0f9ba74552a54891eb48c98397aea, type: 3}
+  m_ShaderKeywords: _SEGMENTED_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: c67456ece1a4d7a4a8284de6042389f6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Numbers
+      second:
+        m_Texture: {fileID: 2800000, guid: ebb07e4978b9022408d4de2f7ade84ca, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Alpha
+      second: 0
+    - first:
+        name: _Bias
+      second: 0
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _ProgressSlider
+      second: 0.6964286
+    - first:
+        name: _SegmentWidth
+      second: 0.6785714
+    - first:
+        name: _Segmented
+      second: 1
+    - first:
+        name: _Steps
+      second: 10
+    m_Colors:
+    - first:
+        name: _4Numbers
+      second: {r: 1, g: 2, b: 3, a: 4}
+    - first:
+        name: _BackgroundColor
+      second: {r: 0.1102941, g: 0.03649437, b: 0.05329018, a: 1}
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Color1
+      second: {r: 0, g: 1, b: 0, a: 1}
+    - first:
+        name: _Color2
+      second: {r: 0.8014706, g: 0.8014706, b: 0, a: 1}
+    - first:
+        name: _Color3
+      second: {r: 1, g: 0, b: 0, a: 1}
+    - first:
+        name: _TextColor
+      second: {r: 0.4482759, g: 1, b: 0, a: 1}
