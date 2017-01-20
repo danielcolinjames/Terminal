@@ -83,6 +83,7 @@ public class PuzzleThree : MonoBehaviour
     public float distanceFromSuperMazeYellowGoal;
 
 
+
     // public Transform puzzleTwoSelector;
 
     void Awake() {
@@ -131,6 +132,7 @@ public class PuzzleThree : MonoBehaviour
         superMazeYellowGoal = GameObject.FindGameObjectWithTag("SuperMazeYellowGoal").transform;
 
         superMazeNavigator = GameObject.FindGameObjectWithTag("SuperMazeNavigator").transform;
+
 
         //puzzleTwoSelector = GameObject.FindGameObjectWithTag("PuzzleTwoSelector").transform;
     }
@@ -232,6 +234,41 @@ public class PuzzleThree : MonoBehaviour
 
                     superMazeNavigator.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
                     if (Input.GetKey(KeyCode.A)) superMazeNavigator.Translate(Vector3.right * 2 * movementSpeed);
+
+
+                    distanceFromSuperMazeRedGoal = Vector3.Distance(superMazeRedGoal.position, superMazeNavigator.position);
+                    distanceFromSuperMazeBlueGoal = Vector3.Distance(superMazeBlueGoal.position, superMazeNavigator.position);
+                    distanceFromSuperMazeGreenGoal = Vector3.Distance(superMazeGreenGoal.position, superMazeNavigator.position);
+                    distanceFromSuperMazeYellowGoal = Vector3.Distance(superMazeYellowGoal.position, superMazeNavigator.position);
+
+                    float superMazeGoalTolerance = 0.1f;
+
+                    
+
+
+                    if (distanceFromSuperMazeRedGoal < superMazeGoalTolerance) {
+                        redPlane.enabled = true;
+                        redLight.enabled = true;
+                        
+                        Global.currentPuzzle = 4;
+                    } else {
+                        redPlane.enabled = false;
+                        redLight.enabled = false;
+                    }
+
+                    // TODO finish BGY below
+                    if (distanceFromBlueGoal < superMazeGoalTolerance) {
+                        Global.currentPuzzle = 5;
+                    }
+
+                    if (distanceFromGreenGoal < superMazeGoalTolerance) {
+                        Global.currentPuzzle = 6;
+                    }
+
+                    if (distanceFromYellowGoal < superMazeGoalTolerance) {
+                        Global.currentPuzzle = 7;
+                    }
+
 
 
                     //if (distanceFromBlueX < acceptableDistance && distanceFromBlueZ < acceptableDistance) {

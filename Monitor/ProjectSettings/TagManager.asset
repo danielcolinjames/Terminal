@@ -48,6 +48,8 @@ TagManager:
   - SuperMazeBlueGoal
   - SuperMazeGreenGoal
   - SuperMazeYellowGoal
+  - SubPuzzleOneMoverSmall
+  - SubPuzzleOneMoverBig
   layers:
   - Default
   - TransparentFX
