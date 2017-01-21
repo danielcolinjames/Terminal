@@ -43,16 +43,16 @@ public class LightMapSwitcher : MonoBehaviour
         for (int i = 0; i < DayNear.Length; i++)
         {
             dayLightMaps[i] = new LightmapData();
-            dayLightMaps[i].lightmapNear = DayNear[i];
-            dayLightMaps[i].lightmapFar = DayFar[i];
+            dayLightMaps[i].lightmapDir = DayNear[i];
+            dayLightMaps[i].lightmapLight = DayFar[i];
         }
 
         nightLightMaps = new LightmapData[NightNear.Length];
         for (int i = 0; i < NightNear.Length; i++)
         {
             nightLightMaps[i] = new LightmapData();
-            nightLightMaps[i].lightmapNear = NightNear[i];
-            nightLightMaps[i].lightmapFar = NightFar[i];
+            nightLightMaps[i].lightmapDir = NightNear[i];
+            nightLightMaps[i].lightmapLight = NightFar[i];
         }
     }
 
