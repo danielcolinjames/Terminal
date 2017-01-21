@@ -12,6 +12,11 @@ ModelImporter:
     100008: pCube4
     100010: pCube5
     100012: pCube6
+    100014: Desk
+    100016: Door1
+    100018: Door2
+    100020: Handle
+    100022: Handle2
     400000: //RootNode
     400002: pCube1
     400004: pCube2
@@ -19,30 +24,55 @@ ModelImporter:
     400008: pCube4
     400010: pCube5
     400012: pCube6
+    400014: Desk
+    400016: Door1
+    400018: Door2
+    400020: Handle
+    400022: Handle2
     2300000: pCube1
     2300002: pCube2
     2300004: pCube3
     2300006: pCube4
     2300008: pCube5
     2300010: pCube6
+    2300012: Desk
+    2300014: Door1
+    2300016: Door2
+    2300018: Handle
+    2300020: Handle2
     3300000: pCube1
     3300002: pCube2
     3300004: pCube3
     3300006: pCube4
     3300008: pCube5
     3300010: pCube6
+    3300012: Desk
+    3300014: Door1
+    3300016: Door2
+    3300018: Handle
+    3300020: Handle2
     4300000: pCube1
     4300002: pCube2
     4300004: pCube3
     4300006: pCube4
     4300008: pCube5
     4300010: pCube6
+    4300012: Handle
+    4300014: Handle2
+    4300016: Desk
+    4300018: Door2
+    4300020: Door1
     6400000: pCube1
     6400002: pCube2
     6400004: pCube3
     6400006: pCube4
     6400008: pCube5
     6400010: pCube6
+    6400012: Desk
+    6400014: Door1
+    6400016: Door2
+    6400018: Handle
+    6400020: Handle2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -68,12 +98,12 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.5
     meshCompression: 0
     addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -90,6 +120,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -100,7 +131,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1
