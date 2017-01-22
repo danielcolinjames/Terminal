@@ -144,7 +144,7 @@ public class PuzzleThree : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (Global.currentPuzzle == 3) {
+        if (Global.currentPuzzle == 3 || Global.currentPuzzle == 4 || Global.currentPuzzle == 5 || Global.currentPuzzle == 6 || Global.currentPuzzle == 7) {
 
             // move camera across from puzzle one
             float speed = 25f;
@@ -199,12 +199,6 @@ public class PuzzleThree : MonoBehaviour
                 }
             }
         }
-
-        if (MonitorMode.monitorMode == true) {
-            if (Global.currentPuzzle == 3) {
-
-            }
-        }
     }
 
     void FixedUpdate() {
@@ -219,8 +213,7 @@ public class PuzzleThree : MonoBehaviour
 
                 if (puzzleThreeStarted) {
                     // TODO: limits, eg: if (pos.x >) { ... }
-
-
+                    
                     // up and down
                     superMazeNavigator.Translate(Vector3.back * Global.state.ThumbSticks.Left.Y * movementSpeed);
                     if (Input.GetKey(KeyCode.S)) superMazeNavigator.Translate(Vector3.forward * 2 * movementSpeed);
@@ -235,16 +228,13 @@ public class PuzzleThree : MonoBehaviour
                     superMazeNavigator.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
                     if (Input.GetKey(KeyCode.A)) superMazeNavigator.Translate(Vector3.right * 2 * movementSpeed);
 
-
+                    // distance calculation (inside super maze)
                     distanceFromSuperMazeRedGoal = Vector3.Distance(superMazeRedGoal.position, superMazeNavigator.position);
                     distanceFromSuperMazeBlueGoal = Vector3.Distance(superMazeBlueGoal.position, superMazeNavigator.position);
                     distanceFromSuperMazeGreenGoal = Vector3.Distance(superMazeGreenGoal.position, superMazeNavigator.position);
                     distanceFromSuperMazeYellowGoal = Vector3.Distance(superMazeYellowGoal.position, superMazeNavigator.position);
 
-                    float superMazeGoalTolerance = 0.1f;
-
-                    
-
+                    float superMazeGoalTolerance = 0.058f;
 
                     if (distanceFromSuperMazeRedGoal < superMazeGoalTolerance) {
                         redPlane.enabled = true;
@@ -256,91 +246,100 @@ public class PuzzleThree : MonoBehaviour
                         redLight.enabled = false;
                     }
 
-                    // TODO finish BGY below
-                    if (distanceFromBlueGoal < superMazeGoalTolerance) {
+                    if (distanceFromSuperMazeBlueGoal < superMazeGoalTolerance) {
+                        bluePlane.enabled = true;
+                        blueLight.enabled = true;
+
                         Global.currentPuzzle = 5;
+                    } else {
+                        bluePlane.enabled = false;
+                        blueLight.enabled = false;
                     }
 
-                    if (distanceFromGreenGoal < superMazeGoalTolerance) {
+                    if (distanceFromSuperMazeGreenGoal < superMazeGoalTolerance) {
+                        greenPlane.enabled = true;
+                        greenLight.enabled = true;
+
                         Global.currentPuzzle = 6;
+                    } else {
+                        greenPlane.enabled = false;
+                        greenLight.enabled = false;
                     }
 
-                    if (distanceFromYellowGoal < superMazeGoalTolerance) {
+                    if (distanceFromSuperMazeYellowGoal < superMazeGoalTolerance) {
+                        yellowPlane.enabled = true;
+                        yellowLight.enabled = true;
+
                         Global.currentPuzzle = 7;
+                    } else {
+                        yellowPlane.enabled = false;
+                        yellowLight.enabled = false;
                     }
-
-
-
-                    //if (distanceFromBlueX < acceptableDistance && distanceFromBlueZ < acceptableDistance) {
-                    //    bluePlane.enabled = true;
-                    //    blueLight.enabled = true;
-                    //} else {
-                    //    bluePlane.enabled = false;
-                    //    blueLight.enabled = false;
-                    //}
-
-                    //if (distanceFromRedX < acceptableDistance && distanceFromRedZ < acceptableDistance) {
-                    //    redPlane.enabled = true;
-                    //    redLight.enabled = true;
-                    //} else {
-                    //    redPlane.enabled = false;
-                    //    redLight.enabled = false;
-                    //}
-
-                    //if (distanceFromGreenX < acceptableDistance && distanceFromGreenZ < acceptableDistance) {
-                    //    greenPlane.enabled = true;
-                    //    greenLight.enabled = true;
-                    //} else {
-                    //    greenPlane.enabled = false;
-                    //    greenLight.enabled = false;
-                    //}
-
-                    //if (distanceFromYellowX < acceptableDistance && distanceFromYellowZ < acceptableDistance) {
-                    //    yellowLight.enabled = true;
-                    //    yellowPlane.enabled = true;
-                    //} else {
-                    //    yellowLight.enabled = false;
-                    //    yellowPlane.enabled = false;
-                    //}
                 }
             }
+        }
+
+        // if one of the sub puzzles has been activated, start displaying the progress with the consoles
+        else if (Global.currentPuzzle == 3 || Global.currentPuzzle == 4 || Global.currentPuzzle == 5 || Global.currentPuzzle == 6 || Global.currentPuzzle == 7) {
+
+            float defaultX = 0.061f;
+            float defaultY = 0.1f;
+            float defaultZ = 0.044f;
 
             if (redCount < 1) {
                 // default size of the box on the screen
-                redPlaneProgress.localScale = new Vector3(0.077f, 0.1f, 0.059f);
+                redPlaneProgress.localScale = new Vector3(defaultX, defaultY, defaultZ);
             } else {
                 // multiply the X and Z scale by 1 minus (redCount over redBoxes.length) to make the box on the monitor scale relative to how many red boxes there are in the scene
-                redPlaneProgress.localScale = new Vector3(0.077f * (1 - ((float)redCount / (float)redBoxes.Length)), 0.1f, 0.059f * (1 - ((float)redCount / (float)redBoxes.Length)));
+                redPlaneProgress.localScale = new Vector3(defaultX * (1 - ((float)redCount / (float)redBoxes.Length)), defaultY, defaultZ * (1 - ((float)redCount / (float)redBoxes.Length)));
             }
 
             if (blueCount < 1) {
-                bluePlaneProgress.localScale = new Vector3(0.077f, 0.1f, 0.059f);
+                bluePlaneProgress.localScale = new Vector3(defaultX, defaultY, defaultZ);
             } else {
-                bluePlaneProgress.localScale = new Vector3(0.077f * (1 - ((float)blueCount / (float)blueBoxes.Length)), 0.1f, 0.059f * (1 - ((float)blueCount / (float)blueBoxes.Length)));
+                bluePlaneProgress.localScale = new Vector3(defaultX * (1 - ((float)blueCount / (float)blueBoxes.Length)), defaultY, defaultZ * (1 - ((float)blueCount / (float)blueBoxes.Length)));
             }
 
             if (greenCount < 1) {
-                greenPlaneProgress.localScale = new Vector3(0.077f, 0.1f, 0.059f);
+                greenPlaneProgress.localScale = new Vector3(defaultX, defaultY, defaultZ);
             } else {
-                greenPlaneProgress.localScale = new Vector3(0.077f * (1 - ((float)greenCount / (float)greenBoxes.Length)), 0.1f, 0.059f * (1 - ((float)greenCount / (float)greenBoxes.Length)));
+                greenPlaneProgress.localScale = new Vector3(defaultX * (1 - ((float)greenCount / (float)greenBoxes.Length)), defaultY, defaultZ * (1 - ((float)greenCount / (float)greenBoxes.Length)));
             }
 
             if (yellowCount < 1) {
-                yellowPlaneProgress.localScale = new Vector3(0.077f, 0.1f, 0.059f);
+                yellowPlaneProgress.localScale = new Vector3(defaultX, defaultY, defaultZ);
             } else {
-                yellowPlaneProgress.localScale = new Vector3(0.077f * (1 - ((float)yellowCount / (float)yellowBoxes.Length)), 0.1f, 0.059f * (1 - ((float)yellowCount / (float)yellowBoxes.Length)));
+                yellowPlaneProgress.localScale = new Vector3(defaultX * (1 - ((float)yellowCount / (float)yellowBoxes.Length)), defaultY, defaultZ * (1 - ((float)yellowCount / (float)yellowBoxes.Length)));
             }
-
 
             if (redCount == redBoxes.Length) redDone = true;
             if (blueCount == blueBoxes.Length) blueDone = true;
             if (greenCount == greenBoxes.Length) greenDone = true;
             if (yellowCount == yellowBoxes.Length) yellowDone = true;
-            
+
+            if (redDone) {
+                redPlane.enabled = false;
+                redLight.enabled = false;
+            }
+
+            if (blueDone) {
+                bluePlane.enabled = false;
+                blueLight.enabled = false;
+            }
+
+            if (greenDone) {
+                greenPlane.enabled = false;
+                greenLight.enabled = false;
+            }
+
+            if (yellowDone) {
+                yellowPlane.enabled = false;
+                yellowLight.enabled = false;
+            }
 
             if (redDone && blueDone && greenDone && yellowDone) {
                 Global.currentPuzzle = 4;
-                print("YOU WIN!");
+                print("Puzzle 4 started");
             }
         }
     }

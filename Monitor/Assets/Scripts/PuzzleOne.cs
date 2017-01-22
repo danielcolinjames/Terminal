@@ -94,12 +94,12 @@ public class PuzzleOne : MonoBehaviour {
 
                 // test for completion
 
-                if (puzzleOneDistanceToCompletion < 0.09) {
+                if (puzzleOneDistanceToCompletion < 0.05) {
                     Global.currentPuzzle = 2;
 
                     //MonitorMode.monitorMode = false;
 
-                    Global.monitorCamera.position = new Vector3(0.3f, Global.monitorCamera.position.y, Global.monitorCamera.position.z);
+                    Global.monitorCamera.position = new Vector3(puzzleOneBox.position.x - 2.0f, puzzleOneBox.position.y + 10f, puzzleOneBox.position.z);
 
                     foreach (GameObject mainLight in mainLights) {
                         mainLight.GetComponent<Light>().enabled = false;
@@ -124,8 +124,12 @@ public class PuzzleOne : MonoBehaviour {
                     //backupLightTwo.enabled = true;
                     //backupLightThree.enabled = true;
 
+                    //PuzzleThree.puzzleTwoFallingBox.GetComponent<Rigidbody>().useGravity = true;
+                    //PuzzleThree.puzzleTwoFallingBox.GetComponent<Rigidbody>().isKinematic = false;
+
                     PuzzleThree.puzzleTwoFallingBox.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y - 2f, PuzzleThree.puzzleTwoFallingBox.position.z);
-                    PuzzleThree.key.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y + 0.01f, PuzzleThree.puzzleTwoFallingBox.position.z);
+                    PuzzleThree.key.position = new Vector3(PuzzleThree.key.position.x, PuzzleThree.key.position.y -2f, PuzzleThree.key.position.z);
+
                 }
             }
         }

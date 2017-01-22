@@ -1,17 +1,18 @@
 fileFormatVersion: 2
-guid: 3252bf358c30d644f94611cc20d00139
-timeCreated: 1480046042
+guid: 4423298dc12e21549a67910071708938
+timeCreated: 1485101308
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Mesh1
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Office_chair
-    6400000: //RootNode
-    9500000: //RootNode
+    400002: Mesh1
+    2300000: Mesh1
+    3300000: Mesh1
+    4300000: Mesh1
+    6400000: Mesh1
   materials:
     importMaterials: 1
     materialName: 0
@@ -36,7 +37,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.2
+    globalScale: 120
     meshCompression: 0
     addColliders: 1
     importBlendShapes: 1
@@ -72,9 +73,9 @@ ModelImporter:
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 0
+    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
