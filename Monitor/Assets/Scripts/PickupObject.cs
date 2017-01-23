@@ -10,7 +10,7 @@ public class PickupObject : MonoBehaviour {
     float pickupDistance = 2f; // how far away you can pick stuff up from
     public float throwStrength = 6;
     // Use this for initialization
-	public static bool hasKey;
+    public static bool hasKey;
 
 
     void Start() {
@@ -24,8 +24,7 @@ public class PickupObject : MonoBehaviour {
             checkDrop();
             throwObject();
             changeThrowStrength();
-        }
-        else {
+        } else {
             pickup();
         }
     }
@@ -34,7 +33,7 @@ public class PickupObject : MonoBehaviour {
         o.transform.position = mainCamera.transform.position + mainCamera.transform.forward * distance;
     }
 
-	void pickup() {
+    void pickup() {
         if (Input.GetKeyDown(KeyCode.E) || (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) {
             int x = Screen.width / 2;
             int y = Screen.height / 2;
@@ -47,15 +46,27 @@ public class PickupObject : MonoBehaviour {
                     //Debug.DrawLine (ray.origin, hit.point);
                     carrying = true;
                     carriedObject = p.gameObject;
-					carriedObject.GetComponent<Rigidbody>().isKinematic = true;
+
+                    //Select new shader for Transparency
+                    Shader transparent;
+                    transparent = Shader.Find("Transparent/Diffuse");
+                    carriedObject.GetComponent<Renderer>().material.shader = transparent;
+
+                    //To Control Object Transparency 
+                    Color ourColor = carriedObject.GetComponent<Renderer>().material.color;
+                    ourColor.a = 0.5f;
+                    carriedObject.GetComponent<Renderer>().material.color = ourColor;
+
+                    //Door Key stuff
+                    carriedObject.GetComponent<Rigidbody>().isKinematic = true;
 
                     if (carriedObject.name == "DoorKey" || carriedObject.tag == "isKey") {
-						hasKey = true;
+                        hasKey = true;
                         GameObject.FindGameObjectWithTag("isKey").SetActive(false);
                         dropObject();
                     } //else {
-					//	hasKey = false;
-					//}
+                      //	hasKey = false;
+                      //}
                 }
             }
         }
@@ -88,12 +99,20 @@ public class PickupObject : MonoBehaviour {
 
     public void dropObject() {
         carrying = false;
+
+        Shader standard;
+        standard = Shader.Find("Standard");
+        carriedObject.GetComponent<Renderer>().material.shader = standard;
+        Color ourColor = carriedObject.GetComponent<Renderer>().material.color;
+
+        carriedObject.GetComponent<Rigidbody>().useGravity = true;
         carriedObject.GetComponent<Rigidbody>().isKinematic = false;
         carriedObject = null;
+
     }
 
     void throwObject() {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown (KeyCode.F) || (Global.prevState.Buttons.Y == ButtonState.Released && Global.state.Buttons.Y == ButtonState.Pressed)) {
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.F) || (Global.prevState.Buttons.Y == ButtonState.Released && Global.state.Buttons.Y == ButtonState.Pressed)) {
             carriedObject.transform.position = transform.position + Camera.main.transform.forward * 2;
             Rigidbody rb = carriedObject.GetComponent<Rigidbody>();
             rb.velocity = Camera.main.transform.forward * throwStrength;
