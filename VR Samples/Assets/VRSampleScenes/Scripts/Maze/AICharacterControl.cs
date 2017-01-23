@@ -3,11 +3,11 @@ using VRStandardAssets.Maze;
 
 namespace VRStandardAssets.Maze
 {
-    [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
     [RequireComponent(typeof(ThirdPersonCharacter))]
     public class AICharacterControl : MonoBehaviour
     {
-        public NavMeshAgent agent { get; private set; }             // Navmesh agent required for the path finding
+        public UnityEngine.AI.NavMeshAgent agent { get; private set; }             // Navmesh agent required for the path finding
         public ThirdPersonCharacter character { get; private set; } // Character we are controlling
 
 
@@ -19,7 +19,7 @@ namespace VRStandardAssets.Maze
         private void Start()
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
-            agent = GetComponentInChildren<NavMeshAgent>();
+            agent = GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
             character = GetComponent<ThirdPersonCharacter>();
             m_Rigidbody = GetComponent<Rigidbody>();
             m_Player = GetComponent<Player>();

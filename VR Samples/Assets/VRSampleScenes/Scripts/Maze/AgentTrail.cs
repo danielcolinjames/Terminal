@@ -7,7 +7,7 @@ namespace VRStandardAssets.Maze
     // NavMeshAgent in the maze scene.
     public class AgentTrail : MonoBehaviour
     {
-        [SerializeField] private NavMeshAgent m_Agent;  // Reference to the nav mesh agent who's path will be drawn.
+        [SerializeField] private UnityEngine.AI.NavMeshAgent m_Agent;  // Reference to the nav mesh agent who's path will be drawn.
         [SerializeField] private LineRenderer m_Line;   // Reference to the line renderer used to draw the path.
 
 
@@ -45,7 +45,7 @@ namespace VRStandardAssets.Maze
             m_Line.enabled = true;
             
             // Get the path from the NavMeshAgent.
-            NavMeshPath path = m_Agent.path;
+            UnityEngine.AI.NavMeshPath path = m_Agent.path;
 
             // Set the LineRenderer to have as many points as the path has corners.
             m_Line.SetVertexCount(path.corners.Length);

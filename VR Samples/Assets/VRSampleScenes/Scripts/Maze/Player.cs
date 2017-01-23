@@ -21,7 +21,7 @@ namespace VRStandardAssets.Maze
         [SerializeField] private AudioClip m_PlayerDieClip;                             // The sound to play when the player dies.
         
         
-        private NavMeshAgent m_Agent;                                                   // Needs to be used to reset the character's position and stop the player.
+        private UnityEngine.AI.NavMeshAgent m_Agent;                                                   // Needs to be used to reset the character's position and stop the player.
         private AICharacterControl m_AiCharacter;                                       // Used to actually set the destination of the player.
         private Animator m_Animator;                                                    // Used to trigger various states playing.
         private Collider m_Collider;                                                    // Turned off when the player dies.
@@ -45,7 +45,7 @@ namespace VRStandardAssets.Maze
             m_RigidBody = GetComponent<Rigidbody>();
             m_Collider = GetComponent<Collider>();
             m_AiCharacter = GetComponent<AICharacterControl>();
-            m_Agent = GetComponent<NavMeshAgent>();
+            m_Agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             m_Animator = GetComponent<Animator>();
 
             // Set the position that the player will be reset to.
