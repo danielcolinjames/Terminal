@@ -8,24 +8,10 @@ public class PuzzleOne : MonoBehaviour {
     public Transform puzzleOneComplete;
     float puzzleOneDistanceToCompletion;
 
-    public static Light mainLightOne;
-    public static Light mainLightTwo;
-    public static Light mainLightThree;
-
     public static Light screenLight;
-
-    public static Light backupLightOne;
-    public static Light backupLightTwo;
-    public static Light backupLightThree;
-
-    public static GameObject[] mainLights;
-    public static GameObject[] backupLights;
 
     // Use this for initialization
     void Start () {
-        
-        mainLights = GameObject.FindGameObjectsWithTag("MainLight");
-        backupLights = GameObject.FindGameObjectsWithTag("BackupLight");
 
         // puzzle one objects
         puzzleOneBox = GameObject.FindGameObjectWithTag("PuzzleOneCube").transform;
@@ -34,16 +20,7 @@ public class PuzzleOne : MonoBehaviour {
         puzzleOneComplete = GameObject.FindGameObjectWithTag("PuzzleOneComplete").transform;
         puzzleOneDistanceToCompletion = 0;
 
-        //mainLightOne = GameObject.FindGameObjectWithTag("MainLightOne").GetComponent<Light>();
-        //mainLightTwo = GameObject.FindGameObjectWithTag("MainLightTwo").GetComponent<Light>();
-        //mainLightThree = GameObject.FindGameObjectWithTag("MainLightThree").GetComponent<Light>();
-
         screenLight = GameObject.FindGameObjectWithTag("ScreenLight").GetComponent<Light>();
-
-        //backupLightOne = GameObject.FindGameObjectWithTag("BackupLightOne").GetComponent<Light>();
-        //backupLightTwo = GameObject.FindGameObjectWithTag("BackupLightTwo").GetComponent<Light>();
-        //backupLightThree = GameObject.FindGameObjectWithTag("BackupLightThree").GetComponent<Light>();
-
     }
 
     // Update is called once per frame
@@ -101,35 +78,17 @@ public class PuzzleOne : MonoBehaviour {
 
                     Global.monitorCamera.position = new Vector3(puzzleOneBox.position.x - 2.0f, puzzleOneBox.position.y + 10f, puzzleOneBox.position.z);
 
-                    foreach (GameObject mainLight in mainLights) {
-                        mainLight.GetComponent<Light>().enabled = false;
-                    }
-
-                    foreach (GameObject backupLight in backupLights) {
-                        backupLight.GetComponent<Light>().enabled = true;
-                    }
+                    // swap lightmaps here
 
                     PuzzleThree.redPlane.enabled = false;
                     PuzzleThree.bluePlane.enabled = false;
                     PuzzleThree.greenPlane.enabled = false;
                     PuzzleThree.yellowPlane.enabled = false;
 
-                    //mainLightOne.enabled = false;
-                    //mainLightTwo.enabled = false;
-                    //mainLightThree.enabled = false;
-
                     screenLight.enabled = false;
-
-                    //backupLightOne.enabled = true;
-                    //backupLightTwo.enabled = true;
-                    //backupLightThree.enabled = true;
-
-                    //PuzzleThree.puzzleTwoFallingBox.GetComponent<Rigidbody>().useGravity = true;
-                    //PuzzleThree.puzzleTwoFallingBox.GetComponent<Rigidbody>().isKinematic = false;
 
                     PuzzleThree.puzzleTwoFallingBox.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y - 2f, PuzzleThree.puzzleTwoFallingBox.position.z);
                     PuzzleThree.key.position = new Vector3(PuzzleThree.key.position.x, PuzzleThree.key.position.y -2f, PuzzleThree.key.position.z);
-
                 }
             }
         }

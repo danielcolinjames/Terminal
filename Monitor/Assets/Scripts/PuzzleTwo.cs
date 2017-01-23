@@ -46,24 +46,9 @@ public class PuzzleTwo : MonoBehaviour {
 
             if (breakerFlipped == true) {
 
-                foreach (GameObject mainLight in PuzzleOne.mainLights) {
-                    mainLight.GetComponent<Light>().enabled = true;
-                }
-
-                foreach (GameObject backupLight in PuzzleOne.backupLights) {
-                    backupLight.GetComponent<Light>().enabled = false;
-                }
-
-                
-                //PuzzleOne.mainLightOne.enabled = true;
-                //PuzzleOne.mainLightTwo.enabled = true;
-                //PuzzleOne.mainLightThree.enabled = true;
+                // swap lightmaps here
 
                 PuzzleOne.screenLight.enabled = true;
-
-                //PuzzleOne.backupLightOne.enabled = false;
-                //PuzzleOne.backupLightTwo.enabled = false;
-                //PuzzleOne.backupLightThree.enabled = false;
 
                 Global.currentPuzzle = 3;
             }
