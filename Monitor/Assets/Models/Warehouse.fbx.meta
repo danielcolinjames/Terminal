@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7ba31f39a59d8de4d9c8a45b1cda0252
-timeCreated: 1484967529
+guid: f06725e0c9517ef4c948c055a675815c
+timeCreated: 1485297676
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -12,7 +12,6 @@ ModelImporter:
     2300000: Mesh1
     3300000: Mesh1
     4300000: Mesh1
-    6400000: Mesh1
   materials:
     importMaterials: 1
     materialName: 0
@@ -37,12 +36,12 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 120
+    globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -73,7 +72,7 @@ ModelImporter:
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 0
+    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0
   humanoidOversampling: 1
