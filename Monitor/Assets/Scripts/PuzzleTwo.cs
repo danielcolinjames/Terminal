@@ -13,6 +13,9 @@ public class PuzzleTwo : MonoBehaviour {
 
     public static bool breakerFlipped = false;
 
+    // audio stuff
+    public AudioClip breakerFlippedAudio;
+
     // Use this for initialization
     void Start () {
 
@@ -47,6 +50,7 @@ public class PuzzleTwo : MonoBehaviour {
             if (breakerFlipped == true) {
 
                 // swap lightmaps here
+                Global.source.PlayOneShot(breakerFlippedAudio, Global.volumeMed);
 
                 PuzzleOne.screenLight.enabled = true;
 

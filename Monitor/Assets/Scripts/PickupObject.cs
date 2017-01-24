@@ -12,6 +12,8 @@ public class PickupObject : MonoBehaviour {
     // Use this for initialization
     public static bool hasKey;
 
+    // audio stuff
+    public AudioClip pickupSound;
 
     void Start() {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -62,6 +64,9 @@ public class PickupObject : MonoBehaviour {
 
                     if (carriedObject.name == "DoorKey" || carriedObject.tag == "isKey") {
                         hasKey = true;
+
+                        Global.source.PlayOneShot(pickupSound, Global.volumeMed);
+
                         GameObject.FindGameObjectWithTag("isKey").SetActive(false);
                         dropObject();
                     } //else {
@@ -71,7 +76,6 @@ public class PickupObject : MonoBehaviour {
             }
         }
     }
-
 
     // Global.prevState.DPad.Up == ButtonState.Released && Global.state.DPad.Up == ButtonState.Pressed
     // state.DPad.Up

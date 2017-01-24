@@ -3,7 +3,6 @@ using System.Collections;
 using XInputDotNetPure;
 
 public class Global : MonoBehaviour {
-
     public static float lockPos = 0;
 
     public static int currentPuzzle = 1;
@@ -18,6 +17,18 @@ public class Global : MonoBehaviour {
     public static Transform monitor;
     public static Transform monitorCamera;
 
+    // audio stuff
+    public static float volumeLow = 0.3f;
+    public static float volumeMed = 0.5f;
+    
+    public static AudioSource source;
+
+    public AudioClip startSound;
+
+    void Awake() {
+        source = GetComponent<AudioSource>();
+    }
+
     // Use this for initialization
     void Start () {
         // global objects
@@ -26,6 +37,10 @@ public class Global : MonoBehaviour {
 
         monitorCamera = GameObject.FindGameObjectWithTag("MonitorCamera").transform;
         monitorCamera.position = new Vector3(monitorCamera.position.x, monitorCamera.position.y, monitorCamera.position.z);
+
+        // audio
+        source.PlayDelayed(44100);
+        source.PlayOneShot(startSound, volumeLow);
     }
 	
 	// Update is called once per frame

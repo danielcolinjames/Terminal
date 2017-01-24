@@ -8,6 +8,10 @@ public class PuzzleOne : MonoBehaviour {
     public Transform puzzleOneComplete;
     float puzzleOneDistanceToCompletion;
 
+    // audio stuff
+    public AudioClip lightsOff;
+    public AudioClip breakerSwitch;
+
     public static Light screenLight;
 
     // Use this for initialization
@@ -72,6 +76,8 @@ public class PuzzleOne : MonoBehaviour {
                 // test for completion
 
                 if (puzzleOneDistanceToCompletion < 0.05) {
+                    Global.source.PlayOneShot(lightsOff, Global.volumeMed);
+
                     Global.currentPuzzle = 2;
 
                     //MonitorMode.monitorMode = false;

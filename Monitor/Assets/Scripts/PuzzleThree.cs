@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PuzzleThree : MonoBehaviour
-{
+public class PuzzleThree : MonoBehaviour {
 
     public GameObject[] redBoxes;
     public GameObject[] blueBoxes;
@@ -18,10 +17,10 @@ public class PuzzleThree : MonoBehaviour
 
     public float goalRange = 2f;
 
-    public bool redDone = false;
-    public bool blueDone = false;
-    public bool greenDone = false;
-    public bool yellowDone = false;
+    public static bool redDone = false;
+    public static bool blueDone = false;
+    public static bool greenDone = false;
+    public static bool yellowDone = false;
     
     // Warehouse items
 
@@ -81,7 +80,6 @@ public class PuzzleThree : MonoBehaviour
     public float distanceFromSuperMazeBlueGoal;
     public float distanceFromSuperMazeGreenGoal;
     public float distanceFromSuperMazeYellowGoal;
-
 
 
     // public Transform puzzleTwoSelector;
@@ -144,7 +142,7 @@ public class PuzzleThree : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (Global.currentPuzzle == 3 || Global.currentPuzzle == 4 || Global.currentPuzzle == 5 || Global.currentPuzzle == 6 || Global.currentPuzzle == 7) {
+        if (Global.currentPuzzle == 3) {
 
             // move camera across from puzzle one
             float speed = 25f;
@@ -162,6 +160,9 @@ public class PuzzleThree : MonoBehaviour
                 // otherwise the player can move the puzzleTwoSelector around before puzzle one is finished
                 puzzleThreeStarted = true;
             }
+        }
+        
+        else if (Global.currentPuzzle == 4 || Global.currentPuzzle == 5 || Global.currentPuzzle == 6 || Global.currentPuzzle == 7) {
 
             foreach (GameObject redBox in redBoxes) {
                 Transform redBoxT = redBox.transform;
@@ -318,6 +319,7 @@ public class PuzzleThree : MonoBehaviour
             if (yellowCount == yellowBoxes.Length) yellowDone = true;
 
             if (redDone) {
+                Global.currentPuzzle = 4;
                 redPlane.enabled = false;
                 redLight.enabled = false;
             }
@@ -338,8 +340,8 @@ public class PuzzleThree : MonoBehaviour
             }
 
             if (redDone && blueDone && greenDone && yellowDone) {
-                Global.currentPuzzle = 4;
-                print("Puzzle 4 started");
+                Global.currentPuzzle = 8;
+                print("DONE");
             }
         }
     }
