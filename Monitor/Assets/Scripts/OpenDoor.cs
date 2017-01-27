@@ -36,8 +36,6 @@ public class OpenDoor : MonoBehaviour {
 			//Close door
 			transform.eulerAngles = Vector3.Slerp (transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
 		}
-
-
 		if (((Input.GetKeyDown(KeyCode.E)) || (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) && enter && hasKey) {
             Global.source.PlayOneShot(unlock, Global.volumeMed);
             Global.source.PlayOneShot(doorOpen, Global.volumeMed);
@@ -52,7 +50,7 @@ public class OpenDoor : MonoBehaviour {
 		}
 	}
 
-	//Deactivate the Main function when player is go away from door
+	//Deactivate the Main function when player goes away from door
 	void  OnTriggerExit ( Collider other  ) {
 		if (other.gameObject.tag == "Player") {
 			enter = false;
