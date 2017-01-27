@@ -319,7 +319,7 @@ public class PuzzleThree : MonoBehaviour {
             if (yellowCount == yellowBoxes.Length) yellowDone = true;
 
             if (redDone) {
-                Global.currentPuzzle = 4;
+                Global.currentPuzzle = 5;
                 redPlane.enabled = false;
                 redLight.enabled = false;
             }
