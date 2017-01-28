@@ -49,8 +49,15 @@ public class PuzzleTwo : MonoBehaviour {
 
             if (breakerFlipped == true) {
 
-                // swap lightmaps here
                 Global.source.PlayOneShot(breakerFlippedAudio, Global.volumeMed);
+
+                foreach (GameObject mainLight in PuzzleOne.mainLights) {
+                    mainLight.GetComponent<Light>().enabled = true;
+                }
+
+                foreach (GameObject backupLight in PuzzleOne.backupLights) {
+                    backupLight.GetComponent<Light>().enabled = false;
+                }
 
                 PuzzleOne.screenLight.enabled = true;
 

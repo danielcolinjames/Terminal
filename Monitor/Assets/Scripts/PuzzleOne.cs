@@ -14,8 +14,13 @@ public class PuzzleOne : MonoBehaviour {
 
     public static Light screenLight;
 
+    public static GameObject[] mainLights;
+    public static GameObject[] backupLights;
+
     // Use this for initialization
     void Start () {
+        mainLights = GameObject.FindGameObjectsWithTag("MainLight");
+        backupLights = GameObject.FindGameObjectsWithTag("BackupLight");
 
         // puzzle one objects
         puzzleOneBox = GameObject.FindGameObjectWithTag("PuzzleOneCube").transform;
@@ -77,6 +82,14 @@ public class PuzzleOne : MonoBehaviour {
 
                 if (puzzleOneDistanceToCompletion < 0.05) {
                     Global.source.PlayOneShot(lightsOff, Global.volumeMed);
+
+                    foreach (GameObject mainLight in mainLights) {
+                        mainLight.GetComponent<Light>().enabled = false;
+                    }
+
+                    foreach (GameObject backupLight in backupLights) {
+                        backupLight.GetComponent<Light>().enabled = true;
+                    }
 
                     Global.currentPuzzle = 2;
 

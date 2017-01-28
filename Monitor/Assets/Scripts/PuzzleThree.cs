@@ -241,7 +241,7 @@ public class PuzzleThree : MonoBehaviour {
                         redPlane.enabled = true;
                         redLight.enabled = true;
                         
-                        Global.currentPuzzle = 4;
+                        Global.currentPuzzle = 5;
                     } else {
                         redPlane.enabled = false;
                         redLight.enabled = false;
