@@ -37,19 +37,23 @@ public class CubeRotation : MonoBehaviour {
         }
 
         if (Global.currentPuzzle == 5 && rotatingPuzzleStarted) {
-            // up and down
-            rotatingCube.Rotate(Vector3.back * Global.state.ThumbSticks.Left.Y * movementSpeed);
-            if (Input.GetKey(KeyCode.W)) rotatingCube.Rotate(new Vector3(rotatingCube.rotation.x, rotatingCube.rotation.y - 1f, rotatingCube.rotation.z) * 2 * movementSpeed);
+            if (MonitorMode.monitorMode == true) {
+                // up and down
+                //rotatingCube.Rotate(Vector3.back * Global.state.ThumbSticks.Left.Y * movementSpeed);
+                if (Input.GetKey(KeyCode.W)) rotatingCube.Rotate(Vector3.forward * 150 * Time.deltaTime);
 
-            rotatingCube.Rotate(Vector3.forward * -Global.state.ThumbSticks.Left.Y * movementSpeed);
-            if (Input.GetKey(KeyCode.S)) rotatingCube.Rotate(new Vector3(rotatingCube.rotation.x, rotatingCube.rotation.y + 1f, rotatingCube.rotation.z) * 2 * movementSpeed);
+                //rotatingCube.Rotate(Vector3.forward * -Global.state.ThumbSticks.Left.Y * movementSpeed);
+                if (Input.GetKey(KeyCode.S)) rotatingCube.Rotate(Vector3.back * 150 * Time.deltaTime);
 
-            // left and right
-            rotatingCube.Rotate(Vector3.right * -Global.state.ThumbSticks.Left.X * movementSpeed);
-            if (Input.GetKey(KeyCode.D)) rotatingCube.Rotate(new Vector3(rotatingCube.rotation.x + 1f, rotatingCube.rotation.y, rotatingCube.rotation.z) * 2 * movementSpeed);
+                // left and right
+                //rotatingCube.Rotate(Vector3.right * -Global.state.ThumbSticks.Left.X * movementSpeed);
+                //if (Input.GetKey(KeyCode.D)) rotatingCube.Rotate(new Vector3(rotatingCube.rotation.x + 1f, rotatingCube.rotation.y, rotatingCube.rotation.z) * 2 * movementSpeed);
+                if (Input.GetKey(KeyCode.A)) rotatingCube.Rotate(Vector3.up * 150 * Time.deltaTime);
 
-            rotatingCube.Rotate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
-            if (Input.GetKey(KeyCode.A)) rotatingCube.Rotate(new Vector3(rotatingCube.rotation.x - 1f, rotatingCube.rotation.y, rotatingCube.rotation.z) * 2 * movementSpeed);
+                //rotatingCube.Rotate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
+                //if (Input.GetKey(KeyCode.A)) rotatingCube.Rotate(new Vector3(rotatingCube.rotation.x - 1f, rotatingCube.rotation.y, rotatingCube.rotation.z) * 2 * movementSpeed);
+                if (Input.GetKey(KeyCode.D)) rotatingCube.Rotate(Vector3.down * 150 * Time.deltaTime);
+            }
         }
 	}
 }
