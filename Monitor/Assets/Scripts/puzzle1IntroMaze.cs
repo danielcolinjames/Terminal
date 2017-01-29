@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PuzzleOne : MonoBehaviour {
+public class puzzle1IntroMaze : MonoBehaviour {
 
     // puzzle one objects
-    public static Transform puzzleOneBox;
+    public Transform puzzleOneBox;
     public Transform puzzleOneComplete;
     float puzzleOneDistanceToCompletion;
 
+    public Transform fallingBox;
+    public Transform key;
+
     // audio stuff
     public AudioClip lightsOff;
-    public AudioClip breakerSwitch;
 
     public static Light screenLight;
 
@@ -23,10 +25,8 @@ public class PuzzleOne : MonoBehaviour {
         backupLights = GameObject.FindGameObjectsWithTag("BackupLight");
 
         // puzzle one objects
-        puzzleOneBox = GameObject.FindGameObjectWithTag("PuzzleOneCube").transform;
         puzzleOneBox.position = new Vector3(puzzleOneBox.position.x, puzzleOneBox.position.y, puzzleOneBox.position.z);
 
-        puzzleOneComplete = GameObject.FindGameObjectWithTag("PuzzleOneComplete").transform;
         puzzleOneDistanceToCompletion = 0;
 
         screenLight = GameObject.FindGameObjectWithTag("ScreenLight").GetComponent<Light>();
@@ -99,15 +99,17 @@ public class PuzzleOne : MonoBehaviour {
 
                     // swap lightmaps here
 
+                    /*
                     PuzzleThree.redPlane.enabled = false;
                     PuzzleThree.bluePlane.enabled = false;
                     PuzzleThree.greenPlane.enabled = false;
                     PuzzleThree.yellowPlane.enabled = false;
+                    */
 
                     screenLight.enabled = false;
 
-                    PuzzleThree.puzzleTwoFallingBox.position = new Vector3(PuzzleThree.puzzleTwoFallingBox.position.x, PuzzleThree.puzzleTwoFallingBox.position.y - 2f, PuzzleThree.puzzleTwoFallingBox.position.z);
-                    PuzzleThree.key.position = new Vector3(PuzzleThree.key.position.x, PuzzleThree.key.position.y -2f, PuzzleThree.key.position.z);
+                    fallingBox.position = new Vector3(fallingBox.position.x, fallingBox.position.y - 2f, fallingBox.position.z);
+                    key.position = new Vector3(key.position.x, key.position.y -2f, key.position.z);
                 }
             }
         }

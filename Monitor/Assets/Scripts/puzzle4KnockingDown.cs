@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PuzzleFour : MonoBehaviour {
+public class puzzle4KnockingDown : MonoBehaviour {
 
     bool puzzleFourStarted = false;
 

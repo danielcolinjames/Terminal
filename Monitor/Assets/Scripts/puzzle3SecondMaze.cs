@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PuzzleThree : MonoBehaviour {
+public class puzzle3SecondMaze : MonoBehaviour {
 
-    public GameObject[] redBoxes;
-    public GameObject[] blueBoxes;
-    public GameObject[] greenBoxes;
-    public GameObject[] yellowBoxes;
+    GameObject[] redBoxes;
+    GameObject[] blueBoxes;
+    GameObject[] greenBoxes;
+    GameObject[] yellowBoxes;
 
     // Global objects (accessed by other scripts)
-    public static Transform puzzleTwoFallingBox;
-    public static Transform key;
+
 
     // other stuff
-    public bool puzzleThreeStarted = false;
+    bool puzzleThreeStarted = false;
 
-    public float goalRange = 2f;
+    float goalRange = 2f;
 
     public static bool redDone = false;
     public static bool blueDone = false;
@@ -25,46 +24,33 @@ public class PuzzleThree : MonoBehaviour {
     // Warehouse items
 
     public static Renderer redPlane;
-    public float distanceFromRedGoal = 999;
+    float distanceFromRedGoal = 999;
     public Light redLight;
-    public int redCount = 0;
+    int redCount = 0;
     public Transform redGoal;
 
     public static Renderer bluePlane;
-    public float distanceFromBlueGoal = 999;
+    float distanceFromBlueGoal = 999;
     public Light blueLight;
-    public int blueCount = 0;
+    int blueCount = 0;
     public Transform blueGoal;
 
     public static Renderer greenPlane;
-    public float distanceFromGreenGoal = 999;
+    float distanceFromGreenGoal = 999;
     public Light greenLight;
-    public int greenCount = 0;
+    int greenCount = 0;
     public Transform greenGoal;
 
     public static Renderer yellowPlane;
-    public float distanceFromYellowGoal = 999;
+    float distanceFromYellowGoal = 999;
     public Light yellowLight;
-    public int yellowCount = 0;
+    int yellowCount = 0;
     public Transform yellowGoal;
 
-    // planes (on consoles)
     public Transform redPlaneProgress;
     public Transform bluePlaneProgress;
     public Transform greenPlaneProgress;
     public Transform yellowPlaneProgress;
-
-    public float distanceFromYellowX;
-    public float distanceFromYellowZ;
-
-    public float distanceFromRedX;
-    public float distanceFromRedZ;
-
-    public float distanceFromGreenX;
-    public float distanceFromGreenZ;
-
-    public float distanceFromBlueX;
-    public float distanceFromBlueZ;
 
     public float acceptableDistance = 0.5f;
 
@@ -76,10 +62,10 @@ public class PuzzleThree : MonoBehaviour {
 
     public Transform superMazeNavigator;
     
-    public float distanceFromSuperMazeRedGoal;
-    public float distanceFromSuperMazeBlueGoal;
-    public float distanceFromSuperMazeGreenGoal;
-    public float distanceFromSuperMazeYellowGoal;
+    float distanceFromSuperMazeRedGoal;
+    float distanceFromSuperMazeBlueGoal;
+    float distanceFromSuperMazeGreenGoal;
+    float distanceFromSuperMazeYellowGoal;
 
 
     // public Transform puzzleTwoSelector;
@@ -96,43 +82,10 @@ public class PuzzleThree : MonoBehaviour {
         greenPlane = GameObject.FindGameObjectWithTag("GreenPlane").GetComponent<Renderer>();
         yellowPlane = GameObject.FindGameObjectWithTag("YellowPlane").GetComponent<Renderer>();
 
-        redPlaneProgress = GameObject.FindGameObjectWithTag("RedPlane").transform;
-        bluePlaneProgress = GameObject.FindGameObjectWithTag("BluePlane").transform;
-        greenPlaneProgress = GameObject.FindGameObjectWithTag("GreenPlane").transform;
-        yellowPlaneProgress = GameObject.FindGameObjectWithTag("YellowPlane").transform;
-
         redPlane.enabled = false;
         bluePlane.enabled = false;
         greenPlane.enabled = false;
         yellowPlane.enabled = false;
-
-        // need to be in Awake() instead of Start() or else Unity has tons of errors
-        // puzzle two objects
-        puzzleTwoFallingBox = GameObject.FindGameObjectWithTag("FallingBox").transform;
-        key = GameObject.FindGameObjectWithTag("isKey").transform;
-
-        redGoal = GameObject.FindGameObjectWithTag("RedGoal").transform;
-        blueGoal = GameObject.FindGameObjectWithTag("BlueGoal").transform;
-        greenGoal = GameObject.FindGameObjectWithTag("GreenGoal").transform;
-        yellowGoal = GameObject.FindGameObjectWithTag("YellowGoal").transform;
-        
-        // public Transform flashlight = GameObject.FindGameObjectWithTag("Flashlight").GetComponent<Light>();
-
-        redLight = GameObject.FindGameObjectWithTag("RedLight").GetComponent<Light>();
-        blueLight = GameObject.FindGameObjectWithTag("BlueLight").GetComponent<Light>();
-        greenLight = GameObject.FindGameObjectWithTag("GreenLight").GetComponent<Light>();
-        yellowLight = GameObject.FindGameObjectWithTag("YellowLight").GetComponent<Light>();
-
-        // super maze stuff
-        superMazeRedGoal = GameObject.FindGameObjectWithTag("SuperMazeRedGoal").transform;
-        superMazeBlueGoal = GameObject.FindGameObjectWithTag("SuperMazeBlueGoal").transform;
-        superMazeGreenGoal = GameObject.FindGameObjectWithTag("SuperMazeGreenGoal").transform;
-        superMazeYellowGoal = GameObject.FindGameObjectWithTag("SuperMazeYellowGoal").transform;
-
-        superMazeNavigator = GameObject.FindGameObjectWithTag("SuperMazeNavigator").transform;
-
-
-        //puzzleTwoSelector = GameObject.FindGameObjectWithTag("PuzzleTwoSelector").transform;
     }
 
     // Use this for initialization
@@ -237,7 +190,7 @@ public class PuzzleThree : MonoBehaviour {
 
                     float superMazeGoalTolerance = 0.058f;
 
-                    if (distanceFromSuperMazeRedGoal < superMazeGoalTolerance) {
+                    if (!redDone && distanceFromSuperMazeRedGoal < superMazeGoalTolerance) {
                         redPlane.enabled = true;
                         redLight.enabled = true;
                         
@@ -247,7 +200,7 @@ public class PuzzleThree : MonoBehaviour {
                         redLight.enabled = false;
                     }
 
-                    if (distanceFromSuperMazeBlueGoal < superMazeGoalTolerance) {
+                    if (!blueDone && distanceFromSuperMazeBlueGoal < superMazeGoalTolerance) {
                         bluePlane.enabled = true;
                         blueLight.enabled = true;
 
@@ -257,7 +210,7 @@ public class PuzzleThree : MonoBehaviour {
                         blueLight.enabled = false;
                     }
 
-                    if (distanceFromSuperMazeGreenGoal < superMazeGoalTolerance) {
+                    if (!greenDone && distanceFromSuperMazeGreenGoal < superMazeGoalTolerance) {
                         greenPlane.enabled = true;
                         greenLight.enabled = true;
 
@@ -267,7 +220,7 @@ public class PuzzleThree : MonoBehaviour {
                         greenLight.enabled = false;
                     }
 
-                    if (distanceFromSuperMazeYellowGoal < superMazeGoalTolerance) {
+                    if (!yellowDone && distanceFromSuperMazeYellowGoal < superMazeGoalTolerance) {
                         yellowPlane.enabled = true;
                         yellowLight.enabled = true;
 

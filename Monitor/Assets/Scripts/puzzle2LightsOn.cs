@@ -2,14 +2,13 @@
 using System.Collections;
 using XInputDotNetPure;
 
-public class PuzzleTwo : MonoBehaviour {
+public class puzzle2LightsOn: MonoBehaviour {
 
     // puzzle two objects
     public Transform breaker;
     public Transform player;
 
     float distanceToBreaker = 100;
-
 
     public static bool breakerFlipped = false;
 
@@ -20,8 +19,6 @@ public class PuzzleTwo : MonoBehaviour {
     void Start () {
 
         // puzzle two objects
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        breaker = GameObject.FindGameObjectWithTag("Breaker").transform;
     }
 	
 	// Update is called once per frame
@@ -51,15 +48,15 @@ public class PuzzleTwo : MonoBehaviour {
 
                 Global.source.PlayOneShot(breakerFlippedAudio, Global.volumeMed);
 
-                foreach (GameObject mainLight in PuzzleOne.mainLights) {
+                foreach (GameObject mainLight in puzzle1IntroMaze.mainLights) {
                     mainLight.GetComponent<Light>().enabled = true;
                 }
 
-                foreach (GameObject backupLight in PuzzleOne.backupLights) {
+                foreach (GameObject backupLight in puzzle1IntroMaze.backupLights) {
                     backupLight.GetComponent<Light>().enabled = false;
                 }
 
-                PuzzleOne.screenLight.enabled = true;
+                puzzle1IntroMaze.screenLight.enabled = true;
 
                 Global.currentPuzzle = 3;
             }
