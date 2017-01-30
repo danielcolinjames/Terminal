@@ -3272,6 +3272,7 @@ Transform:
   - {fileID: 184343910}
   - {fileID: 967492941}
   - {fileID: 1816761776}
+  - {fileID: 1274893504}
   m_Father: {fileID: 1720962419}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4325,7 +4326,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 353781156}
-  - component: {fileID: 353781157}
   m_Layer: 0
   m_Name: Puzzle Four
   m_TagString: Untagged
@@ -4346,17 +4346,6 @@ Transform:
   m_Father: {fileID: 2057337227}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &353781157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 353781155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74bfaec11506d814fbae2a1e10cf2191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &359362975 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 8f472ead4b028fc4aa34fdcdb455556e, type: 3}
@@ -7683,11 +7672,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 624719578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19978c1260dae2242993a30bf4be065e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d574e9ac7970464e9c7bf1aaf08a757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breaker: {fileID: 0}
-  player: {fileID: 0}
+  breaker: {fileID: 2074262044}
+  player: {fileID: 1011241670}
   breakerFlippedAudio: {fileID: 8300000, guid: eae8d348c2569d74cbbc285b3aa1dac7, type: 3}
 --- !u!1001 &627041329
 Prefab:
@@ -8176,53 +8165,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 664618710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb613cc02a027114b9f1e1ccb3d49bad, type: 3}
+  m_Script: {fileID: 11500000, guid: 99857274a87962d48bca3d7cf4d8374e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redBoxes: []
-  blueBoxes: []
-  greenBoxes: []
-  yellowBoxes: []
-  puzzleThreeStarted: 0
-  goalRange: 2
-  distanceFromRedGoal: 999
-  redLight: {fileID: 0}
-  redCount: 0
-  redGoal: {fileID: 0}
-  distanceFromBlueGoal: 999
-  blueLight: {fileID: 0}
-  blueCount: 0
-  blueGoal: {fileID: 0}
-  distanceFromGreenGoal: 999
-  greenLight: {fileID: 0}
-  greenCount: 0
-  greenGoal: {fileID: 0}
-  distanceFromYellowGoal: 999
-  yellowLight: {fileID: 0}
-  yellowCount: 0
-  yellowGoal: {fileID: 0}
-  redPlaneProgress: {fileID: 0}
-  bluePlaneProgress: {fileID: 0}
-  greenPlaneProgress: {fileID: 0}
-  yellowPlaneProgress: {fileID: 0}
-  distanceFromYellowX: 0
-  distanceFromYellowZ: 0
-  distanceFromRedX: 0
-  distanceFromRedZ: 0
-  distanceFromGreenX: 0
-  distanceFromGreenZ: 0
-  distanceFromBlueX: 0
-  distanceFromBlueZ: 0
+  redLight: {fileID: 713489014}
+  redGoal: {fileID: 1325672123}
+  blueLight: {fileID: 1577446072}
+  blueGoal: {fileID: 478458384}
+  greenLight: {fileID: 1088308561}
+  greenGoal: {fileID: 2099925672}
+  yellowLight: {fileID: 266783553}
+  yellowGoal: {fileID: 1532318441}
+  redPlaneProgress: {fileID: 750499786}
+  bluePlaneProgress: {fileID: 1865006294}
+  greenPlaneProgress: {fileID: 2089925488}
+  yellowPlaneProgress: {fileID: 392635817}
   acceptableDistance: 0.5
-  superMazeRedGoal: {fileID: 0}
-  superMazeBlueGoal: {fileID: 0}
-  superMazeGreenGoal: {fileID: 0}
-  superMazeYellowGoal: {fileID: 0}
-  superMazeNavigator: {fileID: 0}
-  distanceFromSuperMazeRedGoal: 0
-  distanceFromSuperMazeBlueGoal: 0
-  distanceFromSuperMazeGreenGoal: 0
-  distanceFromSuperMazeYellowGoal: 0
+  superMazeRedGoal: {fileID: 1877003949}
+  superMazeBlueGoal: {fileID: 1041323038}
+  superMazeGreenGoal: {fileID: 1993617546}
+  superMazeYellowGoal: {fileID: 1219566203}
+  superMazeNavigator: {fileID: 792886241}
 --- !u!1 &665907087
 GameObject:
   m_ObjectHideFlags: 0
@@ -11977,6 +11940,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 0f5ca5c82ed519d4abaabe71e7b2ceb4, type: 3}
   m_PrefabInternal: {fileID: 1003428371}
+--- !u!4 &1011241670 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+  m_PrefabInternal: {fileID: 1586459781}
 --- !u!1 &1011372331
 GameObject:
   m_ObjectHideFlags: 0
@@ -13331,7 +13298,7 @@ GameObject:
   - component: {fileID: 1135992542}
   m_Layer: 0
   m_Name: PuzzleOneCube
-  m_TagString: PuzzleOneCube
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14546,6 +14513,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cbf603a1f9aafe54b9df790356a71546, type: 3}
   m_IsPrefabParent: 0
+--- !u!4 &1274893504 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+  m_PrefabInternal: {fileID: 1950361442}
 --- !u!1 &1278150759
 GameObject:
   m_ObjectHideFlags: 0
@@ -17753,6 +17724,10 @@ Prefab:
     - target: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: orthographic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -22092,6 +22067,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1950361442
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 240276746}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0029152853
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.059
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 1e823f3788cbf9a4c8fdf6e96e8957b9, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &1974802227
 GameObject:
   m_ObjectHideFlags: 0
@@ -22782,12 +22803,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2030747944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8762b42bb7b2ff043ac27f56742a63c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e277afe09783c741b93bc9ded1ae1bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleOneComplete: {fileID: 0}
+  puzzleOneBox: {fileID: 1135992541}
+  puzzleOneComplete: {fileID: 916814092}
+  fallingBox: {fileID: 1814727229}
+  key: {fileID: 589447280}
   lightsOff: {fileID: 8300000, guid: 274228f00ea1fd04ca32913cd9a3a7dd, type: 3}
-  breakerSwitch: {fileID: 0}
 --- !u!1 &2054222926
 GameObject:
   m_ObjectHideFlags: 0
