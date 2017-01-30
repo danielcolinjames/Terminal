@@ -23,7 +23,7 @@ public class CubeRotation : MonoBehaviour {
         float speed = 5f;
         float step = speed * Time.deltaTime;
 
-        if (Global.currentPuzzle == 5 && rotatingPuzzleStarted == false) {
+        if (Global.currentPuzzle == 6 && rotatingPuzzleStarted == false) {
             Vector3 aboveRotatingCube = new Vector3(rotatingCube.position.x, rotatingCube.position.y + 10f, rotatingCube.position.z);
 
             Global.monitorCamera.position = Vector3.MoveTowards(Global.monitorCamera.position, aboveRotatingCube, step);
@@ -36,7 +36,7 @@ public class CubeRotation : MonoBehaviour {
             }
         }
 
-        if (Global.currentPuzzle == 5 && rotatingPuzzleStarted) {
+        if (Global.currentPuzzle == 6 && rotatingPuzzleStarted) {
             if (MonitorMode.monitorMode == true) {
                 // up and down
                 //rotatingCube.Rotate(Vector3.back * Global.state.ThumbSticks.Left.Y * movementSpeed);
