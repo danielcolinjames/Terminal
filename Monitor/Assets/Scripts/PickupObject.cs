@@ -4,8 +4,8 @@ using XInputDotNetPure;
 
 public class PickupObject : MonoBehaviour {
     GameObject mainCamera;
-    bool carrying;
-    GameObject carriedObject;
+    public static bool carrying;
+    public static GameObject carriedObject;
     float distance = 1.75f; //SAFE DISTANCE AWAY FROM FACE
     float pickupDistance = 2f; // how far away you can pick stuff up from
     public float throwStrength = 6;
@@ -101,7 +101,7 @@ public class PickupObject : MonoBehaviour {
         }
     }
 
-    public void dropObject() {
+    public static void dropObject() {
         carrying = false;
 
         Shader standard;
@@ -112,7 +112,6 @@ public class PickupObject : MonoBehaviour {
         carriedObject.GetComponent<Rigidbody>().useGravity = true;
         carriedObject.GetComponent<Rigidbody>().isKinematic = false;
         carriedObject = null;
-
     }
 
     void throwObject() {

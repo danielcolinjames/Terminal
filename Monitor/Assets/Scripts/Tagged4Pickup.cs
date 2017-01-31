@@ -2,14 +2,9 @@
 using System.Collections;
 
 public class Tagged4Pickup : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    //for collision detection
+    void OnCollisionEnter(Collision col) {
+        if (col.gameObject.tag == "Wall")
+            PickupObject.dropObject();
+    }
 }

@@ -14,7 +14,7 @@ public class puzzle3SecondMaze : MonoBehaviour {
     // other stuff
     bool puzzleThreeStarted = false;
 
-    float goalRange = 2f;
+    float goalRange = 0.9f;
 
     public static bool redDone = false;
     public static bool blueDone = false;
@@ -116,13 +116,30 @@ public class puzzle3SecondMaze : MonoBehaviour {
         }
         
         else if (Global.currentPuzzle == 4 || Global.currentPuzzle == 5 || Global.currentPuzzle == 6 || Global.currentPuzzle == 7) {
+            float speed = 2.5f;
+            float step = speed * Time.deltaTime;
+            Vector3 behindRedGoal = new Vector3(redGoal.position.x - 15f, redGoal.position.y, redGoal.position.z);
+            float distance;
 
             foreach (GameObject redBox in redBoxes) {
                 Transform redBoxT = redBox.transform;
                 distanceFromRedGoal = Vector3.Distance(redBoxT.position, redGoal.position);
+
                 if (distanceFromRedGoal < goalRange && redLight.enabled == true && redBox.activeSelf == true) {
-                    redCount++;
-                    redBox.SetActive(false);
+
+                    if (PickupObject.carrying == true) {
+                        PickupObject.dropObject();
+                    }
+
+                    distance = Vector3.Distance(redBox.GetComponent<Transform>().position, behindRedGoal);
+
+                    // pan camera across
+                    redBox.GetComponent<Transform>().position = Vector3.MoveTowards(redBox.GetComponent<Transform>().position, behindRedGoal, step);
+                    
+                    if (distance == 0) {
+                        redBox.SetActive(false);
+                        redCount++;
+                    }
                 }
             }
 
