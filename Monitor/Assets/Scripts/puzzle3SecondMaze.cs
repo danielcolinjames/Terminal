@@ -67,6 +67,26 @@ public class puzzle3SecondMaze : MonoBehaviour {
     float distanceFromSuperMazeGreenGoal;
     float distanceFromSuperMazeYellowGoal;
 
+    // for the box into wall animation
+    bool[] redInPosition;
+    bool[] blueInPosition;
+    bool[] greenInPosition;
+    bool[] yellowInPosition;
+
+    // distance until it's reached the back of the tunnel thing in the wall
+    float redDistance;
+    float blueDistance;
+    float greenDistance;
+    float yellowDistance;
+
+    // how fast to move the cubes into the wall tunnels
+    float speed = 2.5f;
+    float step;
+
+    Vector3 behindRedGoal;
+    Vector3 behindBlueGoal;
+    Vector3 behindGreenGoal;
+    Vector3 behindYellowGoal;
 
     // public Transform puzzleTwoSelector;
 
@@ -90,7 +110,20 @@ public class puzzle3SecondMaze : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        
+        // to know if the current box should be moving toward the end of the tunnel or not
+        redInPosition = new bool[redBoxes.Length];
+        blueInPosition = new bool[blueBoxes.Length];
+        greenInPosition = new bool[greenBoxes.Length];
+        yellowInPosition = new bool[yellowBoxes.Length];
 
+        behindRedGoal = new Vector3(redGoal.position.x - 4f, redGoal.position.y, redGoal.position.z);
+        behindBlueGoal = new Vector3(blueGoal.position.x + 4f, blueGoal.position.y, blueGoal.position.z);
+        behindGreenGoal = new Vector3(greenGoal.position.x - 4f, greenGoal.position.y, greenGoal.position.z);
+        behindYellowGoal = new Vector3(yellowGoal.position.x + 4f, yellowGoal.position.y, yellowGoal.position.z);
+
+        // how fast to move the cubes into the wall tunnels
+        step = speed * Time.deltaTime;
     }
 
     // Update is called once per frame
@@ -113,62 +146,132 @@ public class puzzle3SecondMaze : MonoBehaviour {
                 // otherwise the player can move the puzzleTwoSelector around before puzzle one is finished
                 puzzleThreeStarted = true;
             }
-        }
-        
-        else if (Global.currentPuzzle == 4 || Global.currentPuzzle == 5 || Global.currentPuzzle == 6 || Global.currentPuzzle == 7) {
-            float speed = 2.5f;
-            float step = speed * Time.deltaTime;
-            Vector3 behindRedGoal = new Vector3(redGoal.position.x - 15f, redGoal.position.y, redGoal.position.z);
-            float distance;
 
-            foreach (GameObject redBox in redBoxes) {
+        } else if (Global.currentPuzzle == 4 || Global.currentPuzzle == 5 || Global.currentPuzzle == 6 || Global.currentPuzzle == 7) {
+            
+            // RED
+            for (int i = 0; i < redBoxes.Length; i++) {
+                GameObject redBox = redBoxes[i];
+
                 Transform redBoxT = redBox.transform;
                 distanceFromRedGoal = Vector3.Distance(redBoxT.position, redGoal.position);
+                
+                // has the box been placed over the goal?
+                if (redInPosition[i] == false && distanceFromRedGoal < goalRange && redLight.enabled == true && redBox.activeSelf == true) {
+                    // set this to true, so that on the next iteration, the next if statement will be entered, and this one will not
+                    redInPosition[i] = true;
 
-                if (distanceFromRedGoal < goalRange && redLight.enabled == true && redBox.activeSelf == true) {
-
+                    // drop the object if the player is carrying it
                     if (PickupObject.carrying == true) {
                         PickupObject.dropObject();
                     }
+                }
 
-                    distance = Vector3.Distance(redBox.GetComponent<Transform>().position, behindRedGoal);
-
-                    // pan camera across
-                    redBox.GetComponent<Transform>().position = Vector3.MoveTowards(redBox.GetComponent<Transform>().position, behindRedGoal, step);
+                // if this box has been placed over the goal
+                if (redInPosition[i] == true) {
                     
-                    if (distance == 0) {
+                    // move box toward the end of the tunnel
+                    redBox.GetComponent<Transform>().position = Vector3.MoveTowards(redBox.GetComponent<Transform>().position, behindRedGoal, step);
+
+                    // see how far it is from reaching the end of the tunnel
+                    redDistance = Vector3.Distance(redBox.GetComponent<Transform>().position, behindRedGoal);
+
+                    if (redDistance < 0.5) {
+                        // disable the cube
                         redBox.SetActive(false);
+                        // have to set it to false or else it'll enter this if statement for infiniti and keep incrementing redCount
+                        redInPosition[i] = false;
+                        // update redCount so we know how many have been placed in the console
                         redCount++;
                     }
                 }
             }
 
-            foreach (GameObject blueBox in blueBoxes) {
+            // BLUE
+            for (int i = 0; i < blueBoxes.Length; i++) {
+                GameObject blueBox = blueBoxes[i];
+
                 Transform blueBoxT = blueBox.transform;
                 distanceFromBlueGoal = Vector3.Distance(blueBoxT.position, blueGoal.position);
-                if (distanceFromBlueGoal < goalRange && blueLight.enabled == true && blueBox.activeSelf == true) {
-                    blueCount++;
-                    blueBox.SetActive(false);
+
+                if (blueInPosition[i] == false && distanceFromBlueGoal < goalRange && blueLight.enabled == true && blueBox.activeSelf == true) {
+                    blueInPosition[i] = true;
+                    if (PickupObject.carrying == true) {
+                        PickupObject.dropObject();
+                    }
+                }
+
+                if (blueInPosition[i] == true) {
+
+                    blueBox.GetComponent<Transform>().position = Vector3.MoveTowards(blueBox.GetComponent<Transform>().position, behindBlueGoal, step);
+
+                    blueDistance = Vector3.Distance(blueBox.GetComponent<Transform>().position, behindBlueGoal);
+
+                    if (blueDistance < 0.5) {
+                        blueBox.SetActive(false);
+                        blueInPosition[i] = false;
+                        blueCount++;
+                    }
                 }
             }
 
-            foreach (GameObject greenBox in greenBoxes) {
+            // GREEN
+            for (int i = 0; i < greenBoxes.Length; i++) {
+                GameObject greenBox = greenBoxes[i];
+
                 Transform greenBoxT = greenBox.transform;
                 distanceFromGreenGoal = Vector3.Distance(greenBoxT.position, greenGoal.position);
-                if (distanceFromGreenGoal < goalRange && greenLight.enabled == true && greenBox.activeSelf == true) {
-                    greenCount++;
-                    greenBox.SetActive(false);
+
+                if (greenInPosition[i] == false && distanceFromGreenGoal < goalRange && greenLight.enabled == true && greenBox.activeSelf == true) {
+                    greenInPosition[i] = true;
+
+                    if (PickupObject.carrying == true) {
+                        PickupObject.dropObject();
+                    }
+                }
+
+                if (greenInPosition[i] == true) {
+
+                    greenBox.GetComponent<Transform>().position = Vector3.MoveTowards(greenBox.GetComponent<Transform>().position, behindGreenGoal, step);
+
+                    greenDistance = Vector3.Distance(greenBox.GetComponent<Transform>().position, behindGreenGoal);
+
+                    if (greenDistance < 0.5) {
+                        greenBox.SetActive(false);
+                        greenInPosition[i] = false;
+                        greenCount++;
+                    }
                 }
             }
 
-            foreach (GameObject yellowBox in yellowBoxes) {
+            // YELLOW
+            for (int i = 0; i < yellowBoxes.Length; i++) {
+                GameObject yellowBox = yellowBoxes[i];
+
                 Transform yellowBoxT = yellowBox.transform;
                 distanceFromYellowGoal = Vector3.Distance(yellowBoxT.position, yellowGoal.position);
-                if (distanceFromYellowGoal < goalRange && yellowLight.enabled == true && yellowBox.activeSelf == true) {
-                    yellowCount++;
-                    yellowBox.SetActive(false);
+
+                if (yellowInPosition[i] == false && distanceFromYellowGoal < goalRange && yellowLight.enabled == true && yellowBox.activeSelf == true) {
+                    yellowInPosition[i] = true;
+                    if (PickupObject.carrying == true) {
+                        PickupObject.dropObject();
+                    }
+                }
+
+                if (yellowInPosition[i] == true) {
+
+                    yellowBox.GetComponent<Transform>().position = Vector3.MoveTowards(yellowBox.GetComponent<Transform>().position, behindYellowGoal, step);
+
+                    yellowDistance = Vector3.Distance(yellowBox.GetComponent<Transform>().position, behindYellowGoal);
+
+                    if (yellowDistance < 0.5) {
+                        yellowBox.SetActive(false);
+                        yellowInPosition[i] = false;
+                        yellowCount++;
+                    }
                 }
             }
+            // end of yellow
         }
     }
 
@@ -211,7 +314,7 @@ public class puzzle3SecondMaze : MonoBehaviour {
                         redPlane.enabled = true;
                         redLight.enabled = true;
                         
-                        Global.currentPuzzle = 5;
+                        Global.currentPuzzle = 4;
                     } else {
                         redPlane.enabled = false;
                         redLight.enabled = false;
@@ -289,7 +392,6 @@ public class puzzle3SecondMaze : MonoBehaviour {
             if (yellowCount == yellowBoxes.Length) yellowDone = true;
 
             if (redDone) {
-                Global.currentPuzzle = 5;
                 redPlane.enabled = false;
                 redLight.enabled = false;
             }
