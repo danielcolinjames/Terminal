@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class puzzle5ConveyerBelt : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class puzzle5ConveyerBelt : MonoBehaviour {
     public Transform goal4;
 
     public Canvas monitorCanvas;
+    public Text monitorText;
 
     bool puzzle5Started = false;
 
@@ -29,15 +31,9 @@ public class puzzle5ConveyerBelt : MonoBehaviour {
 
         if (Global.currentPuzzle == 5 && puzzle5Started == false) {
 
-            //print("PUZZLE 5 BABY");
-
-            // move camera across from puzzle one
             float distance = Vector3.Distance(Global.monitorCamera.position, puzzle5CameraPosition);
 
-            // pan camera across
             Global.monitorCamera.position = Vector3.MoveTowards(Global.monitorCamera.position, puzzle5CameraPosition, step);
-
-            //print(step);
 
             if (distance == 0) {
                 // setting a flag when the camera has finished panning over
@@ -48,7 +44,12 @@ public class puzzle5ConveyerBelt : MonoBehaviour {
 
 
         if (Global.currentPuzzle == 5 && puzzle5Started) {
+            // turn on the text on the screen
             monitorCanvas.enabled = true;
+
+            monitorText.text = "TESTING WORDS WORDS WORDS CITIES CITIES CITIES";
+
+            
         }
 	}
 }

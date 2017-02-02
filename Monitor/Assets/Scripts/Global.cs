@@ -5,7 +5,7 @@ using XInputDotNetPure;
 public class Global : MonoBehaviour {
     public static float lockPos = 0;
 
-    public static int currentPuzzle = 1;
+    public static int currentPuzzle = 5;
     public static GamePadState state;
     public static GamePadState prevState;
 
