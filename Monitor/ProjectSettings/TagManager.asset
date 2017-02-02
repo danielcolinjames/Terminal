@@ -50,6 +50,10 @@ TagManager:
   - SuperMazeYellowGoal
   - SubPuzzleOneMoverSmall
   - SubPuzzleOneMoverBig
+  - s1cube
+  - s2cube
+  - s3cube
+  - s4cube
   layers:
   - Default
   - TransparentFX

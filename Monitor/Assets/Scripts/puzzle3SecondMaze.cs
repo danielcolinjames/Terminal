@@ -83,10 +83,10 @@ public class puzzle3SecondMaze : MonoBehaviour {
     float speed = 2.5f;
     float step;
 
-    Vector3 behindRedGoal;
-    Vector3 behindBlueGoal;
-    Vector3 behindGreenGoal;
-    Vector3 behindYellowGoal;
+    public Transform behindRedGoal;
+    public Transform behindBlueGoal;
+    public Transform behindGreenGoal;
+    public Transform behindYellowGoal;
 
     // public Transform puzzleTwoSelector;
 
@@ -117,10 +117,10 @@ public class puzzle3SecondMaze : MonoBehaviour {
         greenInPosition = new bool[greenBoxes.Length];
         yellowInPosition = new bool[yellowBoxes.Length];
 
-        behindRedGoal = new Vector3(redGoal.position.x - 4f, redGoal.position.y, redGoal.position.z);
-        behindBlueGoal = new Vector3(blueGoal.position.x + 4f, blueGoal.position.y, blueGoal.position.z);
-        behindGreenGoal = new Vector3(greenGoal.position.x - 4f, greenGoal.position.y, greenGoal.position.z);
-        behindYellowGoal = new Vector3(yellowGoal.position.x + 4f, yellowGoal.position.y, yellowGoal.position.z);
+        //behindRedGoal = new Vector3(redGoal.position.x - 4f, redGoal.position.y, redGoal.position.z);
+        //behindBlueGoal = new Vector3(blueGoal.position.x + 4f, blueGoal.position.y, blueGoal.position.z);
+        //behindGreenGoal = new Vector3(greenGoal.position.x - 4f, greenGoal.position.y, greenGoal.position.z);
+        //behindYellowGoal = new Vector3(yellowGoal.position.x + 4f, yellowGoal.position.y, yellowGoal.position.z);
 
         // how fast to move the cubes into the wall tunnels
         step = speed * Time.deltaTime;
@@ -171,10 +171,10 @@ public class puzzle3SecondMaze : MonoBehaviour {
                 if (redInPosition[i] == true) {
                     
                     // move box toward the end of the tunnel
-                    redBox.GetComponent<Transform>().position = Vector3.MoveTowards(redBox.GetComponent<Transform>().position, behindRedGoal, step);
+                    redBox.GetComponent<Transform>().position = Vector3.MoveTowards(redBox.GetComponent<Transform>().position, behindRedGoal.position, step);
 
                     // see how far it is from reaching the end of the tunnel
-                    redDistance = Vector3.Distance(redBox.GetComponent<Transform>().position, behindRedGoal);
+                    redDistance = Vector3.Distance(redBox.GetComponent<Transform>().position, behindRedGoal.position);
 
                     if (redDistance < 0.5) {
                         // disable the cube
@@ -203,9 +203,9 @@ public class puzzle3SecondMaze : MonoBehaviour {
 
                 if (blueInPosition[i] == true) {
 
-                    blueBox.GetComponent<Transform>().position = Vector3.MoveTowards(blueBox.GetComponent<Transform>().position, behindBlueGoal, step);
+                    blueBox.GetComponent<Transform>().position = Vector3.MoveTowards(blueBox.GetComponent<Transform>().position, behindBlueGoal.position, step);
 
-                    blueDistance = Vector3.Distance(blueBox.GetComponent<Transform>().position, behindBlueGoal);
+                    blueDistance = Vector3.Distance(blueBox.GetComponent<Transform>().position, behindBlueGoal.position);
 
                     if (blueDistance < 0.5) {
                         blueBox.SetActive(false);
@@ -232,9 +232,9 @@ public class puzzle3SecondMaze : MonoBehaviour {
 
                 if (greenInPosition[i] == true) {
 
-                    greenBox.GetComponent<Transform>().position = Vector3.MoveTowards(greenBox.GetComponent<Transform>().position, behindGreenGoal, step);
+                    greenBox.GetComponent<Transform>().position = Vector3.MoveTowards(greenBox.GetComponent<Transform>().position, behindGreenGoal.position, step);
 
-                    greenDistance = Vector3.Distance(greenBox.GetComponent<Transform>().position, behindGreenGoal);
+                    greenDistance = Vector3.Distance(greenBox.GetComponent<Transform>().position, behindGreenGoal.position);
 
                     if (greenDistance < 0.5) {
                         greenBox.SetActive(false);
@@ -260,9 +260,9 @@ public class puzzle3SecondMaze : MonoBehaviour {
 
                 if (yellowInPosition[i] == true) {
 
-                    yellowBox.GetComponent<Transform>().position = Vector3.MoveTowards(yellowBox.GetComponent<Transform>().position, behindYellowGoal, step);
+                    yellowBox.GetComponent<Transform>().position = Vector3.MoveTowards(yellowBox.GetComponent<Transform>().position, behindYellowGoal.position, step);
 
-                    yellowDistance = Vector3.Distance(yellowBox.GetComponent<Transform>().position, behindYellowGoal);
+                    yellowDistance = Vector3.Distance(yellowBox.GetComponent<Transform>().position, behindYellowGoal.position);
 
                     if (yellowDistance < 0.5) {
                         yellowBox.SetActive(false);
