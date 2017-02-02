@@ -17,10 +17,10 @@ public class puzzle5ConveyerBelt : MonoBehaviour {
     public Transform s1c3;
     public Transform s1c4;
 
-    //public Transform s2c1;
-    //public Transform s2c2;
-    //public Transform s2c3;
-    //public Transform s2c4;
+    public Transform s2c1;
+    public Transform s2c2;
+    public Transform s2c3;
+    public Transform s2c4;
 
     //public Transform s3c1;
     //public Transform s3c2;
@@ -57,6 +57,7 @@ public class puzzle5ConveyerBelt : MonoBehaviour {
     public Transform largeGoal;
 
     bool c1complete = false;
+    bool c2complete = false;
 
     GameObject[] s1cubes;
     GameObject[] s2cubes;
@@ -154,6 +155,44 @@ public class puzzle5ConveyerBelt : MonoBehaviour {
                 }
                 checkPlacementOfBoxes();
             }
+
+            if (c2complete == true)
+            {
+                moveBoxesIntoWall();
+            }
+
+            if (currentStage == 2)
+            {
+                monitorText.text = "PACKAGES NEED TO BE DELIVERED";
+
+                s2c1.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                s2c2.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                s2c3.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                s2c4.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
+                if (cubesReleased == false)
+                {
+
+                    s2c1.position = behindRedGoal.position;
+                    s2c1.position = s1c1.transform.position + new Vector3(1f, 0f, 0);
+                    s2c1.GetComponent<Rigidbody>().velocity = new Vector3(14f, 0.25f, 0);
+
+                    s2c2.position = behindGreenGoal.position;
+                    s2c2.position = s1c2.transform.position + new Vector3(1f, 0f, 0);
+                    s2c2.GetComponent<Rigidbody>().velocity = new Vector3(14f, 0.25f, 0);
+
+                    s2c3.position = behindBlueGoal.position;
+                    s2c3.position = s1c3.transform.position + new Vector3(-1f, 0f, 0);
+                    s2c3.GetComponent<Rigidbody>().velocity = new Vector3(-14f, 0.25f, 0);
+
+                    s2c4.position = behindYellowGoal.position;
+                    s2c4.position = s1c4.transform.position + new Vector3(-1f, 0f, 0);
+                    s2c4.GetComponent<Rigidbody>().velocity = new Vector3(-14f, 0.25f, 0);
+                
+                    cubesReleased = true;
+                }
+                checkPlacementOfBoxes();
+            }
         }
 	}
 
@@ -165,19 +204,21 @@ public class puzzle5ConveyerBelt : MonoBehaviour {
         float c3d = 100;
         float c4d = 100;
 
-        if(currentStage == 1) {
+        if(currentStage == 1)
+        {
             c1d = Vector3.Distance(s1c1.position, goal1.position);
             c2d = Vector3.Distance(s1c2.position, goal2.position);
             c3d = Vector3.Distance(s1c3.position, goal3.position);
             c4d = Vector3.Distance(s1c4.position, goal4.position);
         }
 
-        //else if (currentStage == 2) {
-        //    c1d = Vector3.Distance(s2c1.position, goal1.position);
-        //    c2d = Vector3.Distance(s2c2.position, goal2.position);
-        //    c3d = Vector3.Distance(s2c3.position, goal3.position);
-        //    c4d = Vector3.Distance(s2c4.position, goal4.position);
-        //}
+        else if (currentStage == 2)
+        {
+            c1d = Vector3.Distance(s2c1.position, goal1.position);
+            c2d = Vector3.Distance(s2c2.position, goal2.position);
+            c3d = Vector3.Distance(s2c3.position, goal3.position);
+            c4d = Vector3.Distance(s2c4.position, goal4.position);
+        }
         
         //else if (currentStage == 3) {
         //    c1d = Vector3.Distance(s3c1.position, goal1.position);
