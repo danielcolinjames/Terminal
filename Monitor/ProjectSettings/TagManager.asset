@@ -54,6 +54,7 @@ TagManager:
   - s2cube
   - s3cube
   - s4cube
+  - s5cube
   layers:
   - Default
   - TransparentFX
