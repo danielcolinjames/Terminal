@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: dd2dbedc89170d440b4e5ba678067a90
+timeCreated: 1486089783
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Terminal
+  fontNames:
+  - Terminal
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

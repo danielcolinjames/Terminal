@@ -115,7 +115,7 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
     public Transform puzzle5Plane;
     Vector3 puzzle5CameraPosition;
 
-
+    bool textWritingStarted = false;
 
     bool cubesReleased = false;
 
@@ -167,7 +167,16 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
             // set up stage 1
             if (currentStage == 1) {
 
-                monitorText.text = "PACKAGES NEED TO BE DELIVERED";
+                if (textWritingStarted == false) {
+                    textWritingStarted = true;
+                    string message = "> Packages need to be delivered\n> \n" +
+                        "> YELLOW\n" +
+                        "> RED\n" +
+                        "> BLUE\n" +
+                        "> GREEN\n";
+
+                    StartCoroutine(typeText(message));
+                }
 
                 s1c1.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s1c2.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -202,7 +211,7 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 }
 
             } else if (currentStage == 2) {
-                monitorText.text = "PACKAGES NEED TO BE DELIVERED";
+                
 
                 s2c1.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s2c2.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -411,4 +420,13 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
             conveyorSpotlight.color = Color.white;
         }
     }
+
+    IEnumerator typeText(string outputText) {
+        float letterPause = 0.05f;
+        foreach (char letter in outputText.ToCharArray()) {
+            monitorText.text += letter;
+            // play blip noise
+            yield return new WaitForSeconds(letterPause);
+        }
+    } 
 }
