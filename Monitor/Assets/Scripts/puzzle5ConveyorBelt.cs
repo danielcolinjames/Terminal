@@ -411,7 +411,9 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 }
 
                 if (finishedCubeCount == 4) {
-                    // clear everything
+                    // clear everything ONCE, at the end of stage 1
+                    textWritingStarted = false;
+                    // so that it won't keep entering an if statement above
                     s1complete = false;
                     cubesReleased = false;
                     currentStage = 2;
@@ -443,6 +445,7 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 }
 
                 if (finishedCubeCount == 4) {
+                    textWritingStarted = false;
                     s2complete = false;
                     cubesReleased = false;
                     currentStage = 3;
