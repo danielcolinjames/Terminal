@@ -22,10 +22,10 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
     public Transform s2c3;
     public Transform s2c4;
 
-    //public Transform s3c1;
-    //public Transform s3c2;
-    //public Transform s3c3;
-    //public Transform s3c4;
+    public Transform s3c1;
+    public Transform s3c2;
+    public Transform s3c3;
+    public Transform s3c4;
 
     //public Transform s4c1;
     //public Transform s4c2;
@@ -169,13 +169,16 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
                 if (textWritingStarted == false) {
                     textWritingStarted = true;
-                    string message = "> Packages need to be delivered\n> \n" +
+                    string message1 = "> Packages require delivery \n" +
+                        "> hue sequence incoming... \n" +
+                        "> \n" +
                         "> YELLOW\n" +
                         "> RED\n" +
                         "> BLUE\n" +
                         "> GREEN\n";
 
-                    StartCoroutine(typeText(message));
+                    StartCoroutine(typeText(message1));
+
                 }
 
                 s1c1.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -206,14 +209,30 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 }
                 checkPlacementOfBoxes();
 
-                if (s1complete == true) {
+                if (s1complete == true)
+                {
                     moveBoxesIntoWall();
+                    textWritingStarted = false;
                 }
 
             } else if (currentStage == 2) {
-                
 
-                s2c1.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                textWritingStarted = false;
+                if (textWritingStarted == false)
+                {
+                    textWritingStarted = true;
+                    string message2 = "> Packages require delivery \n" +
+                        "> location sequence incoming... \n" +
+                        "> \n" +
+                        "> TORONTO\n" +
+                        "> BERLIN\n" +
+                        "> NEW_YORK\n" +
+                        "> SYDNEY\n";
+
+                    StartCoroutine(typeText(message2));
+                }
+
+                    s2c1.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s2c2.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s2c3.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s2c4.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -243,6 +262,47 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
                 if (s2complete == true) {
                     moveBoxesIntoWall();
+                    
+                }
+            }
+
+            else if (currentStage == 3)
+            {
+                textWritingStarted = false;
+
+                s3c1.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                s3c2.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                s3c3.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                s3c4.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
+                textWritingStarted = false;
+                if (cubesReleased == false)
+                {
+
+                    s3c1.position = behindRedGoal.position;
+                    s3c1.position = s3c1.transform.position + new Vector3(1f, 0f, 0);
+                    s3c1.GetComponent<Rigidbody>().velocity = new Vector3(14f, 0.25f, 0);
+
+                    s3c2.position = behindGreenGoal.position;
+                    s3c2.position = s3c2.transform.position + new Vector3(1f, 0f, 0);
+                    s3c2.GetComponent<Rigidbody>().velocity = new Vector3(14f, 0.25f, 0);
+
+                    s3c3.position = behindBlueGoal.position;
+                    s3c3.position = s3c3.transform.position + new Vector3(-1f, 0f, 0);
+                    s3c3.GetComponent<Rigidbody>().velocity = new Vector3(-14f, 0.25f, 0);
+
+                    s3c4.position = behindYellowGoal.position;
+                    s3c4.position = s3c4.transform.position + new Vector3(-1f, 0f, 0);
+                    s3c4.GetComponent<Rigidbody>().velocity = new Vector3(-14f, 0.25f, 0);
+
+                    cubesReleased = true;
+                }
+                checkPlacementOfBoxes();
+
+                if (s3complete == true)
+                {
+                    moveBoxesIntoWall();
+                    
                 }
             }
         }
@@ -270,12 +330,12 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
             c4d = Vector3.Distance(s2c4.position, goal4.position);
         }
 
-        //else if (currentStage == 3) {
-        //    c1d = Vector3.Distance(s3c1.position, goal1.position);
-        //    c2d = Vector3.Distance(s3c2.position, goal2.position);
-        //    c3d = Vector3.Distance(s3c3.position, goal3.position);
-        //    c4d = Vector3.Distance(s3c4.position, goal4.position);
-        //}
+        else if (currentStage == 3) {
+            c1d = Vector3.Distance(s3c1.position, goal1.position);
+            c2d = Vector3.Distance(s3c2.position, goal2.position);
+            c3d = Vector3.Distance(s3c3.position, goal3.position);
+            c4d = Vector3.Distance(s3c4.position, goal4.position);
+        }
 
         
 
