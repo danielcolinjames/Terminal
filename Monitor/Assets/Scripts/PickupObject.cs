@@ -6,11 +6,15 @@ public class PickupObject : MonoBehaviour {
     GameObject mainCamera;
     public static bool carrying;
     public static GameObject carriedObject;
-    float distance = 1.75f; //SAFE DISTANCE AWAY FROM FACE
+    public static Color ourColor;
     float pickupDistance = 2f; // how far away you can pick stuff up from
+    float holdDistance = 1f;
     public float throwStrength = 6;
+
+    public static float dropObjectStrength = 1;
     // Use this for initialization
     public static bool hasKey;
+    public bool hitWall;
 
     // audio stuff
     public AudioClip pickupSound;
@@ -32,7 +36,7 @@ public class PickupObject : MonoBehaviour {
     }
 
     void carry(GameObject o) {
-        o.transform.position = mainCamera.transform.position + mainCamera.transform.forward * distance;
+        o.transform.position = mainCamera.transform.position + mainCamera.transform.forward * holdDistance;
     }
 
     void pickup() {
@@ -45,7 +49,6 @@ public class PickupObject : MonoBehaviour {
             if (Physics.Raycast(ray, out hit)) {
                 Tagged4Pickup p = hit.collider.GetComponent<Tagged4Pickup>();
                 if (p != null && (Physics.Raycast(ray, out hit, pickupDistance))) {
-                    //Debug.DrawLine (ray.origin, hit.point);
                     carrying = true;
                     carriedObject = p.gameObject;
 
@@ -59,9 +62,10 @@ public class PickupObject : MonoBehaviour {
                     ourColor.a = 0.5f;
                     carriedObject.GetComponent<Renderer>().material.color = ourColor;
 
-                    //Door Key stuff
-                    carriedObject.GetComponent<Rigidbody>().isKinematic = true;
+                    carriedObject.GetComponent<Rigidbody>().freezeRotation = true;
 
+
+                    //Door Key stuff
                     if (carriedObject.name == "DoorKey" || carriedObject.tag == "isKey") {
                         hasKey = true;
 
@@ -102,16 +106,19 @@ public class PickupObject : MonoBehaviour {
     }
 
     public static void dropObject() {
+        dropObjectNorm(carriedObject);
         carrying = false;
 
         Shader standard;
         standard = Shader.Find("Standard");
         carriedObject.GetComponent<Renderer>().material.shader = standard;
-        Color ourColor = carriedObject.GetComponent<Renderer>().material.color;
+        ourColor = carriedObject.GetComponent<Renderer>().material.color;
 
         carriedObject.GetComponent<Rigidbody>().useGravity = true;
         carriedObject.GetComponent<Rigidbody>().isKinematic = false;
+        carriedObject.GetComponent<Rigidbody>().freezeRotation = false;
         carriedObject = null;
+
     }
 
     void throwObject() {
@@ -119,7 +126,24 @@ public class PickupObject : MonoBehaviour {
             carriedObject.transform.position = transform.position + Camera.main.transform.forward * 2;
             Rigidbody rb = carriedObject.GetComponent<Rigidbody>();
             rb.velocity = Camera.main.transform.forward * throwStrength;
-            dropObject();
+
+            carrying = false;
+            Shader standard;
+            standard = Shader.Find("Standard");
+            carriedObject.GetComponent<Renderer>().material.shader = standard;
+            ourColor = carriedObject.GetComponent<Renderer>().material.color;
+            
+            carriedObject.GetComponent<Rigidbody>().useGravity = true;
+            carriedObject.GetComponent<Rigidbody>().isKinematic = false;
+            carriedObject.GetComponent<Rigidbody>().freezeRotation = false;
+            carriedObject = null;
+
         }
+    }
+
+    public static void dropObjectNorm(GameObject ourObject) {
+        ourObject.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 1f;
+        Rigidbody rb = carriedObject.GetComponent<Rigidbody>();
+        rb.velocity = Camera.main.transform.forward * dropObjectStrength;
     }
 }

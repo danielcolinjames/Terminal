@@ -55,6 +55,7 @@ TagManager:
   - s3cube
   - s4cube
   - s5cube
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -89,6 +90,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UI
+    uniqueID: 1671247385
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

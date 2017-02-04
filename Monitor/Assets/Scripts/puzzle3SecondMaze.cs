@@ -334,7 +334,7 @@ public class puzzle3SecondMaze : MonoBehaviour {
                         greenPlane.enabled = true;
                         greenLight.enabled = true;
 
-                        Global.currentPuzzle = 6;
+                        Global.currentPuzzle = 5;
                     } else {
                         greenPlane.enabled = false;
                         greenLight.enabled = false;
@@ -344,7 +344,7 @@ public class puzzle3SecondMaze : MonoBehaviour {
                         yellowPlane.enabled = true;
                         yellowLight.enabled = true;
 
-                        Global.currentPuzzle = 7;
+                        Global.currentPuzzle = 5;
                     } else {
                         yellowPlane.enabled = false;
                         yellowLight.enabled = false;
