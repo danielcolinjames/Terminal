@@ -58,7 +58,7 @@ public class puzzle2LightsOn: MonoBehaviour {
 
                 puzzle1IntroMaze.screenLight.enabled = true;
 
-                Global.currentPuzzle = 3;
+                Global.currentPuzzle = 5;
             }
         }
     }
