@@ -88,6 +88,11 @@ public class puzzle3SecondMaze : MonoBehaviour {
     public Transform behindGreenGoal;
     public Transform behindYellowGoal;
 
+    public Material aboveWarehouse;
+    public Material normalCamera;
+    public Transform movingBoxCollider;
+    public Transform aboveWarehouseCam;
+
     // public Transform puzzleTwoSelector;
 
     void Awake() {
@@ -106,6 +111,11 @@ public class puzzle3SecondMaze : MonoBehaviour {
         bluePlane.enabled = false;
         greenPlane.enabled = false;
         yellowPlane.enabled = false;
+
+        redLight.enabled = false;
+        blueLight.enabled = false;
+        greenLight.enabled = false;
+        yellowLight.enabled = false;
     }
 
     // Use this for initialization
@@ -131,23 +141,27 @@ public class puzzle3SecondMaze : MonoBehaviour {
         if (Global.currentPuzzle == 3) {
 
             // move camera across from puzzle one
-            float speed = 25f;
-            float step = speed * Time.deltaTime;
 
-            Vector3 superMazeCameraPosition = new Vector3(superMazeNavigator.position.x, superMazeNavigator.position.y + 10f, superMazeNavigator.position.z);
+            Vector3 movingBoxCameraPosition = new Vector3(movingBoxCollider.position.x, movingBoxCollider.position.y + 10f, movingBoxCollider.position.z);
+            aboveWarehouseCam.position = movingBoxCameraPosition;
 
-            float distance = Vector3.Distance(Global.monitorCamera.position, superMazeCameraPosition);
+            Global.monitor.GetComponent<Renderer>().material = aboveWarehouse;
 
-            // pan camera across
-            Global.monitorCamera.position = Vector3.MoveTowards(Global.monitorCamera.position, superMazeCameraPosition, step);
+            // these lights look like absolute trash with realtime lighting
+            //redLight.enabled = true;
+            //blueLight.enabled = true;
+            //greenLight.enabled = true;
+            //yellowLight.enabled = true;
 
-            if (distance == 0) {
-                // setting a flag when the camera has finished panning over
-                // otherwise the player can move the puzzleTwoSelector around before puzzle one is finished
-                puzzleThreeStarted = true;
-            }
+            redPlane.enabled = true;
+            bluePlane.enabled = true;
+            greenPlane.enabled = true;
+            yellowPlane.enabled = true;
 
-        } else if (Global.currentPuzzle == 4 || Global.currentPuzzle == 5 || Global.currentPuzzle == 6 || Global.currentPuzzle == 7) {
+            puzzleThreeStarted = true;
+        }
+        
+        if (puzzleThreeStarted == true && Global.currentPuzzle == 3) {
             
             // RED
             for (int i = 0; i < redBoxes.Length; i++) {
@@ -155,9 +169,9 @@ public class puzzle3SecondMaze : MonoBehaviour {
 
                 Transform redBoxT = redBox.transform;
                 distanceFromRedGoal = Vector3.Distance(redBoxT.position, redGoal.position);
-                
+
                 // has the box been placed over the goal?
-                if (redInPosition[i] == false && distanceFromRedGoal < goalRange && redLight.enabled == true && redBox.activeSelf == true) {
+                if (redInPosition[i] == false && distanceFromRedGoal < goalRange && redPlane.enabled == true && redBox.activeSelf == true) {
                     // set this to true, so that on the next iteration, the next if statement will be entered, and this one will not
                     redInPosition[i] = true;
 
@@ -194,7 +208,7 @@ public class puzzle3SecondMaze : MonoBehaviour {
                 Transform blueBoxT = blueBox.transform;
                 distanceFromBlueGoal = Vector3.Distance(blueBoxT.position, blueGoal.position);
 
-                if (blueInPosition[i] == false && distanceFromBlueGoal < goalRange && blueLight.enabled == true && blueBox.activeSelf == true) {
+                if (blueInPosition[i] == false && distanceFromBlueGoal < goalRange && bluePlane.enabled == true && blueBox.activeSelf == true) {
                     blueInPosition[i] = true;
                     if (PickupObject.carrying == true) {
                         PickupObject.dropObject();
@@ -222,7 +236,7 @@ public class puzzle3SecondMaze : MonoBehaviour {
                 Transform greenBoxT = greenBox.transform;
                 distanceFromGreenGoal = Vector3.Distance(greenBoxT.position, greenGoal.position);
 
-                if (greenInPosition[i] == false && distanceFromGreenGoal < goalRange && greenLight.enabled == true && greenBox.activeSelf == true) {
+                if (greenInPosition[i] == false && distanceFromGreenGoal < goalRange && greenPlane.enabled == true && greenBox.activeSelf == true) {
                     greenInPosition[i] = true;
 
                     if (PickupObject.carrying == true) {
@@ -251,7 +265,7 @@ public class puzzle3SecondMaze : MonoBehaviour {
                 Transform yellowBoxT = yellowBox.transform;
                 distanceFromYellowGoal = Vector3.Distance(yellowBoxT.position, yellowGoal.position);
 
-                if (yellowInPosition[i] == false && distanceFromYellowGoal < goalRange && yellowLight.enabled == true && yellowBox.activeSelf == true) {
+                if (yellowInPosition[i] == false && distanceFromYellowGoal < goalRange && yellowPlane.enabled == true && yellowBox.activeSelf == true) {
                     yellowInPosition[i] = true;
                     if (PickupObject.carrying == true) {
                         PickupObject.dropObject();
@@ -279,82 +293,32 @@ public class puzzle3SecondMaze : MonoBehaviour {
         if (Global.currentPuzzle == 3) {
             if (MonitorMode.monitorMode == true) {
 
-                float movementSpeed = 0.005f;
-
+                float movementSpeed = 0.05f;
                 // locks rotation of light
 
                 //puzzleTwoSelector.transform.rotation = Quaternion.Euler(puzzleTwoSelector.transform.rotation.eulerAngles.x, Global.lockPos, Global.lockPos);
 
                 if (puzzleThreeStarted) {
                     // TODO: limits, eg: if (pos.x >) { ... }
-                    
-                    // up and down
-                    superMazeNavigator.Translate(Vector3.back * Global.state.ThumbSticks.Left.Y * movementSpeed);
-                    if (Input.GetKey(KeyCode.S)) superMazeNavigator.Translate(Vector3.forward * 2 * movementSpeed);
 
-                    superMazeNavigator.Translate(Vector3.forward * -Global.state.ThumbSticks.Left.Y * movementSpeed);
-                    if (Input.GetKey(KeyCode.W)) superMazeNavigator.Translate(Vector3.back * 2 * movementSpeed);
+                    // up and down
+                    movingBoxCollider.Translate(Vector3.back * Global.state.ThumbSticks.Left.Y * movementSpeed);
+                    if (Input.GetKey(KeyCode.S)) movingBoxCollider.Translate(Vector3.forward * 2 * movementSpeed);
+
+                    movingBoxCollider.Translate(Vector3.forward * -Global.state.ThumbSticks.Left.Y * movementSpeed);
+                    if (Input.GetKey(KeyCode.W)) movingBoxCollider.Translate(Vector3.back * 2 * movementSpeed);
 
                     // left and right
-                    superMazeNavigator.Translate(Vector3.right * -Global.state.ThumbSticks.Left.X * movementSpeed);
-                    if (Input.GetKey(KeyCode.D)) superMazeNavigator.Translate(Vector3.left * 2 * movementSpeed);
+                    movingBoxCollider.Translate(Vector3.right * -Global.state.ThumbSticks.Left.X * movementSpeed);
+                    if (Input.GetKey(KeyCode.D)) movingBoxCollider.Translate(Vector3.left * 2 * movementSpeed);
 
-                    superMazeNavigator.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
-                    if (Input.GetKey(KeyCode.A)) superMazeNavigator.Translate(Vector3.right * 2 * movementSpeed);
-
-                    // distance calculation (inside super maze)
-                    distanceFromSuperMazeRedGoal = Vector3.Distance(superMazeRedGoal.position, superMazeNavigator.position);
-                    distanceFromSuperMazeBlueGoal = Vector3.Distance(superMazeBlueGoal.position, superMazeNavigator.position);
-                    distanceFromSuperMazeGreenGoal = Vector3.Distance(superMazeGreenGoal.position, superMazeNavigator.position);
-                    distanceFromSuperMazeYellowGoal = Vector3.Distance(superMazeYellowGoal.position, superMazeNavigator.position);
-
-                    float superMazeGoalTolerance = 0.058f;
-
-                    if (!redDone && distanceFromSuperMazeRedGoal < superMazeGoalTolerance) {
-                        redPlane.enabled = true;
-                        redLight.enabled = true;
-                        
-                        Global.currentPuzzle = 5;
-                    } else {
-                        redPlane.enabled = false;
-                        redLight.enabled = false;
-                    }
-
-                    if (!blueDone && distanceFromSuperMazeBlueGoal < superMazeGoalTolerance) {
-                        bluePlane.enabled = true;
-                        blueLight.enabled = true;
-
-                        Global.currentPuzzle = 5;
-                    } else {
-                        bluePlane.enabled = false;
-                        blueLight.enabled = false;
-                    }
-
-                    if (!greenDone && distanceFromSuperMazeGreenGoal < superMazeGoalTolerance) {
-                        greenPlane.enabled = true;
-                        greenLight.enabled = true;
-
-                        Global.currentPuzzle = 5;
-                    } else {
-                        greenPlane.enabled = false;
-                        greenLight.enabled = false;
-                    }
-
-                    if (!yellowDone && distanceFromSuperMazeYellowGoal < superMazeGoalTolerance) {
-                        yellowPlane.enabled = true;
-                        yellowLight.enabled = true;
-
-                        Global.currentPuzzle = 5;
-                    } else {
-                        yellowPlane.enabled = false;
-                        yellowLight.enabled = false;
-                    }
+                    movingBoxCollider.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
+                    if (Input.GetKey(KeyCode.A)) movingBoxCollider.Translate(Vector3.right * 2 * movementSpeed);
+                    
                 }
             }
-        }
 
-        // if one of the sub puzzles has been activated, start displaying the progress with the consoles
-        else if (Global.currentPuzzle == 3 || Global.currentPuzzle == 4 || Global.currentPuzzle == 5 || Global.currentPuzzle == 6 || Global.currentPuzzle == 7) {
+            // happens even if monitor mode isn't active
 
             float defaultX = 0.061f;
             float defaultY = 0.1f;
@@ -412,8 +376,9 @@ public class puzzle3SecondMaze : MonoBehaviour {
             }
 
             if (redDone && blueDone && greenDone && yellowDone) {
-                Global.currentPuzzle = 8;
-                print("DONE");
+                Global.currentPuzzle = 5;
+
+                Global.monitor.GetComponent<Renderer>().material = normalCamera;
             }
         }
     }

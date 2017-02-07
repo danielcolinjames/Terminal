@@ -11,6 +11,8 @@ public class puzzle1IntroMaze : MonoBehaviour {
     public Transform fallingBox;
     public Transform key;
 
+    public Transform movingBox;
+
     // audio stuff
     public AudioClip lightsOff;
 
@@ -18,6 +20,8 @@ public class puzzle1IntroMaze : MonoBehaviour {
 
     public static GameObject[] mainLights;
     public static GameObject[] backupLights;
+
+    public Material cameraFeedTwo;
 
     // Use this for initialization
     void Start () {
@@ -71,6 +75,10 @@ public class puzzle1IntroMaze : MonoBehaviour {
                 puzzleOneBox.Translate(Vector3.left * Global.state.ThumbSticks.Left.X * movementSpeed);
                 if (Input.GetKey(KeyCode.A)) puzzleOneBox.Translate(Vector3.right * 2 * movementSpeed);
 
+                movingBox.position = new Vector3(puzzleOneBox.position.x * 10 - 218.5f,
+                    puzzleOneBox.position.y + 4.7f,
+                    puzzleOneBox.position.z * 10 - 289f);
+
                 // puzzleOneDistanceToCompletion = Vector3.Distance(player.position, monitor.position);
 
                 //print(puzzleOneDistanceToCompletion);
@@ -81,6 +89,11 @@ public class puzzle1IntroMaze : MonoBehaviour {
                 // test for completion
 
                 if (puzzleOneDistanceToCompletion < 0.05) {
+
+                    Global.securityCameraPlane.GetComponent<Renderer>().material = cameraFeedTwo;
+
+                    movingBox.GetComponent<Rigidbody>().useGravity = true;
+
                     Global.source.PlayOneShot(lightsOff, Global.volumeMed);
 
                     foreach (GameObject mainLight in mainLights) {

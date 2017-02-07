@@ -5,6 +5,8 @@ public class Tagged4Pickup : MonoBehaviour {
     //for collision detection
     void OnCollisionEnter(Collision col) {
         if (col.gameObject.tag == "Wall")
-            PickupObject.dropObject();
+            if (PickupObject.carrying == true) {
+                PickupObject.dropObject();
+            }
     }
 }

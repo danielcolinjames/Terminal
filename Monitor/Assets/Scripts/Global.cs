@@ -25,8 +25,13 @@ public class Global : MonoBehaviour {
 
     public AudioClip startSound;
 
+    public Material cameraFeedOne;
+
+    public static GameObject securityCameraPlane;
+
     void Awake() {
         source = GetComponent<AudioSource>();
+        securityCameraPlane = GameObject.FindGameObjectWithTag("SecurityCameraPlane");
     }
 
     // Use this for initialization
@@ -34,6 +39,8 @@ public class Global : MonoBehaviour {
         // global objects
         player = GameObject.FindGameObjectWithTag("Player").transform;
         monitor = GameObject.FindGameObjectWithTag("Monitor").transform;
+
+        securityCameraPlane.GetComponent<Renderer>().material = cameraFeedOne;
 
         monitorCamera = GameObject.FindGameObjectWithTag("MonitorCamera").transform;
         monitorCamera.position = new Vector3(monitorCamera.position.x, monitorCamera.position.y, monitorCamera.position.z);

@@ -40,10 +40,7 @@ public class puzzle2LightsOn: MonoBehaviour {
                 }
             }
 
-            if (MonitorMode.monitorMode == true) {
-                
-            }
-
+            
             if (breakerFlipped == true) {
 
                 Global.source.PlayOneShot(breakerFlippedAudio, Global.volumeMed);
@@ -58,7 +55,7 @@ public class puzzle2LightsOn: MonoBehaviour {
 
                 puzzle1IntroMaze.screenLight.enabled = true;
 
-                Global.currentPuzzle = 5;
+                Global.currentPuzzle = 3;
             }
         }
     }

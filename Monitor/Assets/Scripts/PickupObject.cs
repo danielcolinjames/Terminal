@@ -40,7 +40,7 @@ public class PickupObject : MonoBehaviour {
     }
 
     void pickup() {
-        if (Input.GetKeyDown(KeyCode.E) || (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) {
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E) || (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) {
             int x = Screen.width / 2;
             int y = Screen.height / 2;
 
@@ -123,7 +123,7 @@ public class PickupObject : MonoBehaviour {
 
     void throwObject() {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.F) || (Global.prevState.Buttons.Y == ButtonState.Released && Global.state.Buttons.Y == ButtonState.Pressed)) {
-            carriedObject.transform.position = transform.position + Camera.main.transform.forward * 2;
+            //carriedObject.transform.position = transform.position + Camera.main.transform.forward * 2;
             Rigidbody rb = carriedObject.GetComponent<Rigidbody>();
             rb.velocity = Camera.main.transform.forward * throwStrength;
 
