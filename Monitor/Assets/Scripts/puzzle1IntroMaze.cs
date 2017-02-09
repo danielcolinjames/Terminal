@@ -105,6 +105,7 @@ public class puzzle1IntroMaze : MonoBehaviour {
                     }
 
                     Global.currentPuzzle = 2;
+                    Global.currentTimer = 2;
 
                     //MonitorMode.monitorMode = false;
 

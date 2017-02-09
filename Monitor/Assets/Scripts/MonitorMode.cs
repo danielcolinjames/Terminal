@@ -9,8 +9,10 @@ public class MonitorMode : MonoBehaviour {
 
     public static bool monitorMode = false;
 
+    bool monitorEntered = false;
+
     void Awake() {
-    
+         
     }
     
     void Start () {
@@ -42,6 +44,12 @@ public class MonitorMode : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E) || (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) {
             // if a has been pressed, activate monitor mode
             if (distanceToMonitor < 1.5) {
+
+                if (monitorEntered == false) {
+                    Global.currentTimer = 1;
+                    monitorEntered = true;
+                }
+
                 monitorMode = true;
             }
         }
@@ -61,6 +69,5 @@ public class MonitorMode : MonoBehaviour {
 
     void FixedUpdate() {
         
-       
     }
 }

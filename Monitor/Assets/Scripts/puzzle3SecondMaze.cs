@@ -377,6 +377,7 @@ public class puzzle3SecondMaze : MonoBehaviour {
 
             if (redDone && blueDone && greenDone && yellowDone) {
                 Global.currentPuzzle = 5;
+                Global.currentTimer = 4;
 
                 Global.monitor.GetComponent<Renderer>().material = normalCamera;
             }

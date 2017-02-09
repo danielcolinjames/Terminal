@@ -157,8 +157,7 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
 
 
-        if (Global.currentPuzzle == 5 && puzzle5Started)
-        {
+        if (Global.currentPuzzle == 5 && puzzle5Started) {
             // turn on the text on the screen
             monitorCanvas.enabled = true;
 
@@ -166,11 +165,9 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
             resetLights();
 
             // set up stage 1
-            if (currentStage == 1)
-            {
+            if (currentStage == 1) {
 
-                if (textWritingStarted == false)
-                {
+                if (textWritingStarted == false) {
                     textWritingStarted = true;
                     string message1 = "> Packages require delivery \n" +
                         "> hue sequence incoming... \n" +
@@ -181,7 +178,6 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                         "> GREEN\n";
 
                     StartCoroutine(typeText(message1));
-
                 }
 
                 s1c1.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -190,8 +186,7 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 s1c4.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 
                 // if the cubes haven't been shot out of the tunnels yet
-                if (cubesReleased == false)
-                {
+                if (cubesReleased == false) {
                     // shoot them out of the tunnels
                     s1c1.position = behindRedGoal.position;
                     s1c1.position = s1c1.transform.position + new Vector3(1f, 0f, 0);
@@ -213,17 +208,14 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 }
                 checkPlacementOfBoxes();
 
-                if (s1complete == true)
-                {
+                if (s1complete == true) {
                     moveBoxesIntoWall();
                 }
 
             }
-            else if (currentStage == 2)
-            {
+            else if (currentStage == 2) {
 
-                if (textWritingStarted == false)
-                {
+                if (textWritingStarted == false) {
                     textWritingStarted = true;
                     string message2 = "> Packages require delivery \n" +
                         "> location sequence incoming... \n" +
@@ -244,10 +236,8 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 s2c2.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s2c3.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s2c4.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-
-
-                if (cubesReleased == false)
-                {
+                
+                if (cubesReleased == false) {
 
                     s2c1.position = behindRedGoal.position;
                     s2c1.position = s2c1.transform.position + new Vector3(1f, 0f, 0);
@@ -267,18 +257,16 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
                     cubesReleased = true;
                 }
+
                 checkPlacementOfBoxes();
 
-                if (s2complete == true)
-                {
+                if (s2complete == true) {
                     moveBoxesIntoWall();
                 }
             }
 
-            else if (currentStage == 3)
-            {
-                if (textWritingStarted == false)
-                {
+            else if (currentStage == 3) {
+                if (textWritingStarted == false) {
                     textWritingStarted = true;
                     string message3 = "> Packages require delivery \n" +
                         "> location sequence incoming... \n" +
@@ -301,9 +289,7 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 s3c3.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s3c4.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 
-                if (cubesReleased == false)
-                {
-
+                if (cubesReleased == false) {
                     s3c1.position = behindRedGoal.position;
                     s3c1.position = s3c1.transform.position + new Vector3(1f, 0f, 0);
                     s3c1.GetComponent<Rigidbody>().velocity = new Vector3(14f, 0.25f, 0);
@@ -322,17 +308,16 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
                     cubesReleased = true;
                 }
+
                 checkPlacementOfBoxes();
 
-                if (s3complete == true)
-                {
+                if (s3complete == true) {
                     moveBoxesIntoWall();
                 }
             }
-            else if (currentStage == 4)
-            {
-                if (textWritingStarted == false)
-                {
+
+            else if (currentStage == 4) {
+                if (textWritingStarted == false) {
                     textWritingStarted = true;
                     string message4 = "> Packages require delivery \n" +
                         "> location sequence incoming... \n" +
@@ -353,13 +338,13 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                     light4.color = Color.white;
 
                 }
+
                 s4c1.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s4c2.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s4c3.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s4c4.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 
-                if (cubesReleased == false)
-                {
+                if (cubesReleased == false) {
 
                     s4c1.position = behindRedGoal.position;
                     s4c1.position = s4c1.transform.position + new Vector3(1f, 0f, 0);
@@ -381,15 +366,12 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 }
                 checkPlacementOfBoxes();
 
-                if (s4complete == true)
-                {
+                if (s4complete == true) {
                     moveBoxesIntoWall();
                 }
             }
-            else if (currentStage == 5)
-            {
-                if (textWritingStarted == false)
-                {
+            else if (currentStage == 5) {
+                if (textWritingStarted == false) {
                     textWritingStarted = true;
                     string message5 = "> Packages require delivery \n" +
                         "> location sequence incoming... \n" +
@@ -415,8 +397,7 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 s5c3.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 s5c4.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 
-                if (cubesReleased == false)
-                {
+                if (cubesReleased == false) {
 
                     s5c1.position = behindRedGoal.position;
                     s5c1.position = s5c1.transform.position + new Vector3(1f, 0f, 0);
@@ -438,15 +419,12 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 }
                 checkPlacementOfBoxes();
 
-                if (s5complete == true)
-                {
+                if (s5complete == true) {
                     moveBoxesIntoWall();
                 }
             }
-            else if (currentStage == 6)
-            {
-                if (textWritingStarted == false)
-                {
+            else if (currentStage == 6) {
+                if (textWritingStarted == false) {
                     textWritingStarted = true;
                     string message6 = "> all packages delivered... \n" +
                         "> CONGRATULATIONS\n";
@@ -506,15 +484,13 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
             c3d = Vector3.Distance(s3c3.position, goal3.position);
             c4d = Vector3.Distance(s3c4.position, goal4.position);
         }
-        else if (currentStage == 4)
-        {
+        else if (currentStage == 4) {
             c1d = Vector3.Distance(s4c1.position, goal1.position);
             c2d = Vector3.Distance(s4c2.position, goal2.position);
             c3d = Vector3.Distance(s4c3.position, goal3.position);
             c4d = Vector3.Distance(s4c4.position, goal4.position);
         }
-        else if (currentStage == 5)
-        {
+        else if (currentStage == 5) {
             c1d = Vector3.Distance(s5c1.position, goal1.position);
             c2d = Vector3.Distance(s5c2.position, goal2.position);
             c3d = Vector3.Distance(s5c3.position, goal3.position);
@@ -645,12 +621,10 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
             }
         }
 
-        else if (currentStage == 3)
-        {
+        else if (currentStage == 3) {
             float distanceFromLargeGoal;
 
-            for (int i = 0; i < s3cubes.Length; i++)
-            {
+            for (int i = 0; i < s3cubes.Length; i++) {
                 GameObject cube = s3cubes[i];
 
                 Transform cubeT = cube.transform;
@@ -660,14 +634,12 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
                 float cubeDistance = Vector3.Distance(cubeT.position, largeGoal.position);
 
-                if (cubeDistance < 0.5 && cube.activeSelf == true)
-                {
+                if (cubeDistance < 0.5 && cube.activeSelf == true) {
                     cube.SetActive(false);
                     finishedCubeCount++;
                 }
 
-                if (finishedCubeCount == 4)
-                {
+                if (finishedCubeCount == 4) {
                     textWritingStarted = false;
                     s3complete = false;
                     cubesReleased = false;
@@ -682,12 +654,10 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 }
             }
         }
-        else if (currentStage == 4)
-        {
+        else if (currentStage == 4) {
             float distanceFromLargeGoal;
 
-            for (int i = 0; i < s4cubes.Length; i++)
-            {
+            for (int i = 0; i < s4cubes.Length; i++) {
                 GameObject cube = s4cubes[i];
 
                 Transform cubeT = cube.transform;
@@ -697,14 +667,12 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
                 float cubeDistance = Vector3.Distance(cubeT.position, largeGoal.position);
 
-                if (cubeDistance < 0.5 && cube.activeSelf == true)
-                {
+                if (cubeDistance < 0.5 && cube.activeSelf == true) {
                     cube.SetActive(false);
                     finishedCubeCount++;
                 }
 
-                if (finishedCubeCount == 4)
-                {
+                if (finishedCubeCount == 4) {
                     textWritingStarted = false;
                     s4complete = false;
                     cubesReleased = false;
@@ -717,15 +685,12 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
                     resetCityLights();
                 }
-
             }
         }
-        else if (currentStage == 5)
-        {
+        else if (currentStage == 5) {
             float distanceFromLargeGoal;
 
-            for (int i = 0; i < s5cubes.Length; i++)
-            {
+            for (int i = 0; i < s5cubes.Length; i++) {
                 GameObject cube = s5cubes[i];
 
                 Transform cubeT = cube.transform;
@@ -735,14 +700,12 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
                 float cubeDistance = Vector3.Distance(cubeT.position, largeGoal.position);
 
-                if (cubeDistance < 0.5 && cube.activeSelf == true)
-                {
+                if (cubeDistance < 0.5 && cube.activeSelf == true) {
                     cube.SetActive(false);
                     finishedCubeCount++;
                 }
 
-                if (finishedCubeCount == 4)
-                {
+                if (finishedCubeCount == 4) {
                     textWritingStarted = false;
                     s5complete = false;
                     cubesReleased = false;
@@ -752,6 +715,18 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                     greenPlane.enabled = false;
                     redPlane.enabled = false;
                     whitePlane.enabled = true;
+
+                    print("Timer 0: " + Global.timer0);
+                    print("Timer 1: " + Global.timer1);
+                    print("Timer 2: " + Global.timer2);
+                    print("Timer 3: " + Global.timer3);
+                    print("Timer 4: " + Global.timer4);
+                    print("Timer 5: " + Global.timer5);
+                    print("Timer 6: " + Global.timer6);
+                    print("Timer 7: " + Global.timer7);
+                    print("Timer 8: " + Global.timer8);
+
+
 
                     resetCityLights();
                 }
@@ -792,9 +767,9 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
             // play blip noise
             yield return new WaitForSeconds(letterPause);
         }
-    } 
-    void resetCityLights ()
-    {
+    }
+
+    void resetCityLights () {
         berlin.color = Color.white;
         budapest.color = Color.white;
         cuba.color = Color.white;
@@ -811,5 +786,5 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
         tokyo.color = Color.white;
         toronto.color = Color.white;
         vienna.color = Color.white;
-}
+    }
 }
