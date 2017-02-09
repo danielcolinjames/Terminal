@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecurityCamera : MonoBehaviour {
+public class SecurityCamera2 : MonoBehaviour {
 
-    public float speed = 0.2f;
-    public float maxRotation = 35f;
+    float rotateSpeed = 5.0f;
 
     // Use this for initialization
     void Start () {
@@ -14,6 +13,6 @@ public class SecurityCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.rotation = Quaternion.Euler(0f, maxRotation * Mathf.Sin(Time.time * speed), 0f);
+        transform.rotation = Quaternion.Euler(-13f, Mathf.PingPong(Time.time * rotateSpeed, 30.5f) + 70.0f, 0f);
     }
 }
