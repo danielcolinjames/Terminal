@@ -9,6 +9,7 @@ public class puzzle2LightsOn: MonoBehaviour {
     public Transform player;
 
     float distanceToBreaker = 100;
+    float distanceYToBreaker = 100;
 
     public static bool breakerFlipped = false;
 
@@ -25,12 +26,12 @@ public class puzzle2LightsOn: MonoBehaviour {
 	void Update () {
         //print(distanceToBreaker);
         distanceToBreaker = Vector3.Distance(player.position, breaker.position);
+        distanceYToBreaker = Mathf.Abs(player.position.y - breaker.position.y);
     }
 
     void FixedUpdate() {
-        //print(distanceToBreaker);
 
-        if (Global.currentPuzzle == 2) {
+        if (Global.currentPuzzle == 2 && distanceYToBreaker < 0.5) {
 
             if (distanceToBreaker < 3) {
 

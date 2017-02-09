@@ -14,7 +14,7 @@ public class puzzle3SecondMaze : MonoBehaviour {
     // other stuff
     bool puzzleThreeStarted = false;
 
-    float goalRange = 0.9f;
+    float goalRange = 0.5f;
 
     public static bool redDone = false;
     public static bool blueDone = false;
