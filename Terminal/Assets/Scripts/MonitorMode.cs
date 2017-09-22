@@ -21,7 +21,6 @@ public class MonitorMode : MonoBehaviour {
         distanceToMonitor = 0;
     }
 	
-
 	// Update is called once per frame
 	void Update () {
         distanceToMonitor = Vector3.Distance(Global.player.position, Global.monitor.position);
@@ -41,7 +40,7 @@ public class MonitorMode : MonoBehaviour {
         }
 
         // detect if A was pressed this frame
-        if (Input.GetKeyDown(KeyCode.E) || (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) {
+		if (Input.GetKeyDown(KeyCode.E) || (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) {
             // if a has been pressed, activate monitor mode
             if (distanceToMonitor < 1.5) {
 

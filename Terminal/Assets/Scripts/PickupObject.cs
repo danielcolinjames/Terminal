@@ -3,7 +3,7 @@ using System.Collections;
 using XInputDotNetPure;
 
 public class PickupObject : MonoBehaviour {
-    GameObject mainCamera;
+    static GameObject mainCamera;
     public static bool carrying;
     public static GameObject carriedObject;
     public static Color ourColor;
@@ -16,6 +16,8 @@ public class PickupObject : MonoBehaviour {
     public static bool hasKey;
     public bool hitWall;
 
+    public static Camera cam;
+
     // audio stuff
     public AudioClip pickupSound;
 
@@ -25,6 +27,9 @@ public class PickupObject : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+        Debug.DrawRay(transform.position, transform.forward, Color.red, 1f);
+
         if (carrying) {
             carry(carriedObject);
             checkDrop();
@@ -40,12 +45,13 @@ public class PickupObject : MonoBehaviour {
     }
 
     void pickup() {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E) || (Global.prevState.Buttons.A == ButtonState.Released && Global.state.Buttons.A == ButtonState.Pressed)) {
-            int x = Screen.width / 2;
-            int y = Screen.height / 2;
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E) || (Global.prevState.Buttons.LeftShoulder == ButtonState.Released && Global.state.Buttons.LeftShoulder == ButtonState.Pressed)) {
+            //int x = Screen.width / 2;
+            //int y = Screen.height / 2;
 
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(x, y));
-            RaycastHit hit;
+            //Ray ray = Camera.main.ScreenPointToRay(new Vector3(x, y)); //FOR NON_VR GAME
+			RaycastHit hit;
+			Ray ray = new Ray (transform.position, transform.forward);
             if (Physics.Raycast(ray, out hit)) {
                 Tagged4Pickup p = hit.collider.GetComponent<Tagged4Pickup>();
                 if (p != null && (Physics.Raycast(ray, out hit, pickupDistance))) {
@@ -118,14 +124,13 @@ public class PickupObject : MonoBehaviour {
         carriedObject.GetComponent<Rigidbody>().isKinematic = false;
         carriedObject.GetComponent<Rigidbody>().freezeRotation = false;
         carriedObject = null;
-
     }
 
     void throwObject() {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.F) || (Global.prevState.Buttons.Y == ButtonState.Released && Global.state.Buttons.Y == ButtonState.Pressed)) {
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.F) || (Global.prevState.Buttons.RightShoulder == ButtonState.Released && Global.state.Buttons.RightShoulder == ButtonState.Pressed)) {
             //carriedObject.transform.position = transform.position + Camera.main.transform.forward * 2;
             Rigidbody rb = carriedObject.GetComponent<Rigidbody>();
-            rb.velocity = Camera.main.transform.forward * throwStrength;
+            rb.velocity = transform.forward * throwStrength;
 
             carrying = false;
             Shader standard;
@@ -137,13 +142,12 @@ public class PickupObject : MonoBehaviour {
             carriedObject.GetComponent<Rigidbody>().isKinematic = false;
             carriedObject.GetComponent<Rigidbody>().freezeRotation = false;
             carriedObject = null;
-
         }
     }
 
     public static void dropObjectNorm(GameObject ourObject) {
-        ourObject.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 1f;
+        ourObject.transform.position = mainCamera.transform.position + mainCamera.transform.forward * 1f;
         Rigidbody rb = carriedObject.GetComponent<Rigidbody>();
-        rb.velocity = Camera.main.transform.forward * dropObjectStrength;
+        rb.velocity = mainCamera.transform.forward * dropObjectStrength;
     }
 }

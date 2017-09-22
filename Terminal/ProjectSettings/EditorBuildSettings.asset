@@ -7,9 +7,31 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/StartMenu.unity
+    guid: dbb383dd2504a0640b86053a28071b7f
   - enabled: 0
     path: Assets/Scenes/Runable Demo.unity
+    guid: ab84ec1aa1406764f98ec87c1b95e51d
   - enabled: 0
     path: Assets/Scenes/v0.3.0.unity
-  - enabled: 1
+    guid: d66c18807f1da4442832eb134ce3881b
+  - enabled: 0
     path: Assets/Scenes/v0.3.2.unity
+    guid: 329d170fc29e4ed4f882811336910075
+  - enabled: 0
+    path: Assets/Scenes/v0.3.3.unity
+    guid: b8acbc5299c24134eb56405d87df7d1f
+  - enabled: 0
+    path: Assets/Scenes/v0.3.6.unity
+    guid: c0030ade4fa02e14997d3d103911e18a
+  - enabled: 1
+    path: Assets/Scenes/v0.4.0.unity
+    guid: b66ab8b9a8f6b4e4e8a90569cb672515
+  - enabled: 0
+    path: Assets/Scenes/v0.4.0-NOVR.unity
+    guid: c9908ffea5e6d6841b1083eeb7512413
+  - enabled: 0
+    path: Assets/Scenes/Filming/VRFilming.unity
+    guid: da517e228455a4746945b0e23d6e5a1e
+  - enabled: 0
+    path: Assets/Scenes/Filming/Flyover.unity
+    guid: 44df3edf9d3dd6842837dca7ed552233

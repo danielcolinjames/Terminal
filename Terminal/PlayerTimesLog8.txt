@@ -1,0 +1,3 @@
+Time to interact with monitor: 9.520961
+Time to solve maze puzzle: 5.134683
+Time to turn on lights: 11.45085

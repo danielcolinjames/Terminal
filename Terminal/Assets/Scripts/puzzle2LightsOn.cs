@@ -4,6 +4,9 @@ using XInputDotNetPure;
 
 public class puzzle2LightsOn: MonoBehaviour {
 
+    public Renderer puzzleComplete1;
+    public Renderer puzzleNotComplete1;
+
     // puzzle two objects
     public Transform breaker;
     public Transform player;
@@ -18,7 +21,7 @@ public class puzzle2LightsOn: MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        puzzleComplete1.enabled = false;
         // puzzle two objects
     }
 	
@@ -30,8 +33,7 @@ public class puzzle2LightsOn: MonoBehaviour {
     }
 
     void FixedUpdate() {
-
-        if (Global.currentPuzzle == 2 && distanceYToBreaker < 0.5) {
+        if (Global.currentPuzzle == 2 && distanceYToBreaker < 0.75) {
 
             if (distanceToBreaker < 3) {
 
@@ -40,7 +42,6 @@ public class puzzle2LightsOn: MonoBehaviour {
                     //print("BREAKER FLIPPED");
                 }
             }
-
             
             if (breakerFlipped == true) {
 
@@ -56,8 +57,12 @@ public class puzzle2LightsOn: MonoBehaviour {
 
                 puzzle1IntroMaze.screenLight.enabled = true;
 
+                puzzleComplete1.enabled = true;
+                puzzleNotComplete1.enabled = false;
+
                 Global.currentPuzzle = 3;
                 Global.currentTimer = 3;
+                Global.currentCue = 4;
             }
         }
     }

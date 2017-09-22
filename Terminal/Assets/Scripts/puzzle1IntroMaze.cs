@@ -48,8 +48,7 @@ public class puzzle1IntroMaze : MonoBehaviour {
         }
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         if (MonitorMode.monitorMode == true) {
 
             if (Global.currentPuzzle == 1) {
@@ -104,9 +103,6 @@ public class puzzle1IntroMaze : MonoBehaviour {
                         backupLight.GetComponent<Light>().enabled = true;
                     }
 
-                    Global.currentPuzzle = 2;
-                    Global.currentTimer = 2;
-
                     //MonitorMode.monitorMode = false;
 
                     Global.monitorCamera.position = new Vector3(puzzleOneBox.position.x - 2.0f, puzzleOneBox.position.y + 10f, puzzleOneBox.position.z);
@@ -122,8 +118,12 @@ public class puzzle1IntroMaze : MonoBehaviour {
 
                     screenLight.enabled = false;
 
-                    fallingBox.position = new Vector3(fallingBox.position.x, fallingBox.position.y - 2f, fallingBox.position.z);
-                    key.position = new Vector3(key.position.x, key.position.y -2f, key.position.z);
+                    //fallingBox.position = new Vector3(fallingBox.position.x, fallingBox.position.y - 2f, fallingBox.position.z);
+                    //key.position = new Vector3(key.position.x, key.position.y -2f, key.position.z);
+
+                    Global.currentPuzzle = 2;
+                    Global.currentTimer = 2;
+                    Global.currentCue = 2;
                 }
             }
         }

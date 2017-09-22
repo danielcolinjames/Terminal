@@ -19,15 +19,13 @@ limitations under the License.
 
 ************************************************************************************/
 
-#if !UNITY_5_3_OR_NEWER
-#error Oculus Utilities require Unity 5.3 or higher.
+#if !UNITY_5_4_OR_NEWER
+#error Oculus Utilities require Unity 5.4 or higher.
 #endif
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using VR = UnityEngine.VR;
 
@@ -40,6 +38,13 @@ public class OVRManager : MonoBehaviour
 	{
 		EyeLevel   = OVRPlugin.TrackingOrigin.EyeLevel,
 		FloorLevel = OVRPlugin.TrackingOrigin.FloorLevel,
+	}
+
+	public enum EyeTextureFormat
+	{
+		Default = OVRPlugin.EyeTextureFormat.Default,
+		R16G16B16A16_FP = OVRPlugin.EyeTextureFormat.R16G16B16A16_FP,
+		R11G11B10_FP = OVRPlugin.EyeTextureFormat.R11G11B10_FP,
 	}
 
 	/// <summary>
@@ -76,39 +81,8 @@ public class OVRManager : MonoBehaviour
 		}
 	}
 
-	private bool _isPaused;
 	private IEnumerable<Camera> disabledCameras;
 	float prevTimeScale;
-	private bool paused
-	{
-		get { return _isPaused; }
-		set {
-			if (value == _isPaused)
-				return;
-
-			// Sample code to handle VR Focus
-
-//			if (value)
-//			{
-//				prevTimeScale = Time.timeScale;
-//				Time.timeScale = 0.01f;
-//				disabledCameras = GameObject.FindObjectsOfType<Camera>().Where(c => c.isActiveAndEnabled);
-//				foreach (var cam in disabledCameras)
-//					cam.enabled = false;
-//			}
-//			else
-//			{
-//				Time.timeScale = prevTimeScale;
-//				if (disabledCameras != null) {
-//					foreach (var cam in disabledCameras)
-//						cam.enabled = true;
-//				}
-//				disabledCameras = null;
-//			}
-
-			_isPaused = value;
-		}
-	}
 
 	/// <summary>
 	/// Occurs when an HMD attached.
@@ -291,38 +265,43 @@ public class OVRManager : MonoBehaviour
 		}
 	}
 
+    [Header("Performance/Quality")]
 	/// <summary>
 	/// If true, distortion rendering work is submitted a quarter-frame early to avoid pipeline stalls and increase CPU-GPU parallelism.
 	/// </summary>
+    [Tooltip("If true, distortion rendering work is submitted a quarter-frame early to avoid pipeline stalls and increase CPU-GPU parallelism.")]
 	public bool queueAhead = true;
 
 	/// <summary>
 	/// If true, Unity will use the optimal antialiasing level for quality/performance on the current hardware.
 	/// </summary>
+    [Tooltip("If true, Unity will use the optimal antialiasing level for quality/performance on the current hardware.")]
 	public bool useRecommendedMSAALevel = false;
 
 	/// <summary>
 	/// If true, dynamic resolution will be enabled
 	/// </summary>
+    [Tooltip("If true, dynamic resolution will be enabled")]
 	public bool enableAdaptiveResolution = false;
 
     /// <summary>
-    /// Max RenderScale the app can reach under adaptive resolution mode ( enableAdaptiveResolution = ture );
+    /// Min RenderScale the app can reach under adaptive resolution mode ( enableAdaptiveResolution = true );
     /// </summary>
     [RangeAttribute(0.5f, 2.0f)]
+    [Tooltip("Min RenderScale the app can reach under adaptive resolution mode")]
+    public float minRenderScale = 0.7f;
+
+    /// <summary>
+    /// Max RenderScale the app can reach under adaptive resolution mode ( enableAdaptiveResolution = true );
+    /// </summary>   
+    [RangeAttribute(0.5f, 2.0f)]
+    [Tooltip("Max RenderScale the app can reach under adaptive resolution mode")]
     public float maxRenderScale = 1.0f;
 
     /// <summary>
-    /// Min RenderScale the app can reach under adaptive resolution mode ( enableAdaptiveResolution = ture );
+    /// The number of expected display frames per rendered frame.
     /// </summary>
-    [RangeAttribute(0.5f, 2.0f)]
-
-    public float minRenderScale = 0.7f;
-
-	/// <summary>
-	/// The number of expected display frames per rendered frame.
-	/// </summary>
-	public int vsyncCount
+    public int vsyncCount
 	{
 		get {
 			if (!isHmdPresent)
@@ -451,7 +430,26 @@ public class OVRManager : MonoBehaviour
 		}
 	}
 
-	[SerializeField]
+	/// <summary>
+	/// Gets or sets the eye texture format.
+	/// This feature is only for UNITY_5_6_OR_NEWER On PC
+	/// </summary>
+	public static EyeTextureFormat eyeTextureFormat
+	{
+		get
+		{
+			return (OVRManager.EyeTextureFormat)OVRPlugin.GetDesiredEyeTextureFormat();
+		}
+
+		set
+		{
+			OVRPlugin.SetDesiredEyeTextureFormat((OVRPlugin.EyeTextureFormat)value);
+		}
+	}
+
+    [Header("Tracking")]
+    [SerializeField]
+    [Tooltip("Defines the current tracking origin type.")]
 	private OVRManager.TrackingOrigin _trackingOriginType = OVRManager.TrackingOrigin.EyeLevel;
 	/// <summary>
 	/// Defines the current tracking origin type.
@@ -480,16 +478,25 @@ public class OVRManager : MonoBehaviour
 	/// <summary>
 	/// If true, head tracking will affect the position of each OVRCameraRig's cameras.
 	/// </summary>
+    [Tooltip("If true, head tracking will affect the position of each OVRCameraRig's cameras.")]
 	public bool usePositionTracking = true;
+
+	/// <summary>
+	/// If true, head tracking will affect the rotation of each OVRCameraRig's cameras.
+	/// </summary>
+	[HideInInspector]
+	public bool useRotationTracking = true;
 
 	/// <summary>
 	/// If true, the distance between the user's eyes will affect the position of each OVRCameraRig's cameras.
 	/// </summary>
+    [Tooltip("If true, the distance between the user's eyes will affect the position of each OVRCameraRig's cameras.")]
 	public bool useIPDInPositionTracking = true;
 
 	/// <summary>
 	/// If true, each scene load will cause the head pose to reset.
 	/// </summary>
+    [Tooltip("If true, each scene load will cause the head pose to reset.")]
 	public bool resetTrackerOnLoad = false;
 
 	/// <summary>
@@ -526,10 +533,21 @@ public class OVRManager : MonoBehaviour
 	private static string prevAudioOutId = string.Empty;
 	private static string prevAudioInId = string.Empty;
 	private static bool wasPositionTracked = false;
-	
-	[SerializeField]
-	[HideInInspector]
-	internal static bool runInBackground = false;
+
+	public static System.Version utilitiesVersion
+	{
+		get { return OVRPlugin.wrapperVersion; }
+	}
+
+	public static System.Version pluginVersion
+	{
+		get { return OVRPlugin.version; }
+	}
+
+	public static System.Version sdkVersion
+	{
+		get { return OVRPlugin.nativeSDKVersion; }
+	}
 
 #region Unity Messages
 
@@ -551,8 +569,12 @@ public class OVRManager : MonoBehaviour
 		          "SDK v" + OVRPlugin.nativeSDKVersion + ".");
 
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-		if (SystemInfo.graphicsDeviceType != UnityEngine.Rendering.GraphicsDeviceType.Direct3D11)
-			Debug.LogWarning("VR rendering requires Direct3D11. Your graphics device: " + SystemInfo.graphicsDeviceType);
+		var supportedTypes =
+			UnityEngine.Rendering.GraphicsDeviceType.Direct3D11.ToString() + ", " +
+			UnityEngine.Rendering.GraphicsDeviceType.Direct3D12.ToString();
+		
+		if (!supportedTypes.Contains(SystemInfo.graphicsDeviceType.ToString()))
+			Debug.LogWarning("VR rendering requires one of the following device types: (" + supportedTypes + "). Your graphics device: " + SystemInfo.graphicsDeviceType.ToString());
 #endif
 
         // Detect whether this platform is a supported platform
@@ -577,26 +599,44 @@ public class OVRManager : MonoBehaviour
         chromatic = false;
 #endif
 
-		if (display == null)
-			display = new OVRDisplay();
-		if (tracker == null)
-			tracker = new OVRTracker();
-		if (boundary == null)
-			boundary = new OVRBoundary();
+        Initialize();
 
 		if (resetTrackerOnLoad)
 			display.RecenterPose();
 		
 		// Disable the occlusion mesh by default until open issues with the preview window are resolved.
 		OVRPlugin.occlusionMesh = false;
+	}
 
-		OVRPlugin.ignoreVrFocus = runInBackground;
+#if UNITY_EDITOR
+	private static bool _scriptsReloaded;
+
+	[UnityEditor.Callbacks.DidReloadScripts]
+	static void ScriptsReloaded()
+	{
+		_scriptsReloaded = true;
+	}
+#endif
+
+	void Initialize()
+	{
+		if (display == null)
+			display = new OVRDisplay();
+		if (tracker == null)
+			tracker = new OVRTracker();
+		if (boundary == null)
+			boundary = new OVRBoundary();
 	}
 
 	private void Update()
 	{
-#if !UNITY_EDITOR
-		paused = !OVRPlugin.hasVrFocus;
+#if UNITY_EDITOR
+		if (_scriptsReloaded)
+		{
+			_scriptsReloaded = false;
+			instance = this;
+			Initialize();
+		}
 #endif
 
 		if (OVRPlugin.shouldQuit)
@@ -609,6 +649,8 @@ public class OVRManager : MonoBehaviour
 			trackingOriginType = _trackingOriginType;
 
 		tracker.isEnabled = usePositionTracking;
+
+		OVRPlugin.rotation = useRotationTracking;
 
 		OVRPlugin.useIPDInPositionTracking = useIPDInPositionTracking;
 
@@ -719,7 +761,7 @@ public class OVRManager : MonoBehaviour
 
 
 		// Changing effective rendering resolution dynamically according performance
-#if (UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN) && UNITY_5 && !(UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3)
+#if (UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN) && UNITY_5_4_OR_NEWER
 
 		if (enableAdaptiveResolution)
 		{
@@ -733,6 +775,7 @@ public class OVRManager : MonoBehaviour
                 // Adjusting maxRenderScale in case app started with a larger renderScale value
                 maxRenderScale = Mathf.Max(maxRenderScale, VR.VRSettings.renderScale);
             }
+            minRenderScale = Mathf.Min(minRenderScale, maxRenderScale);
             float minViewportScale = minRenderScale / VR.VRSettings.renderScale;
             float recommendedViewportScale = OVRPlugin.GetEyeRecommendedResolutionScale() / VR.VRSettings.renderScale;
             recommendedViewportScale = Mathf.Clamp(recommendedViewportScale, minViewportScale, 1.0f);

@@ -6,6 +6,12 @@ using XInputDotNetPure;
 
 public class puzzle5ConveyorBelt : MonoBehaviour {
 
+    public static bool gameFinished = false;
+    int currentStage = 1;
+
+    public Renderer puzzleComplete3;
+    public Renderer puzzleNotComplete3;
+
     public Transform goal1;
     public Transform goal2;
     public Transform goal3;
@@ -36,14 +42,12 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
     public Transform s5c2;
     public Transform s5c3;
     public Transform s5c4;
-    // end cubes
-
-    // stuff for this puzzle
-    int currentStage = 1;
-
+    
+    // sounds
     public AudioClip successSound;
     public AudioClip failureSound;
 
+    // spawn points for the cubes that shoot out
     public Transform behindRedGoal;
     public Transform behindBlueGoal;
     public Transform behindGreenGoal;
@@ -70,10 +74,12 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
     GameObject[] s4cubes;
     GameObject[] s5cubes;
 
+    // screens on the conveyor belt
     public Renderer whitePlane;
     public Renderer redPlane;
     public Renderer greenPlane;
 
+    // animation variables
     float speed;
     float step;
 
@@ -106,7 +112,6 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
     public Light conveyorSpotlight;
 
-
     // stuff for the monitor camera
     public Canvas monitorCanvas;
     public Text monitorText;
@@ -121,11 +126,14 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
 
 
     void Start () {
+        puzzleComplete3.enabled = false;
+
         speed = 5f;
         step = speed * Time.deltaTime;
 
         puzzle5CameraPosition = new Vector3(puzzle5Plane.position.x, puzzle5Plane.position.y + 10f, puzzle5Plane.position.z);
 
+        whitePlane.enabled = false;
         redPlane.enabled = false;
         greenPlane.enabled = false;
 
@@ -152,11 +160,10 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                 // setting a flag when the camera has finished panning over
                 // otherwise the player can move things around before the camera is finished panning
                 puzzle5Started = true;
+                whitePlane.enabled = true;
             }
         }
-
-
-
+        
         if (Global.currentPuzzle == 5 && puzzle5Started) {
             // turn on the text on the screen
             monitorCanvas.enabled = true;
@@ -205,6 +212,7 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                     s1c4.GetComponent<Rigidbody>().velocity = new Vector3(-14f, 0.25f, 0);
 
                     cubesReleased = true;
+
                 }
                 checkPlacementOfBoxes();
 
@@ -256,6 +264,8 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                     s2c4.GetComponent<Rigidbody>().velocity = new Vector3(-14f, 0.25f, 0);
 
                     cubesReleased = true;
+
+                    Global.currentCue = 6;
                 }
 
                 checkPlacementOfBoxes();
@@ -582,6 +592,8 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                     greenPlane.enabled = false;
                     redPlane.enabled = false;
                     whitePlane.enabled = true;
+
+                    Global.currentTimer = 5;
                 }
             }
         }
@@ -616,7 +628,8 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                     whitePlane.enabled = true;
 
                     resetCityLights();
-                   
+
+                    Global.currentTimer = 6;
                 }
             }
         }
@@ -651,6 +664,8 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                     whitePlane.enabled = true;
 
                     resetCityLights();
+
+                    Global.currentTimer = 7;
                 }
             }
         }
@@ -684,6 +699,8 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                     whitePlane.enabled = true;
 
                     resetCityLights();
+
+                    Global.currentTimer = 8;
                 }
             }
         }
@@ -715,18 +732,17 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
                     greenPlane.enabled = false;
                     redPlane.enabled = false;
                     whitePlane.enabled = true;
+                    
+                    Global.currentTimer = 9;
+                    Global.currentCue = 8;
+                    Global.currentPuzzle = 6;
 
-                    print("Timer 0: " + Global.timer0);
-                    print("Timer 1: " + Global.timer1);
-                    print("Timer 2: " + Global.timer2);
-                    print("Timer 3: " + Global.timer3);
-                    print("Timer 4: " + Global.timer4);
-                    print("Timer 5: " + Global.timer5);
-                    print("Timer 6: " + Global.timer6);
-                    print("Timer 7: " + Global.timer7);
-                    print("Timer 8: " + Global.timer8);
+                    print("Done");
 
+                    puzzleComplete3.enabled = true;
+                    puzzleNotComplete3.enabled = false;
 
+                    gameFinished = true;
 
                     resetCityLights();
                 }
@@ -764,7 +780,6 @@ public class puzzle5ConveyorBelt : MonoBehaviour {
         monitorText.text = "";
         foreach (char letter in outputText.ToCharArray()) {
             monitorText.text += letter;
-            // play blip noise
             yield return new WaitForSeconds(letterPause);
         }
     }

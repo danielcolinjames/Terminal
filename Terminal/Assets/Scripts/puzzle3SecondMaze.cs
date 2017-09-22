@@ -10,6 +10,8 @@ public class puzzle3SecondMaze : MonoBehaviour {
 
     // Global objects (accessed by other scripts)
 
+    public Renderer puzzleComplete2;
+    public Renderer puzzleNotComplete2;
 
     // other stuff
     bool puzzleThreeStarted = false;
@@ -54,19 +56,6 @@ public class puzzle3SecondMaze : MonoBehaviour {
 
     public float acceptableDistance = 0.5f;
 
-    // super maze stuff
-    public Transform superMazeRedGoal;
-    public Transform superMazeBlueGoal;
-    public Transform superMazeGreenGoal;
-    public Transform superMazeYellowGoal;
-
-    public Transform superMazeNavigator;
-    
-    float distanceFromSuperMazeRedGoal;
-    float distanceFromSuperMazeBlueGoal;
-    float distanceFromSuperMazeGreenGoal;
-    float distanceFromSuperMazeYellowGoal;
-
     // for the box into wall animation
     bool[] redInPosition;
     bool[] blueInPosition;
@@ -93,10 +82,7 @@ public class puzzle3SecondMaze : MonoBehaviour {
     public Transform movingBoxCollider;
     public Transform aboveWarehouseCam;
 
-    // public Transform puzzleTwoSelector;
-
     void Awake() {
-
         redBoxes = GameObject.FindGameObjectsWithTag("RedBox");
         blueBoxes = GameObject.FindGameObjectsWithTag("BlueBox");
         greenBoxes = GameObject.FindGameObjectsWithTag("GreenBox");
@@ -120,7 +106,8 @@ public class puzzle3SecondMaze : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        
+        puzzleComplete2.enabled = false;
+
         // to know if the current box should be moving toward the end of the tunnel or not
         redInPosition = new bool[redBoxes.Length];
         blueInPosition = new bool[blueBoxes.Length];
@@ -141,13 +128,12 @@ public class puzzle3SecondMaze : MonoBehaviour {
         if (Global.currentPuzzle == 3) {
 
             // move camera across from puzzle one
-
             Vector3 movingBoxCameraPosition = new Vector3(movingBoxCollider.position.x, movingBoxCollider.position.y + 10f, movingBoxCollider.position.z);
             aboveWarehouseCam.position = movingBoxCameraPosition;
 
             Global.monitor.GetComponent<Renderer>().material = aboveWarehouse;
 
-            // these lights look like absolute trash with realtime lighting
+            // these lights break with realtime lighting
             //redLight.enabled = true;
             //blueLight.enabled = true;
             //greenLight.enabled = true;
@@ -378,6 +364,10 @@ public class puzzle3SecondMaze : MonoBehaviour {
             if (redDone && blueDone && greenDone && yellowDone) {
                 Global.currentPuzzle = 5;
                 Global.currentTimer = 4;
+                Global.currentCue = 5;
+
+                puzzleComplete2.enabled = true;
+                puzzleNotComplete2.enabled = false;
 
                 Global.monitor.GetComponent<Renderer>().material = normalCamera;
             }
